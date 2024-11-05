@@ -17,6 +17,7 @@ public class Application extends javafx.application.Application {
         FacadeHorseManager facadeHorseManager = new FacadeHorseManagerImpl();
         Controller controller = new Controller(viewManager, facadeHorseManager);
         controller.run();
+        // test
     }
 
     public static void main(String[] args) {
