@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.text.Font?>
+<BorderPane maxHeight="-Infinity"
+            maxWidth="-Infinity"
+            minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="400.0"
+            prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:id="borderPane"
+            fx:controller="fr.insa.bourges.firstapplicationjfx.views.Home"
+>
+    <top>
+        <Label text="Création cheval" BorderPane.alignment="CENTER">
+            <font>
+                <Font size="40.0" />
+            </font>
+        </Label>
+    </top>
+    <center>
+        <VBox>
+            <children>
+                <Hyperlink text="Création nouveau cheval" onAction="#gotocreation" />
+            </children>
+        </VBox>
+    </center>
+</BorderPane>
