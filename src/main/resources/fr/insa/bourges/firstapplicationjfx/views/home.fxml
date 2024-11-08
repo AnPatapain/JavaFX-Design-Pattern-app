@@ -15,7 +15,7 @@
             xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:id="borderPane"
-            fx:controller="fr.insa.bourges.firstapplicationjfx.views.Home"
+            fx:controller="fr.insa.bourges.firstapplicationjfx.features.home.HomeView"
 >
     <top>
         <Label text="Création cheval" BorderPane.alignment="CENTER">
@@ -26,9 +26,8 @@
     </top>
     <center>
         <VBox>
-            <children>
-                <Hyperlink text="Création nouveau cheval" onAction="#gotocreation" />
-            </children>
+            <Hyperlink text="Create new horse" onAction="#gotocreation"/>
+            <Hyperlink text="See all horses" onAction="#gotohorselist"/>
         </VBox>
     </center>
 </BorderPane>

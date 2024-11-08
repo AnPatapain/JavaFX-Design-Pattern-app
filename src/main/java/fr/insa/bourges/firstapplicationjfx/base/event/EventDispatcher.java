@@ -3,7 +3,7 @@
  * Author: Ke An NGUYEN
  */
 
-package fr.insa.bourges.firstapplicationjfx.controllers;
+package fr.insa.bourges.firstapplicationjfx.base.event;
 
 public interface EventDispatcher {
     /**

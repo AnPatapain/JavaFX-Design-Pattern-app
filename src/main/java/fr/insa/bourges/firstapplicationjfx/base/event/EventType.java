@@ -1,4 +1,4 @@
-package fr.insa.bourges.firstapplicationjfx.controllers;
+package fr.insa.bourges.firstapplicationjfx.base.event;
 
 public enum EventType {
     SHOW_HOME,

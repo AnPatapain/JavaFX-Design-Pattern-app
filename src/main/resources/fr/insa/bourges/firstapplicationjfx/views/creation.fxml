@@ -18,7 +18,7 @@
             xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:id="borderPane"
-            fx:controller="fr.insa.bourges.firstapplicationjfx.views.Creation"
+            fx:controller="fr.insa.bourges.firstapplicationjfx.features.creation.CreationView"
 >
     <top>
         <Label text="Create Horse" BorderPane.alignment="CENTER">
@@ -46,6 +46,11 @@
         </VBox>
     </center>
     <bottom>
-        <Button text="Create Horse" onAction="#createHorse" />
+        <HBox alignment="CENTER" spacing="10" BorderPane.alignment="CENTER">
+            <children>
+                <Button text="Create Horse" onAction="#createHorse" />
+                <Button text="Menu" onAction="#gotomenu"/>
+            </children>
+        </HBox>
     </bottom>
 </BorderPane>
