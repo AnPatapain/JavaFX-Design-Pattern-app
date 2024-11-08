@@ -3,7 +3,7 @@
  * on the event type
  * Author: Ke An NGUYEN
  */
-package fr.insa.bourges.firstapplicationjfx.controllers;
+package fr.insa.bourges.firstapplicationjfx.base.event;
 
 public interface EventListener {
     void setSubscription(EventDispatcher eventDispatcher);

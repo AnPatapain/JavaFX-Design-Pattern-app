@@ -1,4 +1,4 @@
-package fr.insa.bourges.firstapplicationjfx.models;
+package fr.insa.bourges.firstapplicationjfx.features.shared.models;
 
 public class Horse {
     private String name;
