@@ -16,7 +16,7 @@ public abstract class AbstractView<C extends AbstractController<?>> {
             throw new RuntimeException("Please initialize View using AbstractView.createView(Class<T> viewClass, String fxmlFile)");
         }
     }
-    public static <V extends AbstractView<C>, C extends AbstractController<V>> V createView(Class<V> viewClass, String fxmlFile, C controller) {
+    public static <V extends AbstractView<C>, C extends AbstractController<?>> V createView(Class<V> viewClass, String fxmlFile, C controller) {
         try {
             isDuringInitialization = true;
             String fxmlPath = "/fr/insa/bourges/firstapplicationjfx/views/" + fxmlFile;
