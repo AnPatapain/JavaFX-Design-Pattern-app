@@ -3,10 +3,12 @@ package fr.insa.bourges.firstapplicationjfx.features.horse_list;
 import fr.insa.bourges.firstapplicationjfx.base.controller.AbstractController;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventDispatcher;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
+import fr.insa.bourges.firstapplicationjfx.base.view.AbstractView;
 import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
+import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
 import fr.insa.bourges.firstapplicationjfx.features.shared.services.IHorseService;
 
-public class HorseListController extends AbstractController<HorseListView> {
+public class HorseListController extends AbstractController<AbstractView<?>> {
     private IHorseService horseService;
 
     public HorseListController(EventDispatcher eventDispatcher, RenderViewManager renderViewManager) {
@@ -28,15 +30,16 @@ public class HorseListController extends AbstractController<HorseListView> {
 
     @Override
     public void handleEvent(EventType eventType) {
+        HorseListView horseListView = this.getViewAs(ViewName.HORSE_LIST, HorseListView.class);
         switch (eventType) {
             case SHOW_HORSE_LIST: {
-                this.view.updateHorseToView(this.horseService.getHorses());
-                this.renderViewManager.renderView(this.getView());
+                horseListView.updateHorseToView(this.horseService.getHorses());
+                this.renderViewManager.renderView(horseListView);
                 break;
             }
 
             case DATA_HORSE_CREATED, DATA_LOAD: {
-                this.view.updateHorseToView(this.horseService.getHorses());
+                horseListView.updateHorseToView(this.horseService.getHorses());
                 break;
             }
         }

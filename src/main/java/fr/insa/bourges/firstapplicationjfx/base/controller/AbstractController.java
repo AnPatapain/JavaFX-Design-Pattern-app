@@ -5,11 +5,14 @@ import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventDispatcher;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventListener;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
+import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
+
+import java.util.EnumMap;
 
 public abstract class AbstractController<V extends AbstractView<?>> implements EventListener {
     protected final EventDispatcher eventDispatcher;
     protected final RenderViewManager renderViewManager;
-    protected V view;
+    private final EnumMap<ViewName, V> views = new EnumMap<>(ViewName.class);
 
     public AbstractController(EventDispatcher eventDispatcher, RenderViewManager renderViewManager) {
         this.eventDispatcher = eventDispatcher;
@@ -23,11 +26,12 @@ public abstract class AbstractController<V extends AbstractView<?>> implements E
     @Override
     public abstract void handleEvent(EventType eventType);
 
-    public V getView() {
-        return view;
+
+    public <T extends V> T getViewAs(ViewName viewName, Class<T> viewType) {
+        return viewType.cast(this.views.get(viewName));
     }
 
-    public void setView(V view) {
-        this.view = view;
+    public void addView(ViewName viewName, V view) {
+        this.views.put(viewName, view);
     }
 }

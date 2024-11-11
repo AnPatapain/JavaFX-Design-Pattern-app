@@ -5,6 +5,7 @@ import fr.insa.bourges.firstapplicationjfx.base.view.AbstractView;
 import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventDispatcher;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
+import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
 import fr.insa.bourges.firstapplicationjfx.features.creation.CreationController;
 import fr.insa.bourges.firstapplicationjfx.features.creation.CreationView;
 import fr.insa.bourges.firstapplicationjfx.features.home.HomeController;
@@ -37,18 +38,18 @@ public class Application extends javafx.application.Application {
         // Home page
         HomeController homeController = new HomeController(controllerMediator, renderViewManager);
         HomeView homeView = AbstractView.createView(HomeView.class, "home.fxml", homeController);
-        homeController.setView(homeView);
+        homeController.addView(ViewName.HOME, homeView);
 
         // Creation page
         CreationController creationController = new CreationController(controllerMediator, renderViewManager);
         CreationView creationView = AbstractView.createView(CreationView.class, "creation.fxml", creationController);
-        creationController.setView(creationView);
+        creationController.addView(ViewName.CREATION, creationView);
         creationController.setHorseService(horseService);
 
         // HorseList page
         HorseListController horseListController = new HorseListController(controllerMediator, renderViewManager);
         HorseListView horseListView = AbstractView.createView(HorseListView.class, "horselist.fxml", horseListController);
-        horseListController.setView(horseListView);
+        horseListController.addView(ViewName.HORSE_LIST, horseListView);
         horseListController.setHorseService(horseService);
 
         /**

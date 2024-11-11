@@ -3,9 +3,12 @@ package fr.insa.bourges.firstapplicationjfx.features.home;
 import fr.insa.bourges.firstapplicationjfx.base.controller.AbstractController;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventDispatcher;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
+import fr.insa.bourges.firstapplicationjfx.base.view.AbstractView;
 import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
+import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
+import fr.insa.bourges.firstapplicationjfx.features.creation.CreationView;
 
-public class HomeController extends AbstractController<HomeView> {
+public class HomeController extends AbstractController<AbstractView<?>> {
     public HomeController(EventDispatcher eventDispatcher, RenderViewManager renderViewManager) {
         super(eventDispatcher, renderViewManager);
     }
@@ -18,7 +21,7 @@ public class HomeController extends AbstractController<HomeView> {
     @Override
     public void handleEvent(EventType eventType) {
         if (eventType == EventType.SHOW_HOME) {
-            this.renderViewManager.renderView(this.getView());
+            this.renderViewManager.renderView(this.getViewAs(ViewName.HOME, HomeView.class));
         }
     }
 
