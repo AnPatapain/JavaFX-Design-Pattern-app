@@ -6,14 +6,12 @@ import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventDispatcher;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
 import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
-import fr.insa.bourges.firstapplicationjfx.features.creation.CreationController;
-import fr.insa.bourges.firstapplicationjfx.features.creation.CreationView;
 import fr.insa.bourges.firstapplicationjfx.features.home.HomeController;
 import fr.insa.bourges.firstapplicationjfx.features.home.HomeView;
-import fr.insa.bourges.firstapplicationjfx.features.horse_list.HorseListController;
-import fr.insa.bourges.firstapplicationjfx.features.horse_list.HorseListView;
-import fr.insa.bourges.firstapplicationjfx.features.shared.services.HorseServiceImpl;
-import fr.insa.bourges.firstapplicationjfx.features.shared.services.IHorseService;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientController;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientView;
+import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
+import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,34 +26,30 @@ public class Application extends javafx.application.Application {
          */
         EventDispatcher controllerMediator = new ControllerMediator();
         RenderViewManager renderViewManager = new RenderViewManager(stage);
+
         /**
          * Open part
          * These are the feature that will be added over time.
          */
-        // HorseService
-        IHorseService horseService = new HorseServiceImpl();
-
         // Home page
         HomeController homeController = new HomeController(controllerMediator, renderViewManager);
         HomeView homeView = AbstractView.createView(HomeView.class, "home.fxml", homeController);
         homeController.addView(ViewName.HOME, homeView);
 
-        // Creation page
-        CreationController creationController = new CreationController(controllerMediator, renderViewManager);
-        CreationView creationView = AbstractView.createView(CreationView.class, "creation.fxml", creationController);
-        creationController.addView(ViewName.CREATION, creationView);
-        creationController.setHorseService(horseService);
+        // Recipe page
+        RecipeController recipeController = new RecipeController(controllerMediator, renderViewManager);
+        RecipeView recipeView = AbstractView.createView(RecipeView.class, "recipe.fxml", recipeController);
+        recipeController.addView(ViewName.RECIPE, recipeView);
 
-        // HorseList page
-        HorseListController horseListController = new HorseListController(controllerMediator, renderViewManager);
-        HorseListView horseListView = AbstractView.createView(HorseListView.class, "horselist.fxml", horseListController);
-        horseListController.addView(ViewName.HORSE_LIST, horseListView);
-        horseListController.setHorseService(horseService);
+        // Ingredient page
+        IngredientController ingredientController = new IngredientController(controllerMediator, renderViewManager);
+        IngredientView ingredientView = AbstractView.createView(IngredientView.class, "ingredient.fxml", ingredientController);
+        ingredientController.addView(ViewName.INGREDIENT, ingredientView);
 
         /**
          * This is the event to show the entry page of application
          */
-        controllerMediator.dispatchEvent(EventType.SHOW_HOME);
+        controllerMediator.dispatchEvent(EventType.SHOW_HOME_PAGE);
     }
 
     public static void main(String[] args) {

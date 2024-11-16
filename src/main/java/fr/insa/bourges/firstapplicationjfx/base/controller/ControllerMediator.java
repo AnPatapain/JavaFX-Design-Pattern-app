@@ -21,6 +21,8 @@ public class ControllerMediator implements EventDispatcher {
 
     @Override
     public void dispatchEvent(EventType eventType) {
-        eventListeners.get(eventType).forEach(listener -> listener.handleEvent(eventType));
+        if (eventListeners.containsKey(eventType)) {
+            eventListeners.get(eventType).forEach(listener -> listener.handleEvent(eventType));
+        }
     }
 }
