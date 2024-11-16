@@ -6,7 +6,6 @@ import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractView;
 import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
-import fr.insa.bourges.firstapplicationjfx.features.creation.CreationView;
 
 public class HomeController extends AbstractController<AbstractView<?>> {
     public HomeController(EventDispatcher eventDispatcher, RenderViewManager renderViewManager) {
@@ -15,21 +14,17 @@ public class HomeController extends AbstractController<AbstractView<?>> {
 
     @Override
     public void setSubscription(EventDispatcher eventDispatcher) {
-        eventDispatcher.subscribe(this, EventType.SHOW_HOME);
+        eventDispatcher.subscribe(this, EventType.SHOW_HOME_PAGE);
     }
 
     @Override
     public void handleEvent(EventType eventType) {
-        if (eventType == EventType.SHOW_HOME) {
+        if (eventType == EventType.SHOW_HOME_PAGE) {
             this.renderViewManager.renderView(this.getViewAs(ViewName.HOME, HomeView.class));
         }
     }
 
-    public void navigateToCreation() {
-        this.eventDispatcher.dispatchEvent(EventType.SHOW_CREATION);
-    }
+    public void navigateToRecipePage() { this.eventDispatcher.dispatchEvent(EventType.SHOW_RECIPE_PAGE); }
 
-    public void navigateToHorseList() {
-        this.eventDispatcher.dispatchEvent(EventType.SHOW_HORSE_LIST);
-    }
+    public void navigateToIngredientPage() {this.eventDispatcher.dispatchEvent(EventType.SHOW_INGREDIENT_PAGE); }
 }

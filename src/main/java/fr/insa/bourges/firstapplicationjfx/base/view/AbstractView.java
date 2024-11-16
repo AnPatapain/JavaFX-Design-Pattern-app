@@ -20,6 +20,7 @@ public abstract class AbstractView<C extends AbstractController<?>> {
         try {
             isDuringInitialization = true;
             String fxmlPath = "/fr/insa/bourges/firstapplicationjfx/views/" + fxmlFile;
+            System.out.println("Loading FXML from: " + viewClass.getResource(fxmlPath));
             FXMLLoader fxmlLoader = new FXMLLoader(viewClass.getResource(fxmlPath));
             fxmlLoader.load();
             V view = fxmlLoader.getController();

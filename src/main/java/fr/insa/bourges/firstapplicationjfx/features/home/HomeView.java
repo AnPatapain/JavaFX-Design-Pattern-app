@@ -14,12 +14,11 @@ public class HomeView extends AbstractView<HomeController> {
         this.setScene(new Scene(borderPane, 600, 400));
     }
 
-
-    public void gotocreation(ActionEvent actionEvent) {
-        this.getController().navigateToCreation();
+    public void navigateToRecipePage(ActionEvent event) {
+        this.getController().navigateToRecipePage();
     }
 
-    public void gotohorselist(ActionEvent actionEvent) {
-        this.getController().navigateToHorseList();
+    public void navigateToIngredientPage(ActionEvent event) {
+        this.getController().navigateToIngredientPage();
     }
 }
