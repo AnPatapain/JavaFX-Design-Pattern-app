@@ -1,6 +1,7 @@
 module fr.insa.bourges.firstapplicationjfx {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
     opens fr.insa.bourges.firstapplicationjfx.views to javafx.fxml;
