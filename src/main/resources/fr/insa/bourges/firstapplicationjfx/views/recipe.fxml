@@ -1,29 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.BorderPane?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.control.Hyperlink?>
-<BorderPane maxHeight="-Infinity"
-            maxWidth="-Infinity"
-            minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="400.0"
-            prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:id="borderPane"
-            fx:controller="fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeView"
->
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeView">
+
+    <!-- Top Section -->
     <top>
-        <Label text="Recipe CRUD page" BorderPane.alignment="CENTER">
-            <font>
-                <Font size="40.0" />
-            </font>
-        </Label>
+        <VBox spacing="20" style="-fx-padding: 10;">
+            <Label style="-fx-font-size: 30px;" text="Recipe Inventory" />
+        </VBox>
     </top>
+
+    <!-- Center Section -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-padding: 10;">
+            <VBox spacing="20" style="-fx-padding-left: 10px; -fx-padding-right: 10px;">
+                <VBox spacing="10">
+                    <Label text="Recipe Name:" />
+                    <TextField fx:id="name" promptText="Recipe Name" />
+
+                    <Label text="Category:" />
+                    <ComboBox fx:id="category" maxWidth="600">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="entree" />
+                                <String fx:value="principal" />
+                                <String fx:value="dessert" />
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+
+                    <Label text="Instruction:" />
+                    <TextArea fx:id="instruction" prefHeight="100" prefWidth="300" wrapText="true" />
+
+                    <Label text="Preparation Time:" />
+                    <TextField fx:id="preparationTime" promptText="Preparation Time" />
+
+                    <Label text="Cooking Time:" />
+                    <TextField fx:id="cookingTime" promptText="Cooking Time" />
+
+                    <Label text="Difficulty Level:" />
+                    <ComboBox fx:id="difficultyLevel" maxWidth="600">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="easy" />
+                                <String fx:value="medium" />
+                                <String fx:value="hard" />
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                </VBox>
+
+
+                <!-- Button Section -->
+                <HBox spacing="10" style="-fx-padding-top: 10;">
+                    <Button onAction="#addRecipe" text="Add Recipe" />
+                    <Button onAction="#modifyRecipe" text="Modify Recipe" />
+                    <Button onAction="#deleteRecipe" text="Delete Recipe" />
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <!-- Bottom Section -->
     <bottom>
-        <Hyperlink alignment="CENTER" text="Back to Home Page" onAction="#navigateToHomePage"/>
+        <VBox alignment="CENTER">
+            <Hyperlink onAction="#navigateToHomePage" text="Back to Home Page" />
+        </VBox>
     </bottom>
 </BorderPane>
+
+
+

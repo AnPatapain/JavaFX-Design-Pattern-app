@@ -44,6 +44,14 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>openjfx-repo</id>
+            <url>https://openjfx.io/maven-central</url>
+        </repository>
+    </repositories>
+
+
     <build>
         <plugins>
             <plugin>
