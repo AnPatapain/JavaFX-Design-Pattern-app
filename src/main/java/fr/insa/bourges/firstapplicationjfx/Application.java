@@ -1,6 +1,8 @@
 package fr.insa.bourges.firstapplicationjfx;
 
 import fr.insa.bourges.firstapplicationjfx.base.controller.ControllerMediator;
+import fr.insa.bourges.firstapplicationjfx.base.database.JsonRepository;
+import fr.insa.bourges.firstapplicationjfx.base.database.Repository;
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractView;
 import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventDispatcher;
@@ -53,6 +55,21 @@ public class Application extends javafx.application.Application {
     }
 
     public static void main(String[] args) {
-        launch();
+         launch();
+//        Repository<Integer> intRepo1 = JsonRepository.getRepository(Integer.class);
+//        intRepo1.persist(1);
+//        intRepo1.persist(2);
+//        Repository<Integer> intRepo2 = JsonRepository.getRepository(Integer.class);
+//
+//        Repository<String> stringRepo = JsonRepository.getRepository(String.class);
+//        stringRepo.persist("hello");
+//        stringRepo.persist("bonjour");
+//
+//        intRepo1.flush();
+//        stringRepo.flush();
+//
+//        System.out.print(intRepo1.findAll());
+//        System.out.print(intRepo2.findAll());
+//        System.out.print(stringRepo.findAll());
     }
 }

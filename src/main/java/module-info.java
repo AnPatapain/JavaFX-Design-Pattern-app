@@ -1,6 +1,7 @@
 module fr.insa.bourges.firstapplicationjfx {
     requires javafx.controls;
     requires javafx.fxml;
+    requires com.fasterxml.jackson.databind;
 
 
     opens fr.insa.bourges.firstapplicationjfx.views to javafx.fxml;
