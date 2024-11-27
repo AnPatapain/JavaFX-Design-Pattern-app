@@ -7,6 +7,9 @@ import fr.insa.bourges.firstapplicationjfx.EnvConfig;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class JsonRepository<T extends AbstractEntity> implements Repository<T> {
@@ -33,15 +36,18 @@ public class JsonRepository<T extends AbstractEntity> implements Repository<T> {
         } else {
             FILE_PATH = "src/main/java/fr/insa/bourges/firstapplicationjfx/data";
         }
-        String fileName = type.getSimpleName().toLowerCase() + ".json";
-
-        JsonRepository<T> jsonRepository = new JsonRepository<T>();
-
-        // Register objectMapper with JavaTimeModule to make it work with LocalDateTime API of Java 8
-        jsonRepository.objectMapper.registerModule(new JavaTimeModule());
-        jsonRepository.file = new File(FILE_PATH + "/" + fileName);
 
         try {
+            JsonRepository<T> jsonRepository = new JsonRepository<T>();
+
+            // Create data dir and json file in data dir
+            Files.createDirectories(Paths.get(FILE_PATH));
+            String fileName = type.getSimpleName().toLowerCase() + ".json";
+
+            // Register objectMapper with JavaTimeModule to make it work with LocalDateTime API of Java 8
+            jsonRepository.objectMapper.registerModule(new JavaTimeModule());
+            jsonRepository.file = new File(FILE_PATH + "/" + fileName);
+
             if (jsonRepository.file.createNewFile()) {
                 System.out.println("JSON file created successfully.");
             } else {
@@ -56,14 +62,17 @@ public class JsonRepository<T extends AbstractEntity> implements Repository<T> {
 
                 entities.forEach(entity -> jsonRepository.persistentContext.put(entity.getId(), entity));
             }
+
+            if (!repoRegistry.containsKey(type)) {
+                repoRegistry.put(type, jsonRepository);
+            }
+
+            return (JsonRepository<T>) repoRegistry.get(type);
         } catch (IOException e) {
             System.out.println("Error creating file: " + e.getMessage());
         }
 
-        if (!repoRegistry.containsKey(type)) {
-            repoRegistry.put(type, jsonRepository);
-        }
-        return (JsonRepository<T>) repoRegistry.get(type);
+        return null;
     }
 
     @Override
@@ -143,4 +152,15 @@ public class JsonRepository<T extends AbstractEntity> implements Repository<T> {
 
         return results;
     }
+
+    public static boolean deleteDataDir(File dataDir) {
+        File[] allContents = dataDir.listFiles();
+        if (allContents != null) {
+            for (File file : allContents) {
+                deleteDataDir(file);
+            }
+        }
+        return dataDir.delete();
+    }
+
 }

@@ -8,6 +8,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -21,6 +24,10 @@ public class JsonRepositoryTest {
     @BeforeAll
     void setup() {
         EnvConfig.setEnvironment(EnvConfig.Environment.TEST);
+
+        File dataDir = new File("src/test/java/fr/insa/bourges/firstapplicationjfx/data");
+        JsonRepository.deleteDataDir(dataDir);
+
         // Initialize repository with the default behavior
         ingredientRepo = JsonRepository.getRepository(Ingredient.class);
     }
