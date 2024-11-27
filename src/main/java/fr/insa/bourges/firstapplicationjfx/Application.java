@@ -1,8 +1,6 @@
 package fr.insa.bourges.firstapplicationjfx;
 
 import fr.insa.bourges.firstapplicationjfx.base.controller.ControllerMediator;
-import fr.insa.bourges.firstapplicationjfx.base.database.JsonRepository;
-import fr.insa.bourges.firstapplicationjfx.base.database.Repository;
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractView;
 import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventDispatcher;
@@ -11,15 +9,14 @@ import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
 import fr.insa.bourges.firstapplicationjfx.features.home.HomeController;
 import fr.insa.bourges.firstapplicationjfx.features.home.HomeView;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientController;
-import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientView;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientAddView;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientListView;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeView;
-import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
-import fr.insa.bourges.firstapplicationjfx.features.shared.models.UnitMeasure;
 import javafx.stage.Stage;
 
+import javax.swing.text.View;
 import java.io.IOException;
-import java.time.LocalDateTime;
 
 public class Application extends javafx.application.Application {
     @Override
@@ -48,8 +45,10 @@ public class Application extends javafx.application.Application {
 
         // Ingredient page
         IngredientController ingredientController = new IngredientController(controllerMediator, renderViewManager);
-        IngredientView ingredientView = AbstractView.createView(IngredientView.class, "ingredient.fxml", ingredientController);
-        ingredientController.addView(ViewName.INGREDIENT, ingredientView);
+        IngredientListView ingredientListView = AbstractView.createView(IngredientListView.class, "ingredientList.fxml", ingredientController);
+        IngredientAddView ingredientAddView = AbstractView.createView(IngredientAddView.class, "ingredientAdd.fxml", ingredientController);
+        ingredientController.addView(ViewName.INGREDIENT_LIST, ingredientListView);
+        ingredientController.addView(ViewName.INGREDIENT_ADD, ingredientAddView);
 
         /**
          * This is the event to show the entry page of application
