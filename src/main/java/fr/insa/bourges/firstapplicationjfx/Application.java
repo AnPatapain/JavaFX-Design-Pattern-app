@@ -14,9 +14,12 @@ import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientControl
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientView;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeView;
+import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
+import fr.insa.bourges.firstapplicationjfx.features.shared.models.UnitMeasure;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 public class Application extends javafx.application.Application {
     @Override
@@ -55,21 +58,7 @@ public class Application extends javafx.application.Application {
     }
 
     public static void main(String[] args) {
-         launch();
-//        Repository<Integer> intRepo1 = JsonRepository.getRepository(Integer.class);
-//        intRepo1.persist(1);
-//        intRepo1.persist(2);
-//        Repository<Integer> intRepo2 = JsonRepository.getRepository(Integer.class);
-//
-//        Repository<String> stringRepo = JsonRepository.getRepository(String.class);
-//        stringRepo.persist("hello");
-//        stringRepo.persist("bonjour");
-//
-//        intRepo1.flush();
-//        stringRepo.flush();
-//
-//        System.out.print(intRepo1.findAll());
-//        System.out.print(intRepo2.findAll());
-//        System.out.print(stringRepo.findAll());
+        EnvConfig.setEnvironment(EnvConfig.Environment.NORMAL);
+        launch();
     }
 }

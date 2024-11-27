@@ -1,8 +1,10 @@
 package fr.insa.bourges.firstapplicationjfx.features.shared.models;
 
+import fr.insa.bourges.firstapplicationjfx.base.database.AbstractEntity;
+
 import java.util.List;
 
-public class Recipe {
+public class Recipe extends AbstractEntity {
     private String name;
     private CategoryRecipe category;
     private List<Ingredient> ingredients;
