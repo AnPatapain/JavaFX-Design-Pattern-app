@@ -14,15 +14,6 @@ public class JsonRepository<T extends AbstractEntity> implements Repository<T> {
     private File file;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    /**
-     * At compile time you could use JsonRepository<Ingredient> where Ingredient extends AbstractEntity, but
-     * Java is nominal typing language, at run time the Ingredient type is removed and Jackson only
-     * knows that it works with the AbstractEntity not Ingredient so it will fail to `Deserialize` json to POJO
-     *
-     * concreteType is necessary to provide Jackson's objectMapper which "specific" type it's currently working with
-     */
-    private final Class<T> concreteType;
-
     // For singleton instance per type. (e.g: JsonRepository<Person> p1Repo and JsonRepository<Person> p2Repo is the same instance)
     private static final Map<Class<?>, JsonRepository<?>> repoRegistry = new HashMap<>();
 
@@ -32,8 +23,7 @@ public class JsonRepository<T extends AbstractEntity> implements Repository<T> {
     private final Map<String, T> stagedForUpdate = new HashMap<>();
     private final List<String> stagedForDelete = new ArrayList<>();
 
-    private JsonRepository(Class<T> concreteType) {
-        this.concreteType = concreteType;
+    private JsonRepository() {
     }
 
     public static <T extends AbstractEntity> JsonRepository<T> getRepository(Class<T> type) {
@@ -45,7 +35,7 @@ public class JsonRepository<T extends AbstractEntity> implements Repository<T> {
         }
         String fileName = type.getSimpleName().toLowerCase() + ".json";
 
-        JsonRepository<T> jsonRepository = new JsonRepository<T>(type);
+        JsonRepository<T> jsonRepository = new JsonRepository<T>();
 
         // Register objectMapper with JavaTimeModule to make it work with LocalDateTime API of Java 8
         jsonRepository.objectMapper.registerModule(new JavaTimeModule());
