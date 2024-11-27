@@ -1,1 +1,45 @@
-[]
+[
+  {
+    "id": "3aca6d41-793f-46b1-a677-f820bf6b827b",
+    "name": "Ratatoikle",
+    "category": "PRINCIPAL",
+    "ingredients": [
+      {
+        "id": null,
+        "name": "garlic",
+        "quantity": 123.0,
+        "unit": "GRAMS",
+        "addDate": [
+          2024,
+          11,
+          27
+        ],
+        "expirationDate": [
+          2024,
+          11,
+          27
+        ]
+      },
+      {
+        "id": null,
+        "name": "Salt1",
+        "quantity": 23213.0,
+        "unit": "KILOGRAMS",
+        "addDate": [
+          2024,
+          11,
+          27
+        ],
+        "expirationDate": [
+          2024,
+          11,
+          27
+        ]
+      }
+    ],
+    "instructions": "COOK AND EAT",
+    "preparationTime": 0.75,
+    "cookingTime": 1.0,
+    "difficulty": "MEDIUM"
+  }
+]
