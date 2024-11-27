@@ -3,7 +3,10 @@ module fr.insa.bourges.firstapplicationjfx {
     requires javafx.fxml;
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.datatype.jsr310;
+    requires java.desktop;
 
+
+    opens fr.insa.bourges.firstapplicationjfx.views to javafx.fxml;
     exports fr.insa.bourges.firstapplicationjfx;
 
     opens fr.insa.bourges.firstapplicationjfx.base.controller to javafx.fxml;
