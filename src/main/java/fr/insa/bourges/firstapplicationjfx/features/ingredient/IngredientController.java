@@ -11,10 +11,15 @@ import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 
 public class IngredientController extends AbstractController<AbstractView<?>> {
-    private Repository<Ingredient> ingredientRepository = JsonRepository.getRepository(Ingredient.class);
+    public final Repository<Ingredient> ingredientRepo = JsonRepository.getRepository(Ingredient.class);
 
     public IngredientController(EventDispatcher eventDispatcher, RenderViewManager renderViewManager) {
         super(eventDispatcher, renderViewManager);
+    }
+
+    public void addIngredientToInventory(Ingredient ingredient) {
+        this.ingredientRepo.persist(ingredient);
+        this.ingredientRepo.flush();
     }
 
     @Override

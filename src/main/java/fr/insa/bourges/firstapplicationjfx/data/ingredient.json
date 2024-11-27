@@ -1,0 +1,34 @@
+[
+  {
+    "id": "9fda00db-4563-40df-aff1-7cf0db171ba0",
+    "name": "sagjbsadgf",
+    "quantity": 12.0,
+    "unit": "KILOGRAMS",
+    "addDate": [
+      2024,
+      11,
+      27
+    ],
+    "expirationDate": [
+      2024,
+      12,
+      4
+    ]
+  },
+  {
+    "id": "2ce959e0-ad7f-4574-8820-b28a92b0b70f",
+    "name": "Pork",
+    "quantity": 1.0,
+    "unit": "KILOGRAMS",
+    "addDate": [
+      2024,
+      11,
+      27
+    ],
+    "expirationDate": [
+      2025,
+      1,
+      14
+    ]
+  }
+]

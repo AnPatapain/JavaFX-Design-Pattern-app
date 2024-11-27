@@ -49,18 +49,20 @@ public class JsonRepository<T extends AbstractEntity> implements Repository<T> {
             jsonRepository.file = new File(FILE_PATH + "/" + fileName);
 
             if (jsonRepository.file.createNewFile()) {
-                System.out.println("JSON file created successfully.");
+                System.out.println("JSON file created successfully with empty list of " + type.getSimpleName());
+                jsonRepository.objectMapper.writeValue(jsonRepository.file, Collections.emptyList());
             } else {
                 System.out.println("JSON file already exists, start loading data from file to persistence context");
 
-                List<T> entities = jsonRepository.objectMapper.readValue(
-                        jsonRepository.file,
-                        jsonRepository.objectMapper.getTypeFactory().constructCollectionType(List.class, type)
-                );
+                // Only load if the file is not empty
+                if (jsonRepository.file.length() > 0) {
+                    List<T> entities = jsonRepository.objectMapper.readValue(
+                            jsonRepository.file,
+                            jsonRepository.objectMapper.getTypeFactory().constructCollectionType(List.class, type)
+                    );
 
-                System.out.println("Entities::" + entities);
-
-                entities.forEach(entity -> jsonRepository.persistentContext.put(entity.getId(), entity));
+                    entities.forEach(entity -> jsonRepository.persistentContext.put(entity.getId(), entity));
+                }
             }
 
             if (!repoRegistry.containsKey(type)) {
@@ -69,7 +71,7 @@ public class JsonRepository<T extends AbstractEntity> implements Repository<T> {
 
             return (JsonRepository<T>) repoRegistry.get(type);
         } catch (IOException e) {
-            System.out.println("Error creating file: " + e.getMessage());
+            System.out.println("Repository initialization error: " + e.getMessage());
         }
 
         return null;

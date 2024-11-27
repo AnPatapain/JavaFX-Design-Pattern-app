@@ -2,19 +2,20 @@ package fr.insa.bourges.firstapplicationjfx.features.shared.models;
 
 import fr.insa.bourges.firstapplicationjfx.base.database.AbstractEntity;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Ingredient extends AbstractEntity {
     private String name;
     private double quantity;
     private UnitMeasure unit;
-    private LocalDateTime addDate;
-    private LocalDateTime expirationDate;
+    private LocalDate addDate;
+    private LocalDate expirationDate;
 
-    public Ingredient() {}
+    public Ingredient() {
+    }
 
     public Ingredient(String name, double quantity, UnitMeasure unit,
-                      LocalDateTime addDate, LocalDateTime expirationDate) {
+                      LocalDate addDate, LocalDate expirationDate) {
         this.name = name;
         this.quantity = quantity;
         this.unit = unit;
@@ -25,6 +26,7 @@ public class Ingredient extends AbstractEntity {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -32,6 +34,7 @@ public class Ingredient extends AbstractEntity {
     public double getQuantity() {
         return quantity;
     }
+
     public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
@@ -39,21 +42,30 @@ public class Ingredient extends AbstractEntity {
     public UnitMeasure getUnit() {
         return unit;
     }
+
     public void setUnit(UnitMeasure unit) {
         this.unit = unit;
     }
 
-    public LocalDateTime getAddDate() {
+    public LocalDate getAddDate() {
         return addDate;
     }
-    public void setAddDate(LocalDateTime addDate) {
+
+    public void setAddDate(LocalDate addDate) {
         this.addDate = addDate;
     }
 
-    public LocalDateTime getExpirationDate() {
+    public LocalDate getExpirationDate() {
         return expirationDate;
     }
-    public void setExpirationDate(LocalDateTime expirationDate) {
+
+    public void setExpirationDate(LocalDate expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+    @Override
+    public String toString() {
+        return "{ " + "Name: " + this.getName() + ", " + "Quantity: " + this.getQuantity() + this.getUnit() + ", " +
+                "AddDate: " + this.getAddDate() + ", " + "ExpirationDate: " + this.getExpirationDate() + " }";
     }
 }

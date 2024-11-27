@@ -9,9 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -42,7 +40,7 @@ public class JsonRepositoryTest {
     @Test
     void testPersistAndFindAll() {
         // Arrange
-        Ingredient ingredient = new Ingredient("Chicken", 2, UnitMeasure.KILOGRAMS, LocalDateTime.now(), LocalDateTime.now());
+        Ingredient ingredient = new Ingredient("Chicken", 2, UnitMeasure.KILOGRAMS, LocalDate.now(), LocalDate.now());
 
         // Act
         ingredientRepo.persist(ingredient);
@@ -57,7 +55,7 @@ public class JsonRepositoryTest {
     @Test
     void testFlushPersistsToFile() {
         // Arrange
-        Ingredient ingredient = new Ingredient("Pork", 1, UnitMeasure.KILOGRAMS, LocalDateTime.now(), LocalDateTime.now());
+        Ingredient ingredient = new Ingredient("Pork", 1, UnitMeasure.KILOGRAMS, LocalDate.now(), LocalDate.now());
         ingredientRepo.persist(ingredient);
 
         // Act
@@ -72,7 +70,7 @@ public class JsonRepositoryTest {
     @Test
     void testUpdateEntity() {
         // Arrange
-        Ingredient ingredient = new Ingredient("Vegetable", 1, UnitMeasure.KILOGRAMS, LocalDateTime.now(), LocalDateTime.now());
+        Ingredient ingredient = new Ingredient("Vegetable", 1, UnitMeasure.KILOGRAMS, LocalDate.now(), LocalDate.now());
         ingredientRepo.persist(ingredient);
         ingredientRepo.flush();
 
@@ -91,7 +89,7 @@ public class JsonRepositoryTest {
     @Test
     void testDeleteById() {
         // Arrange
-        Ingredient ingredient = new Ingredient("Beef", 3, UnitMeasure.KILOGRAMS, LocalDateTime.now(), LocalDateTime.now());
+        Ingredient ingredient = new Ingredient("Beef", 3, UnitMeasure.KILOGRAMS, LocalDate.now(), LocalDate.now());
         ingredientRepo.persist(ingredient);
         ingredientRepo.flush();
 
@@ -107,8 +105,8 @@ public class JsonRepositoryTest {
     @Test
     void testFindByAttribute() throws NoSuchFieldException, IllegalAccessException {
         // Arrange
-        Ingredient ingredient1 = new Ingredient("Fish", 2, UnitMeasure.KILOGRAMS, LocalDateTime.now(), LocalDateTime.now());
-        Ingredient ingredient2 = new Ingredient("Shrimp", 1, UnitMeasure.KILOGRAMS, LocalDateTime.now(), LocalDateTime.now());
+        Ingredient ingredient1 = new Ingredient("Fish", 2, UnitMeasure.KILOGRAMS, LocalDate.now(), LocalDate.now());
+        Ingredient ingredient2 = new Ingredient("Shrimp", 1, UnitMeasure.KILOGRAMS, LocalDate.now(), LocalDate.now());
         ingredientRepo.persist(ingredient1);
         ingredientRepo.persist(ingredient2);
         ingredientRepo.flush();

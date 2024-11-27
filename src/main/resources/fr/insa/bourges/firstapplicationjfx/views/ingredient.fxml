@@ -13,6 +13,7 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.ScrollPane?>
 
+<?import javafx.scene.control.DatePicker?>
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientView">
 
     <!-- Top Section -->
@@ -29,26 +30,26 @@
                         <Label text="Ingredient Name:" />
                         <TextField fx:id="name" promptText="Ingredient Name" />
 
-                        <Label text="Quantity:" />
-                        <ComboBox fx:id="quantity" maxWidth="600">
+                        <Label text="Unit of Measurement:" />
+                        <ComboBox fx:id="unit" maxWidth="600">
                             <items>
                                 <FXCollections fx:factory="observableArrayList">
-                                    <String fx:value="grams" />
-                                    <String fx:value="kilograms" />
-                                    <String fx:value="litres" />
-                                    <String fx:value="millilitres" />
+                                    <String fx:value="GRAMS" />
+                                    <String fx:value="KILOGRAMS" />
+                                    <String fx:value="LITRES" />
+                                    <String fx:value="MILLILITRES" />
                                 </FXCollections>
                             </items>
                         </ComboBox>
 
-                        <Label text="Unit of Measurement:" />
-                        <TextField fx:id="unit" promptText="Unit of Measurement" prefWidth="250" />
+                        <Label text="Quantity:" />
+                        <TextField fx:id="quantity" promptText="Quantity" prefWidth="250" />
 
                         <Label text="Add Date:" />
-                        <TextField fx:id="addDate" promptText="Add Date" prefWidth="250" />
+                        <DatePicker fx:id="addDate" promptText="Select add date" />
 
                         <Label text="Expiration Date:" />
-                        <TextField fx:id="expirationDate" promptText="Expiration Date" prefWidth="250" />
+                        <DatePicker fx:id="expirationDate" promptText="Select expiration date" />
                 </VBox>
 
 
