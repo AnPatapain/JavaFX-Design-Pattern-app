@@ -23,8 +23,8 @@ public abstract class AbstractView<C extends AbstractController<?>> {
             FXMLLoader fxmlLoader = new FXMLLoader(viewClass.getResource(fxmlPath));
             fxmlLoader.load();
             V view = fxmlLoader.getController();
-            view.initializeScene();
             view.setController(controller);
+            view.initializeScene();
             return view;
         } catch (IOException e) {
             e.printStackTrace();

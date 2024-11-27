@@ -12,7 +12,7 @@ import javafx.scene.layout.BorderPane;
 
 import java.time.LocalDate;
 
-public class IngredientView extends AbstractView<IngredientController> {
+public class IngredientAddView extends AbstractView<IngredientController> {
     @FXML
     public BorderPane borderPane;
     @FXML
