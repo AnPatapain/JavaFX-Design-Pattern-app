@@ -10,7 +10,7 @@ import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 
-public class IngredientController extends AbstractController<AbstractView<?>> {
+public class  IngredientController extends AbstractController<AbstractView<?>> {
     public final Repository<Ingredient> ingredientRepo = JsonRepository.getRepository(Ingredient.class);
 
     public IngredientController(EventDispatcher eventDispatcher, RenderViewManager renderViewManager) {

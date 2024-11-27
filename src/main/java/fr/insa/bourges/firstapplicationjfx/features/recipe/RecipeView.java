@@ -6,29 +6,61 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.control.ListView;
+//import javafx.scene.layout.BorderPane;
+//import javafx.scene.control.ListView;
+import javafx.scene.layout.VBox;
 
 public class RecipeView extends AbstractView<RecipeController> {
     @FXML
-    public BorderPane borderPane;
+    public VBox root;
+
     @FXML
-    public TextField name;
+    public TextField recipeNameField;
+
     @FXML
-    public ComboBox<String> category;
+    public ComboBox<String> categoryComboBox;
+
     @FXML
-    public TextArea instruction;
+    public ComboBox<String> difficultyComboBox;
+
     @FXML
-    public TextField preparationTime;
+    public TextField ingredientNameField;
+
     @FXML
-    public TextField cookingTime;
+    public TextField ingredientQuantityField;
+
     @FXML
-    public ComboBox<String> difficultyLevel;
+    public ComboBox<String> quantityUnitComboBox;
+
+    @FXML
+    public Button addIngredientButton;
+
+    @FXML
+    public TextArea ingredientsListArea;
+
+    @FXML
+    public ComboBox<String> preparationTimeComboBox;
+
+    @FXML
+    public ComboBox<String> cookingTimeComboBox;
+
+    @FXML
+    public TextArea instructionArea;
+
+    @FXML
+    public Button addRecipeButton;
+
+    @FXML
+    public Button modifyRecipeButton;
+
+    @FXML
+    public Button deleteRecipeButton;
+
 
 
     @Override
     public void initializeScene() {
-        this.setScene(new Scene(borderPane, 600, 400));
+        this.setScene(new Scene(root, 600, 400));
     }
 
     public void navigateToHomePage(ActionEvent event) {

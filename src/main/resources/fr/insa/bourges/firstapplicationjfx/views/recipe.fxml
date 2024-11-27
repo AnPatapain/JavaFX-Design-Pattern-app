@@ -1,77 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
-<?import javafx.collections.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeView">
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<VBox  fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx/fxml/1"  fx:controller="fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeView" spacing="10" alignment="TOP_CENTER">
+    <children>
+        <Label text="Recipe Inventory" style="-fx-font-size: 18; -fx-font-weight: bold;" />
 
-    <!-- Top Section -->
-    <top>
-        <VBox spacing="20" style="-fx-padding: 10;">
-            <Label style="-fx-font-size: 30px;" text="Recipe Inventory" />
-        </VBox>
-    </top>
+        <Button text="Back To Home" onAction="#navigateToHomePage" maxWidth="150" />
 
-    <!-- Center Section -->
-    <center>
-        <ScrollPane fitToWidth="true" style="-fx-padding: 10;">
-            <VBox spacing="20" style="-fx-padding-left: 10px; -fx-padding-right: 10px;">
-                <VBox spacing="10">
-                    <Label text="Recipe Name:" />
-                    <TextField fx:id="name" promptText="Recipe Name" />
+        <GridPane hgap="10" vgap="10">
+            <children>
+                <Label text="Recipe name:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                <TextField fx:id="recipeNameField" GridPane.rowIndex="0" GridPane.columnIndex="1" />
 
-                    <Label text="Category:" />
-                    <ComboBox fx:id="category" maxWidth="600">
-                        <items>
-                            <FXCollections fx:factory="observableArrayList">
-                                <String fx:value="entree" />
-                                <String fx:value="principal" />
-                                <String fx:value="dessert" />
-                            </FXCollections>
-                        </items>
-                    </ComboBox>
+                <Label text="Category:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                <ComboBox fx:id="categoryComboBox" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="entree" />
+                            <String fx:value="principal" />
+                            <String fx:value="desert" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
 
-                    <Label text="Instruction:" />
-                    <TextArea fx:id="instruction" prefHeight="100" prefWidth="300" wrapText="true" />
+                <Label text="Difficulty Level:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                <ComboBox fx:id="difficultyComboBox" GridPane.rowIndex="2" GridPane.columnIndex="1">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="easy" />
+                            <String fx:value="medium" />
+                            <String fx:value="difficult" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </children>
+        </GridPane>
 
-                    <Label text="Preparation Time:" />
-                    <TextField fx:id="preparationTime" promptText="Preparation Time" />
+        <GridPane hgap="10" vgap="10">
+            <children>
+                <Label text="Ingredient:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                <TextField fx:id="ingredientNameField" promptText="e.g., Garlic" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                <TextField fx:id="ingredientQuantityField" promptText="e.g., 200" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+                <ComboBox fx:id="quantityUnitComboBox" GridPane.rowIndex="0" GridPane.columnIndex="3">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="g" />
+                            <String fx:value="kg" />
+                            <String fx:value="litre" />
+                            <String fx:value="mililitre" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Button text="Add" fx:id="addIngredientButton" GridPane.rowIndex="0" GridPane.columnIndex="4" />
+            </children>
+        </GridPane>
 
-                    <Label text="Cooking Time:" />
-                    <TextField fx:id="cookingTime" promptText="Cooking Time" />
+        <TextArea fx:id="ingredientsListArea" promptText="Ingredients will appear here..." prefHeight="100" />
 
-                    <Label text="Difficulty Level:" />
-                    <ComboBox fx:id="difficultyLevel" maxWidth="600">
-                        <items>
-                            <FXCollections fx:factory="observableArrayList">
-                                <String fx:value="easy" />
-                                <String fx:value="medium" />
-                                <String fx:value="hard" />
-                            </FXCollections>
-                        </items>
-                    </ComboBox>
-                </VBox>
+        <GridPane hgap="10" vgap="10">
+            <children>
+                <Label text="Preparation Time:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                <ComboBox fx:id="preparationTimeComboBox" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="00:15" />
+                            <String fx:value="00:30" />
+                            <String fx:value="00:45" />
+                            <String fx:value="01:00" />
+                            <String fx:value="01:15" />
+                            <String fx:value="01:30" />
+                            <String fx:value="01:45" />
+                            <String fx:value="02:00" />
+                            <String fx:value="02:15" />
+                            <String fx:value="02:30" />
+                            <String fx:value="02:45" />
+                            <String fx:value="03:00" />
+                            <String fx:value="03:15" />
+                            <String fx:value="03:30" />
+                            <String fx:value="03:45" />
+                            <String fx:value="04:00" />
+                            <String fx:value="04:15" />
+                            <String fx:value="04:30" />
+                            <String fx:value="04:45" />
+                            <String fx:value="05:00" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
 
+                <Label text="Cooking Time:" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+                <ComboBox fx:id="cookingTimeComboBox" GridPane.rowIndex="0" GridPane.columnIndex="3">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="00:15" />
+                            <String fx:value="00:30" />
+                            <String fx:value="00:45" />
+                            <String fx:value="01:00" />
+                            <String fx:value="01:15" />
+                            <String fx:value="01:30" />
+                            <String fx:value="01:45" />
+                            <String fx:value="02:00" />
+                            <String fx:value="02:15" />
+                            <String fx:value="02:30" />
+                            <String fx:value="02:45" />
+                            <String fx:value="03:00" />
+                            <String fx:value="03:15" />
+                            <String fx:value="03:30" />
+                            <String fx:value="03:45" />
+                            <String fx:value="04:00" />
+                            <String fx:value="04:15" />
+                            <String fx:value="04:30" />
+                            <String fx:value="04:45" />
+                            <String fx:value="05:00" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </children>
+        </GridPane>
 
-                <!-- Button Section -->
-                <HBox spacing="10" style="-fx-padding-top: 10;">
-                    <Button onAction="#addRecipe" text="Add Recipe" />
-                    <Button onAction="#modifyRecipe" text="Modify Recipe" />
-                    <Button onAction="#deleteRecipe" text="Delete Recipe" />
-                </HBox>
-            </VBox>
-        </ScrollPane>
-    </center>
+        <TextArea fx:id="instructionArea" promptText="Write instructions here..." prefHeight="100" />
 
-    <!-- Bottom Section -->
-    <bottom>
-        <VBox alignment="CENTER">
-            <Hyperlink onAction="#navigateToHomePage" text="Back to Home Page" />
-        </VBox>
-    </bottom>
-</BorderPane>
-
-
-
+        <HBox spacing="10" alignment="CENTER">
+            <children>
+                <Button text="Add" fx:id="addRecipeButton" style="-fx-background-color: lightgreen;" />
+                <Button text="Modify" fx:id="modifyRecipeButton" style="-fx-background-color: lightblue;" />
+                <Button text="Delete" fx:id="deleteRecipeButton" style="-fx-background-color: lightcoral;" />
+            </children>
+        </HBox>
+    </children>
+</VBox>
