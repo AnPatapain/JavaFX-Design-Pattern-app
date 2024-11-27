@@ -10,11 +10,17 @@ import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 
-public class  IngredientController extends AbstractController<AbstractView<?>> {
+import java.util.List;
+
+public class IngredientController extends AbstractController<AbstractView<?>> {
     public final Repository<Ingredient> ingredientRepo = JsonRepository.getRepository(Ingredient.class);
 
     public IngredientController(EventDispatcher eventDispatcher, RenderViewManager renderViewManager) {
         super(eventDispatcher, renderViewManager);
+    }
+
+    public List<Ingredient> getAllIngredientFromInventory() {
+        return this.ingredientRepo.findAll();
     }
 
     public void addIngredientToInventory(Ingredient ingredient) {
@@ -24,14 +30,14 @@ public class  IngredientController extends AbstractController<AbstractView<?>> {
 
     @Override
     public void setSubscription(EventDispatcher eventDispatcher) {
-        this.eventDispatcher.subscribe(this, EventType.SHOW_INGREDIENT_PAGE);
+        this.eventDispatcher.subscribe(this, EventType.SHOW_INGREDIENT_LIST_PAGE);
     }
 
     @Override
     public void handleEvent(EventType eventType) {
         switch (eventType) {
-            case SHOW_INGREDIENT_PAGE: {
-                this.renderViewManager.renderView(this.getViewAs(ViewName.INGREDIENT, IngredientView.class));
+            case SHOW_INGREDIENT_LIST_PAGE: {
+                this.renderViewManager.renderView(this.getViewAs(ViewName.INGREDIENT_LIST, IngredientListView.class));
             }
         }
     }
