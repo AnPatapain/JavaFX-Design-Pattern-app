@@ -1,13 +1,17 @@
 package fr.insa.bourges.firstapplicationjfx.features.shared.models;
 
+import fr.insa.bourges.firstapplicationjfx.base.database.AbstractEntity;
+
 import java.time.LocalDateTime;
 
-public class Ingredient {
+public class Ingredient extends AbstractEntity {
     private String name;
     private double quantity;
     private UnitMeasure unit;
     private LocalDateTime addDate;
     private LocalDateTime expirationDate;
+
+    public Ingredient() {}
 
     public Ingredient(String name, double quantity, UnitMeasure unit,
                       LocalDateTime addDate, LocalDateTime expirationDate) {

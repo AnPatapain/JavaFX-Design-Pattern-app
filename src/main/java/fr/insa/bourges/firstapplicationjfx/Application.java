@@ -1,6 +1,8 @@
 package fr.insa.bourges.firstapplicationjfx;
 
 import fr.insa.bourges.firstapplicationjfx.base.controller.ControllerMediator;
+import fr.insa.bourges.firstapplicationjfx.base.database.JsonRepository;
+import fr.insa.bourges.firstapplicationjfx.base.database.Repository;
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractView;
 import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventDispatcher;
@@ -12,9 +14,12 @@ import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientControl
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientView;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeView;
+import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
+import fr.insa.bourges.firstapplicationjfx.features.shared.models.UnitMeasure;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 public class Application extends javafx.application.Application {
     @Override
@@ -53,6 +58,7 @@ public class Application extends javafx.application.Application {
     }
 
     public static void main(String[] args) {
+        EnvConfig.setEnvironment(EnvConfig.Environment.NORMAL);
         launch();
     }
 }
