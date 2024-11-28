@@ -53,7 +53,7 @@ public class IngredientEditModalView extends AbstractModalView {
         this.ingredient.setAddDate(addDate.getValue());
         this.ingredient.setExpirationDate(expirationDate.getValue());
 
-        this.executeCommand(CommandKeys.RELOAD_INGREDIENTS.name(), this.ingredient);
+        this.executeCommand(CommandKeys.UPDATE_INGREDIENT.name(), this.ingredient);
 
         this.closeModal();
     }

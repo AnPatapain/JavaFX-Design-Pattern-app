@@ -1,4 +1,4 @@
-package fr.insa.bourges.firstapplicationjfx.features.ingredient.view;
+package fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages;
 
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientController;
@@ -43,10 +43,8 @@ public class IngredientAddPageView extends AbstractPageView<IngredientController
         this.getController().navigateToHomePage();
     }
 
-
-    public void deleteIngredient(ActionEvent actionEvent) {
-    }
-    public void addIngredient(ActionEvent actionEvent) {
+    @FXML
+    private void onAddButtonClickHandler(ActionEvent actionEvent) {
         Ingredient ingredient = new Ingredient(
                 this.name.getText(),
                 Double.parseDouble(this.quantity.getText()),
@@ -55,7 +53,11 @@ public class IngredientAddPageView extends AbstractPageView<IngredientController
                 this.expirationDate.getValue()
         );
         this.getController().addIngredientToInventory(ingredient);
+        this.getController().navigateToIngredientListPage();
     }
-    public void modifyIngredient(ActionEvent actionEvent) {
+
+    @FXML
+    private void onBackToAllIngredientsLinkClickHandler(ActionEvent actionEvent) {
+        this.getController().navigateToIngredientListPage();
     }
 }

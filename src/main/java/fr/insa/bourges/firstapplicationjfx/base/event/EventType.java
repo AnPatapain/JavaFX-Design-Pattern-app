@@ -4,4 +4,5 @@ public enum EventType {
     SHOW_HOME_PAGE,
     SHOW_RECIPE_PAGE,
     SHOW_INGREDIENT_LIST_PAGE,
+    SHOW_INGREDIENT_ADD_PAGE,
 }

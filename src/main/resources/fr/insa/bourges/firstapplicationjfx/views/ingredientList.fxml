@@ -6,15 +6,15 @@
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="fr.insa.bourges.firstapplicationjfx.features.ingredient.view.IngredientListPageView">
+            fx:controller="fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages.IngredientListPageView">
 
     <!-- Top Section -->
     <top>
         <HBox spacing="10" style="-fx-padding: 10;">
             <Label text="All Ingredients" style="-fx-font-size: 20px;" />
-            <Button text="Add Ingredient +" onAction="#navigateToAddIngredient" style="-fx-background-color: lightgreen;" />
+            <Button text="Add Ingredient +" onAction="#onAddButtonClickHandler" style="-fx-background-color: lightgreen;" />
             <TextField fx:id="searchBox" promptText="Search ingredient" />
-            <Button text="Search" onAction="#searchIngredient" />
+            <Button text="Search" onAction="#onSearchHandler" />
         </HBox>
     </top>
 
@@ -26,5 +26,12 @@
             </VBox>
         </ScrollPane>
     </center>
+
+    <!-- Bottom Section -->
+    <bottom>
+        <VBox alignment="CENTER">
+            <Hyperlink onAction="#onBackToHomePageLinkClickHandler" text="Back to Home Page"/>
+        </VBox>
+    </bottom>
 </BorderPane>
 

@@ -33,7 +33,7 @@ public class IngredientComponentView extends ComponentView {
     }
 
     @FXML
-    private void showIngredientEditModal() {
+    private void onEditButtonClick() {
         IngredientEditModalView ingredientEditModalView = AbstractModalView.createModal(
                 IngredientEditModalView.class,
                 "ingredientEditComponent.fxml",
@@ -53,8 +53,7 @@ public class IngredientComponentView extends ComponentView {
     }
 
     @FXML
-    private void deleteIngredient() {
-//        ingredientListView.getController().deleteIngredient(ingredient);
-//        ingredientListView.loadAllIngredients();
+    private void onDeleteButtonClick() {
+        this.executeCommand(CommandKeys.DELETE_INGREDIENT.name(), this.ingredient.getId());
     }
 }

@@ -13,8 +13,8 @@
         <Label fx:id="ingredientAddDate" text="Add Date: Placeholder"/>
         <Label fx:id="ingredientExpirationDate" text="Expiration Date: Placeholder"/>
     </VBox>
-    <Button text="Modify" onAction="#showIngredientEditModal" style="-fx-background-color: lightblue;"/>
-    <Button text="Delete" onAction="#deleteIngredient" style="-fx-background-color: lightcoral;"/>
+    <Button text="Edit" onAction="#onEditButtonClick" style="-fx-background-color: lightblue;"/>
+    <Button text="Delete" onAction="#onDeleteButtonClick" style="-fx-background-color: lightcoral;"/>
 </HBox>
 
 

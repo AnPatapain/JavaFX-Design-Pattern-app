@@ -1,4 +1,4 @@
-package fr.insa.bourges.firstapplicationjfx.features.ingredient.view;
+package fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages;
 
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.CommandKeys;
@@ -43,27 +43,46 @@ public class IngredientListPageView extends AbstractPageView<IngredientControlle
 
     private HBox createIngredientComponent(Ingredient ingredient) {
         try {
+            // Load the UI of component
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/fr/insa/bourges/firstapplicationjfx/views/ingredientComponent.fxml")
             );
-            HBox ingredientComponent = loader.load();
+            HBox ingredientComponentUI = loader.load();
 
+            // Get the representation view for component UI
             IngredientComponentView ingredientComponentView = loader.getController();
+
             ingredientComponentView.setIngredient(ingredient);
+
             ingredientComponentView.setParentPageView(this);
+
             ingredientComponentView.registerCommand(CommandKeys.RELOAD_INGREDIENTS.name(), args -> {
                 this.loadIngredientComponentView();
             });
+            ingredientComponentView.registerCommand(CommandKeys.DELETE_INGREDIENT.name(), args -> {
+                String toBeDeletedIngredientId = (String) args[0];
+                this.getController().deleteIngredient(toBeDeletedIngredientId);
+                this.loadIngredientComponentView();
+            });
 
-            return ingredientComponent;
+            // Return component UI
+            return ingredientComponentUI;
         } catch (IOException e) {
             throw new RuntimeException("Failed to load ingredient component", e);
         }
     }
 
-    public void navigateToAddIngredient(ActionEvent actionEvent) {
+    @FXML
+    private void onAddButtonClickHandler(ActionEvent actionEvent) {
+        this.getController().navigateToAddIngredientPage();
     }
 
-    public void searchIngredient(ActionEvent actionEvent) {
+    @FXML
+    private void onSearchHandler(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    private void onBackToHomePageLinkClickHandler(ActionEvent actionEvent) {
+        this.getController().navigateToHomePage();
     }
 }

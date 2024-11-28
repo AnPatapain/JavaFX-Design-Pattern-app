@@ -16,7 +16,7 @@
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="fr.insa.bourges.firstapplicationjfx.features.ingredient.view.IngredientAddPageView">
+            fx:controller="fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages.IngredientAddPageView">
 
     <!-- Top Section -->
     <top>
@@ -57,9 +57,7 @@
 
                 <!-- Center Section (Buttons) -->
                 <HBox spacing="10" style="-fx-padding-top: 10;">
-                    <Button text="Add Ingredient" onAction="#addIngredient"/>
-                    <Button text="Modify Ingredient" onAction="#modifyIngredient"/>
-                    <Button text="Delete Ingredient" onAction="#deleteIngredient"/>
+                    <Button text="Add Ingredient" onAction="#onAddButtonClickHandler"/>
                 </HBox>
 
             </VBox>
@@ -69,7 +67,7 @@
     <!-- Bottom Section -->
     <bottom>
         <VBox alignment="CENTER">
-            <Hyperlink onAction="#navigateToHomePage" text="Back to Home Page"/>
+            <Hyperlink onAction="#onBackToAllIngredientsLinkClickHandler" text="Back to all ingredients"/>
         </VBox>
     </bottom>
 </BorderPane>
