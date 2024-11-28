@@ -8,9 +8,8 @@ import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
 import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
 import fr.insa.bourges.firstapplicationjfx.features.home.HomeController;
 import fr.insa.bourges.firstapplicationjfx.features.home.HomePageView;
-import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages.IngredientAddPageView;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientController;
-import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages.IngredientListPageView;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages.IngredientListPage;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipePageView;
 import javafx.stage.Stage;
@@ -44,10 +43,8 @@ public class Application extends javafx.application.Application {
 
         // Ingredient page
         IngredientController ingredientController = new IngredientController(controllerMediator, renderViewManager);
-        IngredientListPageView ingredientListView = AbstractPageView.createView(IngredientListPageView.class, "ingredientList.fxml", ingredientController);
-        IngredientAddPageView ingredientAddView = AbstractPageView.createView(IngredientAddPageView.class, "ingredientAdd.fxml", ingredientController);
+        IngredientListPage ingredientListView = AbstractPageView.createView(IngredientListPage.class, "ingredientList.fxml", ingredientController);
         ingredientController.addView(ViewName.INGREDIENT_LIST, ingredientListView);
-        ingredientController.addView(ViewName.INGREDIENT_ADD, ingredientAddView);
 
         /**
          * This is the event to show the entry page of application

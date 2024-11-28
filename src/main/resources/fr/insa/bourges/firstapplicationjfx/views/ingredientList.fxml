@@ -6,7 +6,7 @@
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages.IngredientListPageView">
+            fx:controller="fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages.IngredientListPage">
 
     <!-- Top Section -->
     <top>

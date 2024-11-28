@@ -7,13 +7,15 @@ import fr.insa.bourges.firstapplicationjfx.features.shared.models.UnitMeasure;
 import fr.insa.bourges.firstapplicationjfx.features.shared.utils.InputFormatter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
+
+import java.time.LocalDate;
 
 
-public class IngredientEditModalView extends AbstractModalView {
+public class IngredientFormModal extends AbstractModalView {
+    @FXML
+    public Label modalLabel;
+
     @FXML
     public TextField name;
 
@@ -29,12 +31,20 @@ public class IngredientEditModalView extends AbstractModalView {
     @FXML
     public DatePicker expirationDate;
 
+
     private Ingredient ingredient;
+
+    private IngredientFormType ingredientFormType;
 
     @Override
     public void initialize() {
         TextFormatter<String> numericFormatter = InputFormatter.getNumericInputFormatter();
         quantity.setTextFormatter(numericFormatter);
+        addDate.setValue(LocalDate.now());
+    }
+
+    public void setModalLabel(String modalLabel) {
+        this.modalLabel.setText(modalLabel);
     }
 
     public void setIngredient(Ingredient ingredient) {
@@ -47,13 +57,21 @@ public class IngredientEditModalView extends AbstractModalView {
     }
 
     public void saveIngredient(ActionEvent actionEvent) {
+        if (this.ingredient == null) {
+            this.ingredient = new Ingredient();
+        }
+
         this.ingredient.setName(this.name.getText());
         this.ingredient.setQuantity(Double.parseDouble(quantity.getText()));
         this.ingredient.setUnit(UnitMeasure.valueOf(this.unit.getValue()));
         this.ingredient.setAddDate(addDate.getValue());
         this.ingredient.setExpirationDate(expirationDate.getValue());
 
-        this.executeCommand(CommandKeys.UPDATE_INGREDIENT.name(), this.ingredient);
+        if (this.ingredientFormType == IngredientFormType.ADD) {
+            this.executeCommand(CommandKeys.ADD_INGREDIENT.name(), this.ingredient);
+        } else if (this.ingredientFormType == IngredientFormType.EDIT) {
+            this.executeCommand(CommandKeys.UPDATE_INGREDIENT.name(), this.ingredient);
+        }
 
         this.closeModal();
     }
@@ -61,5 +79,13 @@ public class IngredientEditModalView extends AbstractModalView {
     public void cancelEdit(ActionEvent actionEvent) {
         // Close the modal without saving
         this.closeModal();
+    }
+
+    public IngredientFormType getIngredientFormType() {
+        return ingredientFormType;
+    }
+
+    public void setIngredientFormType(IngredientFormType ingredientFormType) {
+        this.ingredientFormType = ingredientFormType;
     }
 }

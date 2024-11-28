@@ -9,7 +9,7 @@ import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class IngredientComponentView extends ComponentView {
+public class IngredientComponent extends ComponentView {
     @FXML
     public Label ingredientName;
     @FXML
@@ -34,20 +34,25 @@ public class IngredientComponentView extends ComponentView {
 
     @FXML
     private void onEditButtonClick() {
-        IngredientEditModalView ingredientEditModalView = AbstractModalView.createModal(
-                IngredientEditModalView.class,
-                "ingredientEditComponent.fxml",
+        // Create modal for editing ingredient
+        IngredientFormModal ingredientFormModal = AbstractModalView.createModal(
+                IngredientFormModal.class,
+                "ingredientFormModal.fxml",
                 "Edit ingredient"
         );
 
-        ingredientEditModalView.setIngredient(this.ingredient);
-        ingredientEditModalView.setParentPageView(this.getParentPageView());
-        ingredientEditModalView.registerCommand(CommandKeys.UPDATE_INGREDIENT.name(), args -> {
+        ingredientFormModal.setModalLabel("Edit ingredient");
+        ingredientFormModal.setIngredientFormType(IngredientFormType.EDIT);
+        ingredientFormModal.setIngredient(this.ingredient);
+        ingredientFormModal.setParentPageView(this.getParentPageView());
+
+        // Register a callback for modal, modal will call after the "save button" is clicked. Command pattern is used
+        ingredientFormModal.registerCommand(CommandKeys.UPDATE_INGREDIENT.name(), args -> {
             Ingredient updatedIngredient = (Ingredient) args[0];
             ControllerMediator.getInstance().getControllersByType(IngredientController.class).updateIngredient(updatedIngredient);
         });
 
-        ingredientEditModalView.showModalAndWait();
+        ingredientFormModal.showModalAndWait();
 
         this.executeCommand(CommandKeys.RELOAD_INGREDIENTS.name());
     }

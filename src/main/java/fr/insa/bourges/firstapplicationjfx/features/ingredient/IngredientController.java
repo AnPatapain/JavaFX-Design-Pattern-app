@@ -8,8 +8,7 @@ import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
-import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages.IngredientAddPageView;
-import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages.IngredientListPageView;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages.IngredientListPage;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 
 import java.util.List;
@@ -24,19 +23,14 @@ public class IngredientController extends AbstractController<AbstractPageView<?>
     @Override
     public void setSubscription(EventDispatcher eventDispatcher) {
         this.eventDispatcher.subscribe(this, EventType.SHOW_INGREDIENT_LIST_PAGE);
-        this.eventDispatcher.subscribe(this, EventType.SHOW_INGREDIENT_ADD_PAGE);
     }
 
     @Override
     public void handleEvent(EventType eventType) {
         switch (eventType) {
             case SHOW_INGREDIENT_LIST_PAGE: {
-                this.getViewAs(ViewName.INGREDIENT_LIST, IngredientListPageView.class).loadIngredientComponentView();
-                this.renderViewManager.renderView(this.getViewAs(ViewName.INGREDIENT_LIST, IngredientListPageView.class));
-                break;
-            }
-            case SHOW_INGREDIENT_ADD_PAGE: {
-                this.renderViewManager.renderView(this.getViewAs(ViewName.INGREDIENT_ADD, IngredientAddPageView.class));
+                this.getViewAs(ViewName.INGREDIENT_LIST, IngredientListPage.class).loadIngredientComponentView();
+                this.renderViewManager.renderView(this.getViewAs(ViewName.INGREDIENT_LIST, IngredientListPage.class));
                 break;
             }
         }
@@ -48,7 +42,7 @@ public class IngredientController extends AbstractController<AbstractPageView<?>
         return this.ingredientRepo.findAll();
     }
 
-    public void addIngredientToInventory(Ingredient ingredient) {
+    public void addIngredient(Ingredient ingredient) {
         this.ingredientRepo.persist(ingredient);
         this.ingredientRepo.flush();
     }
@@ -68,13 +62,5 @@ public class IngredientController extends AbstractController<AbstractPageView<?>
     // Navigate methods
     public void navigateToHomePage() {
         this.eventDispatcher.dispatchEvent(EventType.SHOW_HOME_PAGE);
-    }
-
-    public void navigateToAddIngredientPage() {
-        this.eventDispatcher.dispatchEvent(EventType.SHOW_INGREDIENT_ADD_PAGE);
-    }
-
-    public void navigateToIngredientListPage() {
-        this.eventDispatcher.dispatchEvent(EventType.SHOW_INGREDIENT_LIST_PAGE);
     }
 }

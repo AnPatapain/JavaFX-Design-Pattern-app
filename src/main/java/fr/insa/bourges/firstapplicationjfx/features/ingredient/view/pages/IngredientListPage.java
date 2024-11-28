@@ -1,9 +1,13 @@
 package fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages;
 
+import fr.insa.bourges.firstapplicationjfx.base.controller.ControllerMediator;
+import fr.insa.bourges.firstapplicationjfx.base.view.AbstractModalView;
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.CommandKeys;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientController;
-import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.components.IngredientComponentView;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.components.IngredientComponent;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.components.IngredientFormModal;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.components.IngredientFormType;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +21,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.List;
 
-public class IngredientListPageView extends AbstractPageView<IngredientController> {
+public class IngredientListPage extends AbstractPageView<IngredientController> {
     @FXML
     public BorderPane borderPane;
     @FXML
@@ -50,16 +54,16 @@ public class IngredientListPageView extends AbstractPageView<IngredientControlle
             HBox ingredientComponentUI = loader.load();
 
             // Get the representation view for component UI
-            IngredientComponentView ingredientComponentView = loader.getController();
+            IngredientComponent ingredientComponent = loader.getController();
 
-            ingredientComponentView.setIngredient(ingredient);
+            ingredientComponent.setIngredient(ingredient);
 
-            ingredientComponentView.setParentPageView(this);
+            ingredientComponent.setParentPageView(this);
 
-            ingredientComponentView.registerCommand(CommandKeys.RELOAD_INGREDIENTS.name(), args -> {
+            ingredientComponent.registerCommand(CommandKeys.RELOAD_INGREDIENTS.name(), args -> {
                 this.loadIngredientComponentView();
             });
-            ingredientComponentView.registerCommand(CommandKeys.DELETE_INGREDIENT.name(), args -> {
+            ingredientComponent.registerCommand(CommandKeys.DELETE_INGREDIENT.name(), args -> {
                 String toBeDeletedIngredientId = (String) args[0];
                 this.getController().deleteIngredient(toBeDeletedIngredientId);
                 this.loadIngredientComponentView();
@@ -74,7 +78,28 @@ public class IngredientListPageView extends AbstractPageView<IngredientControlle
 
     @FXML
     private void onAddButtonClickHandler(ActionEvent actionEvent) {
-        this.getController().navigateToAddIngredientPage();
+//        this.getController().navigateToAddIngredientPage();
+
+        // Create modal for adding ingredient
+        IngredientFormModal ingredientFormModal = AbstractModalView.createModal(
+                IngredientFormModal.class,
+                "ingredientFormModal.fxml",
+                "Add ingredient"
+        );
+
+        ingredientFormModal.setModalLabel("Add ingredient");
+        ingredientFormModal.setIngredientFormType(IngredientFormType.ADD);
+        ingredientFormModal.setParentPageView(this);
+
+        // Register a callback for modal, modal will call after the "save button" is clicked. Command pattern is used
+        ingredientFormModal.registerCommand(CommandKeys.ADD_INGREDIENT.name(), args -> {
+            Ingredient addedIngredient = (Ingredient) args[0];
+            ControllerMediator.getInstance().getControllersByType(IngredientController.class).addIngredient(addedIngredient);
+        });
+
+        ingredientFormModal.showModalAndWait();
+
+        this.loadIngredientComponentView();
     }
 
     @FXML
