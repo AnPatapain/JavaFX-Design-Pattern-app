@@ -1,6 +1,7 @@
 package fr.insa.bourges.firstapplicationjfx.features.ingredient.view;
 
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.CommandKeys;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientController;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.components.IngredientComponentView;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
@@ -50,7 +51,7 @@ public class IngredientListPageView extends AbstractPageView<IngredientControlle
             IngredientComponentView ingredientComponentView = loader.getController();
             ingredientComponentView.setIngredient(ingredient);
             ingredientComponentView.setParentPageView(this);
-            ingredientComponentView.registerCommand("reloadIngredient", args -> {
+            ingredientComponentView.registerCommand(CommandKeys.RELOAD_INGREDIENTS.name(), args -> {
                 this.loadIngredientComponentView();
             });
 

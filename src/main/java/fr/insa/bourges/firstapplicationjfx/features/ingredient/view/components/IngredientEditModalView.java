@@ -1,6 +1,7 @@
 package fr.insa.bourges.firstapplicationjfx.features.ingredient.view.components;
 
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractModalView;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.CommandKeys;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.UnitMeasure;
 import fr.insa.bourges.firstapplicationjfx.features.shared.utils.InputFormatter;
@@ -52,7 +53,7 @@ public class IngredientEditModalView extends AbstractModalView {
         this.ingredient.setAddDate(addDate.getValue());
         this.ingredient.setExpirationDate(expirationDate.getValue());
 
-        this.executeCommand("updateIngredient", this.ingredient);
+        this.executeCommand(CommandKeys.RELOAD_INGREDIENTS.name(), this.ingredient);
 
         this.closeModal();
     }

@@ -3,6 +3,7 @@ package fr.insa.bourges.firstapplicationjfx.features.ingredient.view.components;
 import fr.insa.bourges.firstapplicationjfx.base.controller.ControllerMediator;
 import fr.insa.bourges.firstapplicationjfx.base.view.ComponentView;
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractModalView;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.CommandKeys;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientController;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 import javafx.fxml.FXML;
@@ -41,14 +42,14 @@ public class IngredientComponentView extends ComponentView {
 
         ingredientEditModalView.setIngredient(this.ingredient);
         ingredientEditModalView.setParentPageView(this.getParentPageView());
-        ingredientEditModalView.registerCommand("updateIngredient", args -> {
+        ingredientEditModalView.registerCommand(CommandKeys.UPDATE_INGREDIENT.name(), args -> {
             Ingredient updatedIngredient = (Ingredient) args[0];
             ControllerMediator.getInstance().getControllersByType(IngredientController.class).updateIngredient(updatedIngredient);
         });
 
         ingredientEditModalView.showModalAndWait();
 
-        this.executeCommand("reloadIngredient");
+        this.executeCommand(CommandKeys.RELOAD_INGREDIENTS.name());
     }
 
     @FXML
