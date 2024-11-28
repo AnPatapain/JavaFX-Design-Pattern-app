@@ -5,12 +5,12 @@ import fr.insa.bourges.firstapplicationjfx.base.database.JsonRepository;
 import fr.insa.bourges.firstapplicationjfx.base.database.Repository;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventDispatcher;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
-import fr.insa.bourges.firstapplicationjfx.base.view.AbstractView;
+import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Recipe;
 
-public class RecipeController extends AbstractController<AbstractView<?>> {
+public class RecipeController extends AbstractController<AbstractPageView<?>> {
     public final Repository<Recipe> recipeRepository = JsonRepository.getRepository(Recipe.class);
 
     public RecipeController(EventDispatcher eventDispatcher, RenderViewManager renderViewManager) {

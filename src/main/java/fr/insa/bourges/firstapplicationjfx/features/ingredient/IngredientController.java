@@ -5,14 +5,15 @@ import fr.insa.bourges.firstapplicationjfx.base.database.JsonRepository;
 import fr.insa.bourges.firstapplicationjfx.base.database.Repository;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventDispatcher;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
-import fr.insa.bourges.firstapplicationjfx.base.view.AbstractView;
+import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.IngredientListPageView;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 
 import java.util.List;
 
-public class IngredientController extends AbstractController<AbstractView<?>> {
+public class IngredientController extends AbstractController<AbstractPageView<?>> {
     public final Repository<Ingredient> ingredientRepo = JsonRepository.getRepository(Ingredient.class);
 
     public IngredientController(EventDispatcher eventDispatcher, RenderViewManager renderViewManager) {
@@ -37,12 +38,18 @@ public class IngredientController extends AbstractController<AbstractView<?>> {
     public void handleEvent(EventType eventType) {
         switch (eventType) {
             case SHOW_INGREDIENT_LIST_PAGE: {
-                this.renderViewManager.renderView(this.getViewAs(ViewName.INGREDIENT_LIST, IngredientListView.class));
+                this.renderViewManager.renderView(this.getViewAs(ViewName.INGREDIENT_LIST, IngredientListPageView.class));
             }
         }
     }
 
     public void navigateToHomePage() {
         this.eventDispatcher.dispatchEvent(EventType.SHOW_HOME_PAGE);
+    }
+
+    public void updateIngredient(Ingredient ingredient) {
+        this.ingredientRepo.update(ingredient);
+        this.ingredientRepo.flush();
+        System.out.println("Ingredient saved: " + ingredient);
     }
 }

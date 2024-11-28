@@ -26,6 +26,8 @@ public class JsonRepository<T extends AbstractEntity> implements Repository<T> {
     private final Map<String, T> stagedForUpdate = new HashMap<>();
     private final List<String> stagedForDelete = new ArrayList<>();
 
+    private Class<T> entityClass;
+
     private JsonRepository() {
     }
 
@@ -39,6 +41,7 @@ public class JsonRepository<T extends AbstractEntity> implements Repository<T> {
 
         try {
             JsonRepository<T> jsonRepository = new JsonRepository<T>();
+            jsonRepository.entityClass = type;
 
             // Create data dir and json file in data dir
             Files.createDirectories(Paths.get(FILE_PATH));
@@ -128,32 +131,53 @@ public class JsonRepository<T extends AbstractEntity> implements Repository<T> {
 
     @Override
     public List<T> findAll() {
-        return new ArrayList<>(this.persistentContext.values());
+        try {
+            // Serialize and deserialize the persistentContext values
+            byte[] serializedData = objectMapper.writeValueAsBytes(this.persistentContext.values());
+            return objectMapper.readValue(serializedData, objectMapper.getTypeFactory().constructCollectionType(List.class, this.entityClass));
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to create a deep copy via serialization", e);
+        }
     }
 
     @Override
     public T findById(String id) {
-        return persistentContext.get(id);
+        try {
+            T entity = this.persistentContext.get(id);
+            if (entity == null) {
+                return null;
+            }
+            // Serialize and deserialize the entity to create a deep copy
+            byte[] serializedData = objectMapper.writeValueAsBytes(entity);
+            return objectMapper.readValue(serializedData, objectMapper.getTypeFactory().constructType(this.entityClass));
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to create a deep copy via serialization", e);
+        }
     }
+
 
     @Override
-    public List<T> findByAttribute(String field, Object value)
-            throws NoSuchFieldException, IllegalAccessException {
-
+    public List<T> findByAttribute(String field, Object value) {
         List<T> results = new ArrayList<>();
+        try {
+            for (T entity : this.persistentContext.values()) {
+                Field targetField = entity.getClass().getDeclaredField(field);
+                targetField.setAccessible(true);
 
-        for (T entity : this.persistentContext.values()) {
-            Field targetField = entity.getClass().getDeclaredField(field);
-            targetField.setAccessible(true);
-
-            Object targetFieldValue = targetField.get(entity);
-            if (targetFieldValue.equals(value)) {
-                results.add(entity);
+                Object targetFieldValue = targetField.get(entity);
+                if (Objects.equals(targetFieldValue, value)) {
+                    // Serialize and deserialize the entity to create a deep copy
+                    byte[] serializedData = objectMapper.writeValueAsBytes(entity);
+                    T deepCopy = objectMapper.readValue(serializedData, objectMapper.getTypeFactory().constructType(this.entityClass));
+                    results.add(deepCopy);
+                }
             }
+        } catch (NoSuchFieldException | IllegalAccessException | IOException e) {
+            throw new RuntimeException("Error during findByAttribute operation", e);
         }
-
         return results;
     }
+
 
     public static boolean deleteDataDir(File dataDir) {
         File[] allContents = dataDir.listFiles();

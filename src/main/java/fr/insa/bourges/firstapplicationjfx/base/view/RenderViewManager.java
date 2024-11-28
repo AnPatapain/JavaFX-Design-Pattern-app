@@ -1,5 +1,4 @@
 package fr.insa.bourges.firstapplicationjfx.base.view;
-import fr.insa.bourges.firstapplicationjfx.base.controller.AbstractController;
 import javafx.stage.Stage;
 
 public class RenderViewManager {
@@ -9,7 +8,7 @@ public class RenderViewManager {
         this.stage = stage;
     }
 
-    public void renderView(AbstractView<?> view) {
+    public void renderView(AbstractPageView<?> view) {
         this.stage.setScene(view.getScene());
         this.stage.show();
     }

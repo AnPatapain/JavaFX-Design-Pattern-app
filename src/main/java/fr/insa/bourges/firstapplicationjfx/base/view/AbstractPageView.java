@@ -6,17 +6,17 @@ import javafx.scene.Scene;
 
 import java.io.IOException;
 
-public abstract class AbstractView<C extends AbstractController<?>> {
+public abstract class AbstractPageView<C extends AbstractController<?>> {
     private C controller;
     private Scene scene;
     private static boolean isDuringInitialization = false;
 
-    protected AbstractView() {
+    protected AbstractPageView() {
         if (!isDuringInitialization) {
-            throw new RuntimeException("Please initialize View using AbstractView.createView(Class<T> viewClass, String fxmlFile)");
+            throw new RuntimeException("Please initialize View using AbstractPageView.createView(Class<T> viewClass, String fxmlFile)");
         }
     }
-    public static <V extends AbstractView<C>, C extends AbstractController<?>> V createView(Class<V> viewClass, String fxmlFile, C controller) {
+    public static <V extends AbstractPageView<C>, C extends AbstractController<?>> V createView(Class<V> viewClass, String fxmlFile, C controller) {
         try {
             isDuringInitialization = true;
             String fxmlPath = "/fr/insa/bourges/firstapplicationjfx/views/" + fxmlFile;
@@ -28,7 +28,7 @@ public abstract class AbstractView<C extends AbstractController<?>> {
             return view;
         } catch (IOException e) {
             e.printStackTrace();
-            throw new RuntimeException("Failed to load FXML file for " + viewClass.getName());
+            throw new RuntimeException("Failed to load FXML file for " + viewClass.getSimpleName());
         } finally {
             isDuringInitialization = false;
         }

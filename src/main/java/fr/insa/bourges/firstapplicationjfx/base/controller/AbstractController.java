@@ -1,6 +1,6 @@
 package fr.insa.bourges.firstapplicationjfx.base.controller;
 
-import fr.insa.bourges.firstapplicationjfx.base.view.AbstractView;
+import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventDispatcher;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventListener;
@@ -9,7 +9,7 @@ import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
 
 import java.util.EnumMap;
 
-public abstract class AbstractController<V extends AbstractView<?>> implements EventListener {
+public abstract class AbstractController<V extends AbstractPageView<?>> implements EventListener {
     protected final EventDispatcher eventDispatcher;
     protected final RenderViewManager renderViewManager;
     private final EnumMap<ViewName, V> views = new EnumMap<>(ViewName.class);
