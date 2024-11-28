@@ -49,6 +49,7 @@ public class IngredientListPageView extends AbstractPageView<IngredientControlle
 
             IngredientComponentView ingredientComponentView = loader.getController();
             ingredientComponentView.setIngredient(ingredient);
+            ingredientComponentView.setParentPageView(this);
             ingredientComponentView.registerCommand("reloadIngredient", args -> {
                 this.loadIngredientComponentView();
             });

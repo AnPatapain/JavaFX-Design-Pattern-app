@@ -40,7 +40,7 @@ public class IngredientComponentView extends ComponentView {
         );
 
         ingredientEditModalView.setIngredient(this.ingredient);
-
+        ingredientEditModalView.setParentPageView(this.getParentPageView());
         ingredientEditModalView.registerCommand("updateIngredient", args -> {
             Ingredient updatedIngredient = (Ingredient) args[0];
             ControllerMediator.getInstance().getControllersByType(IngredientController.class).updateIngredient(updatedIngredient);
