@@ -7,9 +7,9 @@
 <?import java.lang.String?>
 <?import javafx.scene.layout.HBox?>
 <VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="fr.insa.bourges.firstapplicationjfx.features.ingredient.view.components.IngredientEditModalView"
+      fx:controller="fr.insa.bourges.firstapplicationjfx.features.ingredient.components.IngredientFormModal"
       spacing="10" style="-fx-padding: 20;">
-    <Label text="Edit Ingredient" style="-fx-font-size: 20px;"/>
+    <Label fx:id="modalLabel" style="-fx-font-size: 20px;"/>
     <TextField fx:id="name" promptText="Ingredient Name"/>
     <TextField fx:id="quantity" promptText="Quantity"/>
     <ComboBox fx:id="unit" promptText="Unit of Measurement">
@@ -25,7 +25,7 @@
     <DatePicker fx:id="addDate" promptText="Add Date"/>
     <DatePicker fx:id="expirationDate" promptText="Expiration Date"/>
     <HBox spacing="10">
-        <Button text="Save" onAction="#saveIngredient"/>
-        <Button text="Cancel" onAction="#cancelEdit"/>
+        <Button text="Save" onAction="#onSaveButtonClickHandler"/>
+        <Button text="Cancel" onAction="#onCancelButtonClickHandler"/>
     </HBox>
 </VBox>

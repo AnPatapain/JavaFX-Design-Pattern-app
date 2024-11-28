@@ -19,7 +19,7 @@ public abstract class AbstractModalView extends ComponentView {
     public static <V extends AbstractModalView> V createModal(
             Class<V> modalView,
             String fxmlFile,
-            String componentTitle
+            String modalTitle
     ) {
         try {
             FXMLLoader loader = new FXMLLoader(
@@ -34,7 +34,7 @@ public abstract class AbstractModalView extends ComponentView {
             Stage modalStage = new Stage();
             modalStage.setScene(new Scene(root));
             modalStage.initModality(javafx.stage.Modality.APPLICATION_MODAL); // Block interaction with other windows
-            modalStage.setTitle(componentTitle);
+            modalStage.setTitle(modalTitle);
             modalStage.setResizable(false);
 
             loadedModalView.setStage(modalStage);

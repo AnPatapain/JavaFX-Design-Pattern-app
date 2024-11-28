@@ -6,6 +6,7 @@ import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
+import fr.insa.bourges.firstapplicationjfx.features.home.pages.HomePage;
 
 public class HomeController extends AbstractController<AbstractPageView<?>> {
     public HomeController(EventDispatcher eventDispatcher, RenderViewManager renderViewManager) {
@@ -20,7 +21,7 @@ public class HomeController extends AbstractController<AbstractPageView<?>> {
     @Override
     public void handleEvent(EventType eventType) {
         if (eventType == EventType.SHOW_HOME_PAGE) {
-            this.renderViewManager.renderView(this.getViewAs(ViewName.HOME, HomePageView.class));
+            this.renderViewManager.renderView(this.getViewAs(ViewName.HOME, HomePage.class));
         }
     }
 

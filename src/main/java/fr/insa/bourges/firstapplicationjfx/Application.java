@@ -7,10 +7,9 @@ import fr.insa.bourges.firstapplicationjfx.base.event.EventDispatcher;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
 import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
 import fr.insa.bourges.firstapplicationjfx.features.home.HomeController;
-import fr.insa.bourges.firstapplicationjfx.features.home.HomePageView;
-import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.IngredientAddPageView;
+import fr.insa.bourges.firstapplicationjfx.features.home.pages.HomePage;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientController;
-import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.IngredientListPageView;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.pages.IngredientListPage;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.view.RecipeAddPageView;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.view.RecipeListPageView;
@@ -35,7 +34,7 @@ public class Application extends javafx.application.Application {
          */
         // Home page
         HomeController homeController = new HomeController(controllerMediator, renderViewManager);
-        HomePageView homeView = AbstractPageView.createView(HomePageView.class, "home.fxml", homeController);
+        HomePage homeView = AbstractPageView.createView(HomePage.class, "home.fxml", homeController);
         homeController.addView(ViewName.HOME, homeView);
 
         // Recipe page
@@ -47,10 +46,8 @@ public class Application extends javafx.application.Application {
 
         // Ingredient page
         IngredientController ingredientController = new IngredientController(controllerMediator, renderViewManager);
-        IngredientListPageView ingredientListView = AbstractPageView.createView(IngredientListPageView.class, "ingredientList.fxml", ingredientController);
-        IngredientAddPageView ingredientAddView = AbstractPageView.createView(IngredientAddPageView.class, "ingredientAdd.fxml", ingredientController);
+        IngredientListPage ingredientListView = AbstractPageView.createView(IngredientListPage.class, "ingredientList.fxml", ingredientController);
         ingredientController.addView(ViewName.INGREDIENT_LIST, ingredientListView);
-        ingredientController.addView(ViewName.INGREDIENT_ADD, ingredientAddView);
 
         /**
          * This is the event to show the entry page of application
