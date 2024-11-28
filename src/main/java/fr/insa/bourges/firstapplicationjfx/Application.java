@@ -12,7 +12,8 @@ import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.IngredientAd
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientController;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.IngredientListPageView;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
-import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipePageView;
+import fr.insa.bourges.firstapplicationjfx.features.recipe.view.RecipeAddPageView;
+import fr.insa.bourges.firstapplicationjfx.features.recipe.view.RecipeListPageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -39,8 +40,10 @@ public class Application extends javafx.application.Application {
 
         // Recipe page
         RecipeController recipeController = new RecipeController(controllerMediator, renderViewManager);
-        RecipePageView recipeView = AbstractPageView.createView(RecipePageView.class, "recipe.fxml", recipeController);
-        recipeController.addView(ViewName.RECIPE, recipeView);
+        RecipeAddPageView recipeAddView = AbstractPageView.createView(RecipeAddPageView.class, "recipeAdd.fxml", recipeController);
+        RecipeListPageView recipeListView = AbstractPageView.createView(RecipeListPageView.class, "recipeList.fxml", recipeController);
+        recipeController.addView(ViewName.RECIPE_ADD, recipeAddView);
+        recipeController.addView(ViewName.RECIPE_LIST, recipeListView);
 
         // Ingredient page
         IngredientController ingredientController = new IngredientController(controllerMediator, renderViewManager);

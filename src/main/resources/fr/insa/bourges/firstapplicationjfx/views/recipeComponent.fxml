@@ -1,0 +1,30 @@
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+
+<?import javafx.scene.layout.FlowPane?>
+<HBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="fr.insa.bourges.firstapplicationjfx.features.recipe.view.components.RecipeComponentView"
+      spacing="10" style="-fx-padding: 10; -fx-border-color: lightgray; -fx-border-width: 1;">
+    <VBox spacing="5">
+        <Label fx:id="recipeName" text="Recipe Name: Placeholder" style="-fx-font-size: 16px;"/>
+        <Label fx:id="recipeCategory" text="Category: Placeholder"/>
+        <Label fx:id="recipeInstruction" text="Instruction: Placeholder"/>
+        <Label fx:id="recipePreparationTime" text="Preparation Time: Placeholder"/>
+        <Label fx:id="recipeCookingTime" text="Cooking Time: Placeholder"/>
+        <Label fx:id="recipeDifficultyLevel" text="Difficulty Level: Placeholder"/>
+
+        <VBox fx:id="ingredientsList" spacing="5" style="-fx-border-color: lightgray; -fx-border-width: 1;">
+            <Label text="Ingredients:" style="-fx-font-weight: bold;"/>
+            <!-- Each ingredient will be dynamically added here -->
+            <FlowPane fx:id="ingredientsFlowPane" hgap="10" vgap="5" style="-fx-border-color: lightgray; -fx-border-width: 1; -fx-padding: 5;">
+                <!-- Dynamically filled with ingredient names and quantities -->
+            </FlowPane>
+        </VBox>
+    </VBox>
+    <Button text="Modify" onAction="#showRecipeEditModal" style="-fx-background-color: lightblue;"/>
+    <Button text="Delete" onAction="#deleteRecipe" style="-fx-background-color: lightcoral;"/>
+</HBox>
+
+

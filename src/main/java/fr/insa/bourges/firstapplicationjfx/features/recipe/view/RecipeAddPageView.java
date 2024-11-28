@@ -1,11 +1,11 @@
-package fr.insa.bourges.firstapplicationjfx.features.recipe;
+package fr.insa.bourges.firstapplicationjfx.features.recipe.view;
 
-import fr.insa.bourges.firstapplicationjfx.base.view.AbstractView;
+import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
+import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.*;
 import fr.insa.bourges.firstapplicationjfx.features.shared.utils.CustomUIAlert;
 import fr.insa.bourges.firstapplicationjfx.features.shared.utils.InputFormatter;
 import fr.insa.bourges.firstapplicationjfx.features.shared.utils.TimeParser;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -17,7 +17,7 @@ import javafx.scene.layout.VBox;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecipeView extends AbstractView<RecipeController> {
+public class RecipeAddPageView extends AbstractPageView<RecipeController> {
     @FXML
     public VBox root;
 

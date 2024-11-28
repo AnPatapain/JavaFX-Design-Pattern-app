@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="fr.insa.bourges.firstapplicationjfx.features.recipe.view.RecipeListPageView">
+
+    <!-- Top Section -->
+    <top>
+        <HBox spacing="10" style="-fx-padding: 10;">
+            <Label text="All Recipe" style="-fx-font-size: 20px;" />
+            <Button text="Add Recipe +" onAction="#navigateToAddRecipe" style="-fx-background-color: lightgreen;" />
+            <TextField fx:id="searchBox" promptText="Search recipe" />
+            <Button text="Search" onAction="#searchRecipe" />
+        </HBox>
+    </top>
+
+    <!-- Center Section -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-padding: 10;">
+            <VBox fx:id="recipeListContainer" spacing="10" style="-fx-padding: 10;">
+                <!-- Ingredient components will be dynamically added here -->
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>
