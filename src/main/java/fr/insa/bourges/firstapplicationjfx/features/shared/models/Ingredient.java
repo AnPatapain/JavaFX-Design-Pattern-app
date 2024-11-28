@@ -65,7 +65,7 @@ public class Ingredient extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "{ " + "Name: " + this.getName() + ", " + "Quantity: " + this.getQuantity() + this.getUnit() + ", " +
-                "AddDate: " + this.getAddDate() + ", " + "ExpirationDate: " + this.getExpirationDate() + " }";
+        return "{ " + "Id: " + this.getId() + ", " +  "Name: " + this.getName() + ", " + "Quantity: " + this.getQuantity()
+                + this.getUnit() + ", " + "AddDate: " + this.getAddDate() + ", " + "ExpirationDate: " + this.getExpirationDate() + " }";
     }
 }

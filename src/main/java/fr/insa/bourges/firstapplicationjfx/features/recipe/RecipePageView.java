@@ -1,15 +1,13 @@
 package fr.insa.bourges.firstapplicationjfx.features.recipe;
 
-import fr.insa.bourges.firstapplicationjfx.base.view.AbstractView;
-import fr.insa.bourges.firstapplicationjfx.features.shared.models.Recipe;
+import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.control.ListView;
 
-public class RecipeView extends AbstractView<RecipeController> {
+public class RecipePageView extends AbstractPageView<RecipeController> {
     @FXML
     public BorderPane borderPane;
     @FXML

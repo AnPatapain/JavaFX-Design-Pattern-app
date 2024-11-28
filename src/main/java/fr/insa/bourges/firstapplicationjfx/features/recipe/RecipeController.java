@@ -3,11 +3,11 @@ package fr.insa.bourges.firstapplicationjfx.features.recipe;
 import fr.insa.bourges.firstapplicationjfx.base.controller.AbstractController;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventDispatcher;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
-import fr.insa.bourges.firstapplicationjfx.base.view.AbstractView;
+import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
 
-public class RecipeController extends AbstractController<AbstractView<?>> {
+public class RecipeController extends AbstractController<AbstractPageView<?>> {
 
     public RecipeController(EventDispatcher eventDispatcher, RenderViewManager renderViewManager) {
         super(eventDispatcher, renderViewManager);
@@ -22,7 +22,7 @@ public class RecipeController extends AbstractController<AbstractView<?>> {
     public void handleEvent(EventType eventType) {
         switch (eventType) {
             case SHOW_RECIPE_PAGE: {
-                this.renderViewManager.renderView(this.getViewAs(ViewName.RECIPE, RecipeView.class));
+                this.renderViewManager.renderView(this.getViewAs(ViewName.RECIPE, RecipePageView.class));
             }
         }
     }

@@ -15,7 +15,7 @@
             xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:id="borderPane"
-            fx:controller="fr.insa.bourges.firstapplicationjfx.features.home.HomeView"
+            fx:controller="fr.insa.bourges.firstapplicationjfx.features.home.HomePageView"
 >
     <top>
         <Label text="Recipe management" BorderPane.alignment="CENTER">

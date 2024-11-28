@@ -1,6 +1,8 @@
-package fr.insa.bourges.firstapplicationjfx.features.ingredient;
+package fr.insa.bourges.firstapplicationjfx.features.ingredient.view;
 
-import fr.insa.bourges.firstapplicationjfx.base.view.AbstractView;
+import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientController;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.components.IngredientComponentView;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +16,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.List;
 
-public class IngredientListView extends AbstractView<IngredientController> {
+public class IngredientListPageView extends AbstractPageView<IngredientController> {
     @FXML
     public BorderPane borderPane;
     @FXML
@@ -25,10 +27,10 @@ public class IngredientListView extends AbstractView<IngredientController> {
     @Override
     public void initializeScene() {
         this.setScene(new Scene(this.borderPane, 600, 400));
-        loadAllIngredients();
+        loadIngredientComponentView();
     }
 
-    private void loadAllIngredients() {
+    public void loadIngredientComponentView() {
         List<Ingredient> ingredients = this.getController().getAllIngredientFromInventory();
         ingredientListContainer.getChildren().clear();
 
@@ -47,7 +49,9 @@ public class IngredientListView extends AbstractView<IngredientController> {
 
             IngredientComponentView ingredientComponentView = loader.getController();
             ingredientComponentView.setIngredient(ingredient);
-            ingredientComponentView.setIngredientListView(this);
+            ingredientComponentView.registerCommand("reloadIngredient", args -> {
+                this.loadIngredientComponentView();
+            });
 
             return ingredientComponent;
         } catch (IOException e) {

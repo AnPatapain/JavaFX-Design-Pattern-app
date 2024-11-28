@@ -1,6 +1,7 @@
-package fr.insa.bourges.firstapplicationjfx.features.ingredient;
+package fr.insa.bourges.firstapplicationjfx.features.ingredient.view;
 
-import fr.insa.bourges.firstapplicationjfx.base.view.AbstractView;
+import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientController;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.UnitMeasure;
 import fr.insa.bourges.firstapplicationjfx.features.shared.utils.InputFormatter;
@@ -12,7 +13,7 @@ import javafx.scene.layout.BorderPane;
 
 import java.time.LocalDate;
 
-public class IngredientAddView extends AbstractView<IngredientController> {
+public class IngredientAddPageView extends AbstractPageView<IngredientController> {
     @FXML
     public BorderPane borderPane;
     @FXML
