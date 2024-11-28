@@ -7,9 +7,9 @@ import fr.insa.bourges.firstapplicationjfx.base.event.EventDispatcher;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
 import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
 import fr.insa.bourges.firstapplicationjfx.features.home.HomeController;
-import fr.insa.bourges.firstapplicationjfx.features.home.HomePageView;
+import fr.insa.bourges.firstapplicationjfx.features.home.pages.HomePage;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientController;
-import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages.IngredientListPage;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.pages.IngredientListPage;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipePageView;
 import javafx.stage.Stage;
@@ -33,7 +33,7 @@ public class Application extends javafx.application.Application {
          */
         // Home page
         HomeController homeController = new HomeController(controllerMediator, renderViewManager);
-        HomePageView homeView = AbstractPageView.createView(HomePageView.class, "home.fxml", homeController);
+        HomePage homeView = AbstractPageView.createView(HomePage.class, "home.fxml", homeController);
         homeController.addView(ViewName.HOME, homeView);
 
         // Recipe page

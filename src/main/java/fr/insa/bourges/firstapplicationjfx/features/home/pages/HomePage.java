@@ -1,12 +1,13 @@
-package fr.insa.bourges.firstapplicationjfx.features.home;
+package fr.insa.bourges.firstapplicationjfx.features.home.pages;
 
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
+import fr.insa.bourges.firstapplicationjfx.features.home.HomeController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
-public class HomePageView extends AbstractPageView<HomeController> {
+public class HomePage extends AbstractPageView<HomeController> {
     @FXML
     BorderPane borderPane;
 

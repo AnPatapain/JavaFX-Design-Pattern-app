@@ -14,9 +14,10 @@ module fr.insa.bourges.firstapplicationjfx {
     opens fr.insa.bourges.firstapplicationjfx.base.database to com.fasterxml.jackson.databind;
     opens fr.insa.bourges.firstapplicationjfx.features.shared.models to com.fasterxml.jackson.databind;
 
-    opens fr.insa.bourges.firstapplicationjfx.features.home to javafx.fxml;
+    opens fr.insa.bourges.firstapplicationjfx.features.home.pages to javafx.fxml;
+
+    opens fr.insa.bourges.firstapplicationjfx.features.ingredient.components to javafx.fxml;
+    opens fr.insa.bourges.firstapplicationjfx.features.ingredient.pages to javafx.fxml;
+
     opens fr.insa.bourges.firstapplicationjfx.features.recipe to javafx.fxml;
-    opens fr.insa.bourges.firstapplicationjfx.features.ingredient to javafx.fxml;
-    opens fr.insa.bourges.firstapplicationjfx.features.ingredient.view.components to javafx.fxml;
-    opens fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages to javafx.fxml;
 }

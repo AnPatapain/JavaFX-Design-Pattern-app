@@ -1,4 +1,4 @@
-package fr.insa.bourges.firstapplicationjfx.features.ingredient.view.components;
+package fr.insa.bourges.firstapplicationjfx.features.ingredient.components;
 
 import fr.insa.bourges.firstapplicationjfx.base.controller.ControllerMediator;
 import fr.insa.bourges.firstapplicationjfx.base.view.ComponentView;
