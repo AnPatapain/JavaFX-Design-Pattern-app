@@ -19,7 +19,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class IngredientListPage extends AbstractPageView<IngredientController> {
     @FXML
@@ -36,7 +39,16 @@ public class IngredientListPage extends AbstractPageView<IngredientController> {
     }
 
     public void loadIngredientComponentView() {
-        List<Ingredient> ingredients = this.getController().getAllIngredientFromInventory();
+        List<Ingredient> ingredients = this.getController().getAllIngredients();
+        ingredientListContainer.getChildren().clear();
+
+        for (Ingredient ingredient : ingredients) {
+            HBox ingredientComponent = createIngredientComponent(ingredient);
+            ingredientListContainer.getChildren().add(ingredientComponent);
+        }
+    }
+
+    public void loadIngredientComponentView(List<Ingredient> ingredients) {
         ingredientListContainer.getChildren().clear();
 
         for (Ingredient ingredient : ingredients) {
@@ -78,8 +90,6 @@ public class IngredientListPage extends AbstractPageView<IngredientController> {
 
     @FXML
     private void onAddButtonClickHandler(ActionEvent actionEvent) {
-//        this.getController().navigateToAddIngredientPage();
-
         // Create modal for adding ingredient
         IngredientFormModal ingredientFormModal = AbstractModalView.createModal(
                 IngredientFormModal.class,
@@ -104,6 +114,19 @@ public class IngredientListPage extends AbstractPageView<IngredientController> {
 
     @FXML
     private void onSearchHandler(ActionEvent actionEvent) {
+        List<Ingredient> allIngredients = this.getController().getAllIngredients();
+        Pattern pattern = Pattern.compile(this.searchBox.getText(), Pattern.CASE_INSENSITIVE);
+
+        List<Ingredient> ingredientsResult = new ArrayList<>();
+
+        for(Ingredient ingredient : allIngredients) {
+            Matcher matcher = pattern.matcher(ingredient.getName());
+            if (matcher.find()) {
+                ingredientsResult.add(ingredient);
+            }
+        }
+
+        this.loadIngredientComponentView(ingredientsResult);
     }
 
     @FXML
