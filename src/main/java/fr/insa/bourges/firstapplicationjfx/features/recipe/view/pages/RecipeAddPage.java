@@ -2,6 +2,7 @@ package fr.insa.bourges.firstapplicationjfx.features.recipe.view.pages;
 
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
+import fr.insa.bourges.firstapplicationjfx.features.recipe.view.RecipePageType;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.*;
 import fr.insa.bourges.firstapplicationjfx.features.shared.utils.CustomUIAlert;
 import fr.insa.bourges.firstapplicationjfx.features.shared.utils.InputFormatter;
@@ -17,10 +18,12 @@ import javafx.scene.layout.VBox;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecipeAddPageView extends AbstractPageView<RecipeController> {
+public class RecipeAddPage extends AbstractPageView<RecipeController> {
     @FXML
     public VBox root;
 
+    @FXML
+    public Label recipeLabel;
     @FXML
     public TextField recipeNameField;
 
@@ -53,13 +56,16 @@ public class RecipeAddPageView extends AbstractPageView<RecipeController> {
     public TextArea instructionArea;
 
     @FXML
-    public ListView<String> ingredientsListView;;
+    public ListView<String> ingredientsListView;
 
     @FXML
     public Button addRecipeButton;
 
     @FXML
     public Button removeIngredientButton;
+
+    private Recipe recipe;
+    private RecipePageType recipePageType;
 
 
     @Override
@@ -90,6 +96,29 @@ public class RecipeAddPageView extends AbstractPageView<RecipeController> {
         CustomUIAlert.showAlert("Success", "Ingredient added successfully.");
     }
 
+    public void setPageLabel(String label) {
+        recipeLabel.setText(label);
+    }
+
+    private void clearFields() {
+        // Clear text fields
+        recipeNameField.clear();
+        instructionArea.clear();
+        ingredientNameField.clear();
+        ingredientQuantityField.clear();
+
+        // Clear combo boxes
+        categoryComboBox.getSelectionModel().clearSelection();
+        difficultyComboBox.getSelectionModel().clearSelection();
+        preparationTimeComboBox.getSelectionModel().clearSelection();
+        cookingTimeComboBox.getSelectionModel().clearSelection();
+        quantityUnitComboBox.getSelectionModel().clearSelection();
+
+        // Clear ListView
+        ingredientsListView.getItems().clear();
+
+
+    }
 
     public void removeSelectedIngredient(ActionEvent event) {
         String selectedIngredient = ingredientsListView.getSelectionModel().getSelectedItem();
@@ -101,8 +130,27 @@ public class RecipeAddPageView extends AbstractPageView<RecipeController> {
         // Remove the selected ingredient
         ingredientsListView.getItems().remove(selectedIngredient);
     }
+    public void setRecipePageType(RecipePageType recipePageType) {
+        this.recipePageType = recipePageType;
+    }
 
-    public void addRecipe(ActionEvent actionEvent) {
+    public void setRecipe(Recipe recipe){
+        this.recipe = recipe;
+        recipeNameField.setText(recipe.getName());
+        categoryComboBox.setValue(recipe.getCategory().toString());
+        preparationTimeComboBox.setValue(TimeParser.convertDecimalToHHmm(recipe.getPreparationTime()));
+        instructionArea.setText(recipe.getInstructions());
+        cookingTimeComboBox.setValue(TimeParser.convertDecimalToHHmm(recipe.getCookingTime()));
+        difficultyComboBox.setValue(recipe.getDifficultyLevel().toString());
+        List<Ingredient> ingredients = recipe.getIngredients();
+        for (Ingredient ingredient : ingredients) {
+            String ingredientString = ingredient.getName() + " - " + ingredient.getQuantity() + " " + ingredient.getUnit();
+            ingredientsListView.getItems().add(ingredientString);
+        }
+
+    }
+
+    public void saveRecipeHandler(ActionEvent actionEvent) {
 
         List<Ingredient> ingredientObjects = new ArrayList<>();
 
@@ -127,33 +175,40 @@ public class RecipeAddPageView extends AbstractPageView<RecipeController> {
 
 
 
-        Recipe recipe = new Recipe(
-                recipeNameField.getText(),
-                CategoryRecipe.valueOf(category),
-                TimeParser.parseTime(preparationTime),
-                TimeParser.parseTime(cookingTime),
-                DifficultyLevel.valueOf(difficulty),
-                ingredientObjects,
-                instructionArea.getText()
-        );
-        this.getController().addRecipe(recipe);
-        CustomUIAlert.showAlert("Success", "Recipe added successfully.");
+        if (this.recipePageType == RecipePageType.EDIT) {
 
-    }
+            this.recipe.setName(recipeName);
+            this.recipe.setCategory(CategoryRecipe.valueOf(category));
+            this.recipe.setPreparationTime(TimeParser.parseTime(preparationTime));
+            this.recipe.setInstructions(instructionArea.getText());
+            this.recipe.setCookingTime(TimeParser.parseTime(cookingTime));
+            this.recipe.setDifficultyLevel(DifficultyLevel.valueOf(difficulty));
+            this.recipe.setIngredients(ingredientObjects);
 
-    public void modifyRecipe(ActionEvent actionEvent) {
-    }
+            this.getController().updateRecipe(recipe);
+            CustomUIAlert.showAlert("Success", "Recipe updated successfully.");
+        }else{
+            Recipe recipe = new Recipe(
+                    recipeNameField.getText(),
+                    CategoryRecipe.valueOf(category),
+                    TimeParser.parseTime(preparationTime),
+                    TimeParser.parseTime(cookingTime),
+                    DifficultyLevel.valueOf(difficulty),
+                    ingredientObjects,
+                    instructionArea.getText()
+            );
+            this.getController().addRecipe(recipe);
+            CustomUIAlert.showAlert("Success", "Recipe added successfully.");
+        }
 
-    public void deleteRecipe(ActionEvent actionEvent) {
-    }
-
-    public void saveRecipe(ActionEvent actionEvent) {
     }
 
 
 
 
     public void navigateToRecipeListPage(ActionEvent actionEvent) {
+        clearFields();
+        this.setPageLabel("Add Recipe");
         this.getController().navigateToRecipeListPage();
     }
 }

@@ -1,8 +1,10 @@
 package fr.insa.bourges.firstapplicationjfx.features.recipe.view.pages;
 
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
+import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeCommandKeys;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
-import fr.insa.bourges.firstapplicationjfx.features.recipe.view.components.RecipeComponentView;
+import fr.insa.bourges.firstapplicationjfx.features.recipe.view.RecipePageType;
+import fr.insa.bourges.firstapplicationjfx.features.recipe.view.components.RecipeComponent;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Recipe;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +19,7 @@ import java.io.IOException;
 import java.util.List;
 
 
-public class RecipeListPageView extends AbstractPageView<RecipeController> {
+public class RecipeListPage extends AbstractPageView<RecipeController> {
     @FXML
     public BorderPane borderPane;
 
@@ -47,15 +49,21 @@ public class RecipeListPageView extends AbstractPageView<RecipeController> {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/fr/insa/bourges/firstapplicationjfx/views/recipeComponent.fxml")
             );
-            HBox recipeComponent = loader.load();
+            HBox recipeComponentFXML = loader.load();
 
-            RecipeComponentView recipeComponentView = loader.getController();
-            recipeComponentView.setRecipe(recipe);
-            recipeComponentView.registerCommand("reloadRecipe", args -> {
+            RecipeComponent recipeComponent = loader.getController();
+            recipeComponent.setRecipe(recipe);
+            recipeComponent.setParentPageView(this);
+            recipeComponent.registerCommand(RecipeCommandKeys.UPDATE_RECIPE.name(), args -> {
+                this.getController().navigateToEditRecipe((RecipePageType) args[0],(Recipe) args[1]);
+            });
+            recipeComponent.registerCommand(RecipeCommandKeys.DELETE_RECIPE.name(), args -> {
+                String toBeDeletedRecipeId = (String) args[0];
+                this.getController().deleteRecipe(toBeDeletedRecipeId);
                 this.loadRecipeComponentView();
             });
 
-            return recipeComponent;
+            return recipeComponentFXML;
         } catch (IOException e) {
             throw new RuntimeException("Failed to load recipe component", e);
         }

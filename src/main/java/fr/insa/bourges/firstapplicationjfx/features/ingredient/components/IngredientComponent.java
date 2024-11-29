@@ -3,7 +3,7 @@ package fr.insa.bourges.firstapplicationjfx.features.ingredient.components;
 import fr.insa.bourges.firstapplicationjfx.base.controller.ControllerMediator;
 import fr.insa.bourges.firstapplicationjfx.base.view.ComponentView;
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractModalView;
-import fr.insa.bourges.firstapplicationjfx.features.ingredient.CommandKeys;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientCommandKeys;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientController;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 import javafx.fxml.FXML;
@@ -47,18 +47,18 @@ public class IngredientComponent extends ComponentView {
         ingredientFormModal.setParentPageView(this.getParentPageView());
 
         // Register a callback for modal, modal will call after the "save button" is clicked. Command pattern is used
-        ingredientFormModal.registerCommand(CommandKeys.UPDATE_INGREDIENT.name(), args -> {
+        ingredientFormModal.registerCommand(IngredientCommandKeys.UPDATE_INGREDIENT.name(), args -> {
             Ingredient updatedIngredient = (Ingredient) args[0];
             ControllerMediator.getInstance().getControllersByType(IngredientController.class).updateIngredient(updatedIngredient);
         });
 
         ingredientFormModal.showModalAndWait();
 
-        this.executeCommand(CommandKeys.RELOAD_INGREDIENTS.name());
+        this.executeCommand(IngredientCommandKeys.RELOAD_INGREDIENTS.name());
     }
 
     @FXML
     private void onDeleteButtonClick() {
-        this.executeCommand(CommandKeys.DELETE_INGREDIENT.name(), this.ingredient.getId());
+        this.executeCommand(IngredientCommandKeys.DELETE_INGREDIENT.name(), this.ingredient.getId());
     }
 }

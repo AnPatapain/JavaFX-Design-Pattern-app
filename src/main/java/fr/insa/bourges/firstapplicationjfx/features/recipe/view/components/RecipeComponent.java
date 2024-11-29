@@ -1,6 +1,8 @@
 package fr.insa.bourges.firstapplicationjfx.features.recipe.view.components;
 
 import fr.insa.bourges.firstapplicationjfx.base.view.ComponentView;
+import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeCommandKeys;
+import fr.insa.bourges.firstapplicationjfx.features.recipe.view.RecipePageType;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Recipe;
@@ -10,22 +12,22 @@ import javafx.scene.layout.FlowPane;
 
 import java.util.List;
 
-public class RecipeComponentView extends ComponentView {
+public class RecipeComponent extends ComponentView {
 
     @FXML
-    private Label recipeName;
+    public Label recipeName;
     @FXML
-    private Label recipeCategory;
+    public Label recipeCategory;
     @FXML
-    private Label recipeInstruction;
+    public Label recipeInstruction;
     @FXML
-    private Label recipePreparationTime;
+    public Label recipePreparationTime;
     @FXML
-    private Label recipeCookingTime;
+    public Label recipeCookingTime;
     @FXML
-    private Label recipeDifficultyLevel;
+    public Label recipeDifficultyLevel;
     @FXML
-    private FlowPane ingredientsFlowPane; // Container for the list of ingredients
+    public FlowPane ingredientsFlowPane; // Container for the list of ingredients
 
     private Recipe recipe;
 
@@ -50,12 +52,15 @@ public class RecipeComponentView extends ComponentView {
     }
 
     @FXML
-    private void showRecipeEditModal() {
+    private void editRecipeHandler() {
         // Handle modal for editing the recipe
+//        this.getParentPageView().getController().navigateToEditRecipe(this.recipe);
+        this.executeCommand(RecipeCommandKeys.UPDATE_RECIPE.name(), RecipePageType.EDIT, this.recipe);
+
     }
 
     @FXML
-    private void deleteRecipe() {
-        // Handle recipe deletion
+    private void deleteRecipeHandler() {
+        this.executeCommand(RecipeCommandKeys.UPDATE_RECIPE.name(), this.recipe.getId());
     }
 }
