@@ -19,5 +19,6 @@ module fr.insa.bourges.firstapplicationjfx {
     opens fr.insa.bourges.firstapplicationjfx.features.ingredient.components to javafx.fxml;
     opens fr.insa.bourges.firstapplicationjfx.features.ingredient.pages to javafx.fxml;
 
-    opens fr.insa.bourges.firstapplicationjfx.features.recipe to javafx.fxml;
+    opens fr.insa.bourges.firstapplicationjfx.features.recipe.view.pages to javafx.fxml;
+    opens fr.insa.bourges.firstapplicationjfx.features.recipe.view.components to javafx.fxml;
 }

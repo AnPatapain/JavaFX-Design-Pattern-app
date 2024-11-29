@@ -13,6 +13,10 @@ public class Recipe extends AbstractEntity {
     private double cookingTime;
     private DifficultyLevel difficultyLevel;
 
+
+    public Recipe() {
+    }
+
     public Recipe(String name, CategoryRecipe category,
                   double preparationTime, double cookingTime,
                   DifficultyLevel difficultyLevel, List<Ingredient> ingredients, String instructions) {
@@ -38,7 +42,7 @@ public class Recipe extends AbstractEntity {
     public double getCookingTime() { return cookingTime; }
     public void setCookingTime(double cookingTime) { this.cookingTime = cookingTime; }
 
-    public DifficultyLevel getDifficulty() { return difficultyLevel; }
+    public DifficultyLevel getDifficultyLevel() { return difficultyLevel; }
     public void setDifficultyLevel(DifficultyLevel difficultyLevel) { this.difficultyLevel = difficultyLevel; }
 
     public List<Ingredient> getIngredients() { return ingredients; }

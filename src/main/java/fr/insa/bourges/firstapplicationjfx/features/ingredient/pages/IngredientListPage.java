@@ -3,7 +3,7 @@ package fr.insa.bourges.firstapplicationjfx.features.ingredient.pages;
 import fr.insa.bourges.firstapplicationjfx.base.controller.ControllerMediator;
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractModalView;
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
-import fr.insa.bourges.firstapplicationjfx.features.ingredient.CommandKeys;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientCommandKeys;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientController;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.components.IngredientComponent;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.components.IngredientFormModal;
@@ -72,10 +72,10 @@ public class IngredientListPage extends AbstractPageView<IngredientController> {
 
             ingredientComponent.setParentPageView(this);
 
-            ingredientComponent.registerCommand(CommandKeys.RELOAD_INGREDIENTS.name(), args -> {
+            ingredientComponent.registerCommand(IngredientCommandKeys.RELOAD_INGREDIENTS.name(), args -> {
                 this.loadIngredientComponentView();
             });
-            ingredientComponent.registerCommand(CommandKeys.DELETE_INGREDIENT.name(), args -> {
+            ingredientComponent.registerCommand(IngredientCommandKeys.DELETE_INGREDIENT.name(), args -> {
                 String toBeDeletedIngredientId = (String) args[0];
                 this.getController().deleteIngredient(toBeDeletedIngredientId);
                 this.loadIngredientComponentView();
@@ -102,7 +102,7 @@ public class IngredientListPage extends AbstractPageView<IngredientController> {
         ingredientFormModal.setParentPageView(this);
 
         // Register a callback for modal, modal will call after the "save button" is clicked. Command pattern is used
-        ingredientFormModal.registerCommand(CommandKeys.ADD_INGREDIENT.name(), args -> {
+        ingredientFormModal.registerCommand(IngredientCommandKeys.ADD_INGREDIENT.name(), args -> {
             Ingredient addedIngredient = (Ingredient) args[0];
             ControllerMediator.getInstance().getControllersByType(IngredientController.class).addIngredient(addedIngredient);
         });

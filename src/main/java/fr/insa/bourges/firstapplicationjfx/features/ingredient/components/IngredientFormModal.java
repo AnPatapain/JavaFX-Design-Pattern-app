@@ -1,7 +1,7 @@
 package fr.insa.bourges.firstapplicationjfx.features.ingredient.components;
 
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractModalView;
-import fr.insa.bourges.firstapplicationjfx.features.ingredient.CommandKeys;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientCommandKeys;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.exceptions.InvalidNumberFormatException;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.exceptions.InvalidUnitMeasureException;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
@@ -55,9 +55,9 @@ public class IngredientFormModal extends AbstractModalView {
             this.populateIngredientFromForm();
 
             if (this.ingredientFormType == IngredientFormType.ADD) {
-                this.executeCommand(CommandKeys.ADD_INGREDIENT.name(), this.ingredient);
+                this.executeCommand(IngredientCommandKeys.ADD_INGREDIENT.name(), this.ingredient);
             } else if (this.ingredientFormType == IngredientFormType.EDIT) {
-                this.executeCommand(CommandKeys.UPDATE_INGREDIENT.name(), this.ingredient);
+                this.executeCommand(IngredientCommandKeys.UPDATE_INGREDIENT.name(), this.ingredient);
             }
 
             this.closeModal();

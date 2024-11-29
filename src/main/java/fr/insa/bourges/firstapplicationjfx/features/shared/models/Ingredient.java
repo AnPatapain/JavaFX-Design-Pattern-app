@@ -23,6 +23,14 @@ public class Ingredient extends AbstractEntity {
         this.expirationDate = expirationDate;
     }
 
+    public Ingredient(String name, double quantity, UnitMeasure unit) {
+        this.name = name;
+        this.quantity = quantity;
+        this.unit = unit;
+        this.addDate = LocalDate.now();
+        this.expirationDate = LocalDate.now();
+    }
+
     public String getName() {
         return name;
     }
