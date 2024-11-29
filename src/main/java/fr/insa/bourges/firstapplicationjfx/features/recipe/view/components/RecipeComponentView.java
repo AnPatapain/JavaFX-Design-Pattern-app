@@ -39,7 +39,7 @@ public class RecipeComponentView extends ComponentView {
         recipeInstruction.setText("Instructions: " + recipe.getInstructions());
         recipePreparationTime.setText("Preparation Time: " + recipe.getPreparationTime() + " minutes");
         recipeCookingTime.setText("Cooking Time: " + recipe.getCookingTime() + " minutes");
-        recipeDifficultyLevel.setText("Difficulty Level: " + recipe.getDifficulty());
+        recipeDifficultyLevel.setText("Difficulty Level: " + recipe.getDifficultyLevel());
 
         // Dynamically add the ingredients to the FlowPane
         List<Ingredient> ingredients = recipe.getIngredients();

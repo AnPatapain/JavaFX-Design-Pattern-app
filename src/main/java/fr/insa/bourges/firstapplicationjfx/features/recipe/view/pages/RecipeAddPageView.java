@@ -1,4 +1,4 @@
-package fr.insa.bourges.firstapplicationjfx.features.recipe.view;
+package fr.insa.bourges.firstapplicationjfx.features.recipe.view.pages;
 
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
@@ -69,12 +69,6 @@ public class RecipeAddPageView extends AbstractPageView<RecipeController> {
         ingredientQuantityField.setTextFormatter(numericFormatter);
     }
 
-    public void navigateToHomePage(ActionEvent event) {
-        this.getController().navigateToHomePage();
-    }
-
-    public void saveRecipe(ActionEvent actionEvent) {
-    }
 
     @FXML
     public void addIngredient(ActionEvent actionEvent) {
@@ -153,8 +147,14 @@ public class RecipeAddPageView extends AbstractPageView<RecipeController> {
     public void deleteRecipe(ActionEvent actionEvent) {
     }
 
+    public void saveRecipe(ActionEvent actionEvent) {
+    }
 
 
 
+
+    public void navigateToRecipeListPage(ActionEvent actionEvent) {
+        this.getController().navigateToRecipeListPage();
+    }
 }
 

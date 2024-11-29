@@ -40,6 +40,6 @@
     "instructions": "COOK AND EAT",
     "preparationTime": 0.75,
     "cookingTime": 1.0,
-    "difficulty": "MEDIUM"
+    "difficultyLevel": "MEDIUM"
   }
 ]

@@ -11,8 +11,8 @@ import fr.insa.bourges.firstapplicationjfx.features.home.pages.HomePage;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientController;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.pages.IngredientListPage;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
-import fr.insa.bourges.firstapplicationjfx.features.recipe.view.RecipeAddPageView;
-import fr.insa.bourges.firstapplicationjfx.features.recipe.view.RecipeListPageView;
+import fr.insa.bourges.firstapplicationjfx.features.recipe.view.pages.RecipeAddPageView;
+import fr.insa.bourges.firstapplicationjfx.features.recipe.view.pages.RecipeListPageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;

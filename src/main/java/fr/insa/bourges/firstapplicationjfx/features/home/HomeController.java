@@ -25,7 +25,7 @@ public class HomeController extends AbstractController<AbstractPageView<?>> {
         }
     }
 
-    public void navigateToRecipePage() { this.eventDispatcher.dispatchEvent(EventType.SHOW_RECIPE_PAGE); }
+    public void navigateToRecipePage() { this.eventDispatcher.dispatchEvent(EventType.SHOW_RECIPE_LIST_PAGE); }
 
     public void navigateToIngredientPage() {this.eventDispatcher.dispatchEvent(EventType.SHOW_INGREDIENT_LIST_PAGE); }
 }

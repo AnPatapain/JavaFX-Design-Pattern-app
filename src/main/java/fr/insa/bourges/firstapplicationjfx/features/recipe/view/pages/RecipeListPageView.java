@@ -1,4 +1,4 @@
-package fr.insa.bourges.firstapplicationjfx.features.recipe.view;
+package fr.insa.bourges.firstapplicationjfx.features.recipe.view.pages;
 
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
@@ -61,10 +61,14 @@ public class RecipeListPageView extends AbstractPageView<RecipeController> {
         }
     }
     public void navigateToAddRecipe(ActionEvent actionEvent) {
+        this.getController().navigateToAddRecipe();
 
     }
     public void searchRecipe(ActionEvent actionEvent) {
 
     }
 
+    public void onBackToHomePageLinkClickHandler(ActionEvent actionEvent) {
+        this.getController().navigateToHomePage();
+    }
 }
