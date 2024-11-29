@@ -38,7 +38,7 @@ public class IngredientController extends AbstractController<AbstractPageView<?>
 
     ////////////////
     // CRUD methods
-    public List<Ingredient> getAllIngredientFromInventory() {
+    public List<Ingredient> getAllIngredients() {
         return this.ingredientRepo.findAll();
     }
 
