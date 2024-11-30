@@ -28,6 +28,7 @@
         <VBox alignment="CENTER">
             <Hyperlink text="My recipe inventory" onAction="#navigateToRecipePage"/>
             <Hyperlink text="My ingredient inventory" onAction="#navigateToIngredientPage"/>
+            <Hyperlink text="Feasible recipes based on current ingredient" onAction="#navigateToRecipeIndicationPage"/>
         </VBox>
     </center>
 </BorderPane>

@@ -11,15 +11,23 @@ public class HomePage extends AbstractPageView<HomeController> {
     @FXML
     BorderPane borderPane;
 
+    @Override
     public void initializeScene() {
         this.setScene(new Scene(borderPane, 800, 600));
     }
 
-    public void navigateToRecipePage(ActionEvent event) {
+    @FXML
+    private void navigateToRecipePage(ActionEvent event) {
         this.getController().navigateToRecipePage();
     }
 
-    public void navigateToIngredientPage(ActionEvent event) {
+    @FXML
+    private void navigateToIngredientPage(ActionEvent event) {
         this.getController().navigateToIngredientPage();
+    }
+
+    @FXML
+    private void navigateToRecipeIndicationPage(ActionEvent actionEvent) {
+        this.getController().navigateToRecipeIndicationPage();
     }
 }

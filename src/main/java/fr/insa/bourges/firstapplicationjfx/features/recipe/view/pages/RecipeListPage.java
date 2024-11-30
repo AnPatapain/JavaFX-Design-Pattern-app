@@ -52,7 +52,7 @@ public class RecipeListPage extends AbstractPageView<RecipeController> {
     }
 
     public void loadRecipeComponentView() {
-        List<Recipe> recipes = this.getController().getAllRecipeFromInventory();
+        List<Recipe> recipes = this.getController().getAllRecipe();
         recipeListContainer.getChildren().clear();
 
         for (Recipe recipe : recipes) {
@@ -98,7 +98,7 @@ public class RecipeListPage extends AbstractPageView<RecipeController> {
 
     // Event Handlers
     public void onSearchHandler(ActionEvent actionEvent) {
-        List<Recipe> allRecipes = this.getController().getAllRecipeFromInventory();
+        List<Recipe> allRecipes = this.getController().getAllRecipe();
         Pattern pattern = Pattern.compile(searchBox.getText(), Pattern.CASE_INSENSITIVE);
 
         List<Recipe> filteredRecipes = allRecipes.stream()
@@ -116,7 +116,7 @@ public class RecipeListPage extends AbstractPageView<RecipeController> {
             return;
         }
         this.getController().setFilter(filter);
-        List<Recipe> allRecipes = this.getController().getAllRecipeFromInventory();
+        List<Recipe> allRecipes = this.getController().getAllRecipe();
         this.getController().getFilterContext().setRecipes(allRecipes);
         if (filter.equals("TIME")) {
             if (timeFilterComboBox.getValue() == null) {

@@ -11,7 +11,7 @@
     <!-- Top Section -->
     <top>
         <HBox spacing="10" style="-fx-padding: 10;">
-            <Label text="All Ingredients" style="-fx-font-size: 20px;" />
+            <Label text="My Ingredients Inventory" style="-fx-font-size: 20px;" />
             <Button text="Add Ingredient +" onAction="#onAddButtonClickHandler" style="-fx-background-color: lightgreen;" />
             <TextField fx:id="searchBox" promptText="Search ingredient" />
             <Button text="Search" onAction="#onSearchHandler" />

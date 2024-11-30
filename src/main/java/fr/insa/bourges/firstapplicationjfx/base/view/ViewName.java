@@ -5,6 +5,7 @@ public enum ViewName {
 
     RECIPE_LIST,
     RECIPE_ADD,
+    RECIPE_INDICATION,
 
     INGREDIENT_LIST,
     INGREDIENT_ADD,

@@ -17,7 +17,7 @@
 
             <!-- First Line: All Recipe, Add Recipe Button, Search Box, and Search Button -->
             <HBox spacing="10">
-                <Label text="All Recipe" style="-fx-font-size: 20px;" />
+                <Label text="My Recipe Inventory" style="-fx-font-size: 20px;" />
                 <Button text="Add Recipe +" onAction="#navigateToAddRecipe" style="-fx-background-color: lightgreen;" />
                 <TextField fx:id="searchBox" promptText="Search recipe" />
                 <Button text="Search" onAction="#onSearchHandler" />
