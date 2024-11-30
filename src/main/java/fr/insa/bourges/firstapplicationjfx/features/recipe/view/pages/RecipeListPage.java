@@ -63,6 +63,9 @@ public class RecipeListPage extends AbstractPageView<RecipeController> {
         recipeListContainer.getChildren().clear();
 
         for (Recipe recipe : recipes) {
+            if (recipe == null) {
+                continue;
+            }
             HBox recipeComponent = createRecipeComponent(recipe);
             recipeListContainer.getChildren().add(recipeComponent);
         }
