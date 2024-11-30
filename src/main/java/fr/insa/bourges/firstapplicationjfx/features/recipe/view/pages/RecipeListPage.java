@@ -44,7 +44,7 @@ public class RecipeListPage extends AbstractPageView<RecipeController> {
 
     @Override
     public void initializeScene() {
-        this.setScene(new Scene(this.borderPane, 600, 400));
+        this.setScene(new Scene(this.borderPane, 800, 600));
         recipeFilterComboBox.valueProperty().addListener((obs, oldVal, newVal) -> {
             timeFilterSectionDynamic.setVisible(newVal.equals("TIME"));
         });

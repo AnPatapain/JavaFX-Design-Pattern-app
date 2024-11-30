@@ -34,7 +34,7 @@ public class IngredientListPage extends AbstractPageView<IngredientController> {
 
     @Override
     public void initializeScene() {
-        this.setScene(new Scene(this.borderPane, 600, 400));
+        this.setScene(new Scene(this.borderPane, 800, 600));
         loadIngredientComponentView();
     }
 

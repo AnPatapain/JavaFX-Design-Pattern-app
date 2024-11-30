@@ -64,10 +64,6 @@ public class RecipeController extends AbstractController
         }
     }
 
-    public void navigateToHomePage() {
-        this.eventDispatcher.dispatchEvent(EventType.SHOW_HOME_PAGE);
-    }
-
     /*
      * CRUD operations
      */
@@ -107,5 +103,9 @@ public class RecipeController extends AbstractController
         this.getViewAs(ViewName.RECIPE_ADD, RecipeAddPage.class).setRecipePageType(recipePageType);
         this.getViewAs(ViewName.RECIPE_ADD, RecipeAddPage.class).setRecipe(recipe);
         this.eventDispatcher.dispatchEvent(EventType.SHOW_RECIPE_ADD_PAGE);
+    }
+
+    public void navigateToHomePage() {
+        this.eventDispatcher.dispatchEvent(EventType.SHOW_HOME_PAGE);
     }
 }

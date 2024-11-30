@@ -12,7 +12,7 @@ public class HomePage extends AbstractPageView<HomeController> {
     BorderPane borderPane;
 
     public void initializeScene() {
-        this.setScene(new Scene(borderPane, 600, 400));
+        this.setScene(new Scene(borderPane, 800, 600));
     }
 
     public void navigateToRecipePage(ActionEvent event) {

@@ -73,7 +73,7 @@ public class RecipeAddPage extends AbstractPageView<RecipeController> {
 
     @Override
     public void initializeScene() {
-        this.setScene(new Scene(root, 600, 400));
+        this.setScene(new Scene(root, 800, 600));
         TextFormatter<String> numericFormatter = InputFormatter.getNumericInputFormatter();
         ingredientQuantityField.setTextFormatter(numericFormatter);
     }
