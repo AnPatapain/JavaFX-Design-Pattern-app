@@ -6,6 +6,7 @@ import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.view.RecipePageType;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.view.components.RecipeComponent;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Recipe;
+import fr.insa.bourges.firstapplicationjfx.features.shared.utils.CustomUIAlert;
 import fr.insa.bourges.firstapplicationjfx.features.shared.utils.TimeParser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -118,7 +119,11 @@ public class RecipeListPage extends AbstractPageView<RecipeController> {
         List<Recipe> allRecipes = this.getController().getAllRecipeFromInventory();
         this.getController().getFilterContext().setRecipes(allRecipes);
         if (filter.equals("TIME")) {
-            Double time = TimeParser.parseTime(timeFilterComboBox.getValue());
+            if (timeFilterComboBox.getValue() == null) {
+                CustomUIAlert.showAlert("Error", "Please select time!");
+                return;
+            }
+            double time = TimeParser.parseTime(timeFilterComboBox.getValue());
             this.getController().getFilterContext().setTime(time);
         }
         List<Recipe> filteredRecipes = this.getController().applyFilter();

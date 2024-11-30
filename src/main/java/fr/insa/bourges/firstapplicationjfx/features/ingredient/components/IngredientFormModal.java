@@ -7,6 +7,7 @@ import fr.insa.bourges.firstapplicationjfx.features.ingredient.exceptions.Invali
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.CategoryIngredient;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.UnitMeasure;
+import fr.insa.bourges.firstapplicationjfx.features.shared.utils.CustomUIAlert;
 import fr.insa.bourges.firstapplicationjfx.features.shared.utils.InputFormatter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -53,6 +54,14 @@ public class IngredientFormModal extends AbstractModalView {
         try {
             if (this.ingredient == null) {
                 this.ingredient = new Ingredient();
+            }
+
+            if (this.name.getText().isBlank() || this.quantity.getText().isBlank() ||
+                    this.unit.getValue() == null || this.unit.getValue().isBlank() ||
+                    this.category.getValue() == null || this.category.getValue().isBlank()
+            ) {
+                CustomUIAlert.showAlert("Error", "Please fill all fields!");
+                return;
             }
 
             this.populateIngredientFromForm();
