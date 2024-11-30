@@ -11,6 +11,7 @@
         <Label fx:id="ingredientQuantity" text="Quantity: Placeholder"/>
         <Label fx:id="ingredientUnit" text="Unit: Placeholder"/>
         <Label fx:id="ingredientAddDate" text="Add Date: Placeholder"/>
+        <Label fx:id="ingredientCategory" text="Category: Placeholder"/>
         <Label fx:id="ingredientExpirationDate" text="Expiration Date: Placeholder"/>
     </VBox>
     <Button text="Edit" onAction="#onEditButtonClick" style="-fx-background-color: lightblue;"/>

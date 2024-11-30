@@ -3,6 +3,7 @@ package fr.insa.bourges.firstapplicationjfx.features.shared.models;
 import fr.insa.bourges.firstapplicationjfx.base.database.AbstractEntity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Ingredient extends AbstractEntity {
     private String name;
@@ -10,6 +11,10 @@ public class Ingredient extends AbstractEntity {
     private UnitMeasure unit;
     private LocalDate addDate;
     private LocalDate expirationDate;
+
+    private CategoryIngredient categoryIngredient;
+
+
 
     public Ingredient() {
     }
@@ -23,13 +28,6 @@ public class Ingredient extends AbstractEntity {
         this.expirationDate = expirationDate;
     }
 
-    public Ingredient(String name, double quantity, UnitMeasure unit) {
-        this.name = name;
-        this.quantity = quantity;
-        this.unit = unit;
-        this.addDate = LocalDate.now();
-        this.expirationDate = LocalDate.now();
-    }
 
     public String getName() {
         return name;
@@ -71,6 +69,16 @@ public class Ingredient extends AbstractEntity {
         this.expirationDate = expirationDate;
     }
 
+    public void setCategoryIngredient(CategoryIngredient categoryIngredient) {
+        this.categoryIngredient = categoryIngredient;
+    }
+    public CategoryIngredient getCategoryIngredient() {
+        return categoryIngredient;
+    }
+
+
+
+    //!TODO: add category to ingredient toString()
     @Override
     public String toString() {
         return "{ " + "Id: " + this.getId() + ", " +  "Name: " + this.getName() + ", " + "Quantity: " + this.getQuantity()

@@ -20,6 +20,8 @@ public class IngredientComponent extends ComponentView {
     public Label ingredientAddDate;
     @FXML
     public Label ingredientExpirationDate;
+    @FXML
+    public Label ingredientCategory;
 
     private Ingredient ingredient;
 
@@ -30,6 +32,7 @@ public class IngredientComponent extends ComponentView {
         ingredientUnit.setText("Unit: " + ingredient.getUnit());
         ingredientAddDate.setText("Add Date: " + ingredient.getAddDate());
         ingredientExpirationDate.setText("Expiration Date: " + ingredient.getExpirationDate());
+        ingredientCategory.setText("Category: " + ingredient.getCategoryIngredient());
     }
 
     @FXML

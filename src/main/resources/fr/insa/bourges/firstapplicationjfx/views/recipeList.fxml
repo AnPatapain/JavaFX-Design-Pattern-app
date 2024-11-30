@@ -3,6 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
@@ -10,16 +12,66 @@
 
     <!-- Top Section -->
     <top>
-        <HBox spacing="10" style="-fx-padding: 10;">
-            <Label text="All Recipe" style="-fx-font-size: 20px;" />
-            <Button text="Add Recipe +" onAction="#navigateToAddRecipe" style="-fx-background-color: lightgreen;" />
-            <TextField fx:id="searchBox" promptText="Search recipe" />
-            <Button text="Search" onAction="#searchRecipe" />
-        </HBox>
+        <!-- VBox to stack the two HBox sections vertically -->
+        <VBox spacing="10" style="-fx-padding: 10;">
+
+            <!-- First Line: All Recipe, Add Recipe Button, Search Box, and Search Button -->
+            <HBox spacing="10">
+                <Label text="All Recipe" style="-fx-font-size: 20px;" />
+                <Button text="Add Recipe +" onAction="#navigateToAddRecipe" style="-fx-background-color: lightgreen;" />
+                <TextField fx:id="searchBox" promptText="Search recipe" />
+                <Button text="Search" onAction="#onSearchHandler" />
+            </HBox>
+
+            <!-- Second Line: Filter Section (Filter by, ComboBox, and Filter Button) -->
+            <HBox spacing="10">
+                <Label text="Filter by:" />
+                <ComboBox fx:id="recipeFilterComboBox">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="ALL"/>
+                            <String fx:value="GLUTEN_FREE" />
+                            <String fx:value="VEGETARIAN" />
+                            <String fx:value="TIME" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <HBox fx:id="timeFilterSectionDynamic" spacing="10" visible="false">
+                    <Label text="Total time taken:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                    <ComboBox fx:id="timeFilterComboBox" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="00:30" />
+                                <String fx:value="01:00" />
+                                <String fx:value="01:30" />
+                                <String fx:value="02:00" />
+                                <String fx:value="02:30" />
+                                <String fx:value="03:00" />
+                                <String fx:value="03:30" />
+                                <String fx:value="04:00" />
+                                <String fx:value="04:30" />
+                                <String fx:value="05:00" />
+                                <String fx:value="05:30" />
+                                <String fx:value="06:00" />
+                                <String fx:value="06:30" />
+                                <String fx:value="07:00" />
+                                <String fx:value="07:30" />
+                                <String fx:value="08:00" />
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                </HBox>
+                <Button text="Filter" onAction="#onCategoryFilterHandler"/>
+            </HBox>
+
+        </VBox>
     </top>
+
+
 
     <!-- Center Section -->
     <center>
+
         <ScrollPane fitToWidth="true" style="-fx-padding: 10;">
             <VBox fx:id="recipeListContainer" spacing="10" style="-fx-padding: 10;">
                 <!-- Ingredient components will be dynamically added here -->

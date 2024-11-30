@@ -6,10 +6,12 @@ import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.view.RecipePageType;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.view.components.RecipeComponent;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Recipe;
+import fr.insa.bourges.firstapplicationjfx.features.shared.utils.TimeParser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -17,6 +19,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Pattern;
 
 
 public class RecipeListPage extends AbstractPageView<RecipeController> {
@@ -29,14 +32,34 @@ public class RecipeListPage extends AbstractPageView<RecipeController> {
     @FXML
     public VBox recipeListContainer;
 
+    @FXML
+    public ComboBox<String> recipeFilterComboBox;
+
+    @FXML
+    public ComboBox<String> timeFilterComboBox;
+
+    @FXML
+    public HBox timeFilterSectionDynamic;
+
     @Override
     public void initializeScene() {
         this.setScene(new Scene(this.borderPane, 600, 400));
+        recipeFilterComboBox.valueProperty().addListener((obs, oldVal, newVal) -> {
+            timeFilterSectionDynamic.setVisible(newVal.equals("TIME"));
+        });
         loadRecipeComponentView();
     }
 
     public void loadRecipeComponentView() {
         List<Recipe> recipes = this.getController().getAllRecipeFromInventory();
+        recipeListContainer.getChildren().clear();
+
+        for (Recipe recipe : recipes) {
+            HBox recipeComponent = createRecipeComponent(recipe);
+            recipeListContainer.getChildren().add(recipeComponent);
+        }
+    }
+    public void loadRecipeComponentView(List<Recipe> recipes) {
         recipeListContainer.getChildren().clear();
 
         for (Recipe recipe : recipes) {
@@ -68,11 +91,40 @@ public class RecipeListPage extends AbstractPageView<RecipeController> {
             throw new RuntimeException("Failed to load recipe component", e);
         }
     }
-    public void navigateToAddRecipe(ActionEvent actionEvent) {
-        this.getController().navigateToAddRecipe();
+
+    // Event Handlers
+    public void onSearchHandler(ActionEvent actionEvent) {
+        List<Recipe> allRecipes = this.getController().getAllRecipeFromInventory();
+        Pattern pattern = Pattern.compile(searchBox.getText(), Pattern.CASE_INSENSITIVE);
+
+        List<Recipe> filteredRecipes = allRecipes.stream()
+                .filter(recipe -> pattern.matcher(recipe.getName()).find())
+                .toList();
+
+        this.loadRecipeComponentView(filteredRecipes);
 
     }
-    public void searchRecipe(ActionEvent actionEvent) {
+    public void onCategoryFilterHandler(ActionEvent actionEvent) {
+        String filter = recipeFilterComboBox.getValue();
+
+        if (filter.equals("ALL")) {
+            this.loadRecipeComponentView();
+            return;
+        }
+        this.getController().setFilter(filter);
+        List<Recipe> allRecipes = this.getController().getAllRecipeFromInventory();
+        this.getController().getFilterContext().setRecipes(allRecipes);
+        if (filter.equals("TIME")) {
+            Double time = TimeParser.parseTime(timeFilterComboBox.getValue());
+            this.getController().getFilterContext().setTime(time);
+        }
+        List<Recipe> filteredRecipes = this.getController().applyFilter();
+        this.loadRecipeComponentView(filteredRecipes);
+    }
+
+    // Navigation
+    public void navigateToAddRecipe(ActionEvent actionEvent) {
+        this.getController().navigateToAddRecipe();
 
     }
 

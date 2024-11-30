@@ -12,6 +12,7 @@
     <Label fx:id="modalLabel" style="-fx-font-size: 20px;"/>
     <TextField fx:id="name" promptText="Ingredient Name"/>
     <TextField fx:id="quantity" promptText="Quantity"/>
+
     <ComboBox fx:id="unit" promptText="Unit of Measurement">
         <items>
             <FXCollections fx:factory="observableArrayList">
@@ -22,6 +23,21 @@
             </FXCollections>
         </items>
     </ComboBox>
+
+    <ComboBox fx:id="category" promptText="Ingredient Category">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="GRAIN"/>
+                <String fx:value="VEGETABLE"/>
+                <String fx:value="MEAT"/>
+                <String fx:value="SPICE"/>
+                <String fx:value="DAIRY"/>
+                <String fx:value="FRUIT"/>
+                <String fx:value="FISH"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
     <DatePicker fx:id="addDate" promptText="Add Date"/>
     <DatePicker fx:id="expirationDate" promptText="Expiration Date"/>
     <HBox spacing="10">
