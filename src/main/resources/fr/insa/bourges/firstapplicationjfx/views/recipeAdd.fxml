@@ -57,6 +57,19 @@
                         </FXCollections>
                     </items>
                 </ComboBox>
+                <ComboBox fx:id="categoryIngredientComboBox" promptText="Ingredient Category">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="GRAIN"/>
+                            <String fx:value="VEGETABLE"/>
+                            <String fx:value="MEAT"/>
+                            <String fx:value="SPICE"/>
+                            <String fx:value="DAIRY"/>
+                            <String fx:value="FRUIT"/>
+                            <String fx:value="FISH"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
                 <Button text="Add" fx:id="addIngredientButton"
                         onAction="#addIngredient" GridPane.rowIndex="0" GridPane.columnIndex="4" style="-fx-background-color: lightgreen;" />
             </children>

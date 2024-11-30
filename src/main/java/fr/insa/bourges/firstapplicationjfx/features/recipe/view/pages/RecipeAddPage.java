@@ -43,6 +43,9 @@ public class RecipeAddPage extends AbstractPageView<RecipeController> {
     public ComboBox<String> quantityUnitComboBox;
 
     @FXML
+    public ComboBox<String> categoryIngredientComboBox;
+
+    @FXML
     public Button addIngredientButton;
 
 
@@ -81,12 +84,13 @@ public class RecipeAddPage extends AbstractPageView<RecipeController> {
         String ingredientName = ingredientNameField.getText();
         String ingredientQuantity= ingredientQuantityField.getText();
         String unit = quantityUnitComboBox.getValue();
+        String category = categoryIngredientComboBox.getValue();
 
-        if (ingredientName.isEmpty() || ingredientQuantity.isEmpty() || unit == null) {
+        if (ingredientName.isEmpty() || ingredientQuantity.isEmpty() || unit == null|| category == null) {
             CustomUIAlert.showAlert("Error", "Please fill all ingredient fields before adding.");
             return;
         }
-        String ingredient = ingredientName + " - " + ingredientQuantity + " " + unit;
+        String ingredient = ingredientName + " - " + ingredientQuantity + " " + unit + " - " + category;
         ingredientsListView.getItems().add(ingredient);
 
 
@@ -113,7 +117,7 @@ public class RecipeAddPage extends AbstractPageView<RecipeController> {
         preparationTimeComboBox.getSelectionModel().clearSelection();
         cookingTimeComboBox.getSelectionModel().clearSelection();
         quantityUnitComboBox.getSelectionModel().clearSelection();
-
+        categoryIngredientComboBox.getSelectionModel().clearSelection();
         // Clear ListView
         ingredientsListView.getItems().clear();
 
@@ -144,7 +148,7 @@ public class RecipeAddPage extends AbstractPageView<RecipeController> {
         difficultyComboBox.setValue(recipe.getDifficultyLevel().toString());
         List<Ingredient> ingredients = recipe.getIngredients();
         for (Ingredient ingredient : ingredients) {
-            String ingredientString = ingredient.getName() + " - " + ingredient.getQuantity() + " " + ingredient.getUnit();
+            String ingredientString = ingredient.getName() + " - " + ingredient.getQuantity() + " " + ingredient.getUnit() + " - " + ingredient.getCategoryIngredient();
             ingredientsListView.getItems().add(ingredientString);
         }
 
@@ -160,7 +164,14 @@ public class RecipeAddPage extends AbstractPageView<RecipeController> {
             String[] quantityParts = parts[1].split(" ");
             Double quantity = Double.parseDouble(quantityParts[0]);
             UnitMeasure unit = UnitMeasure.valueOf(quantityParts[1]);
-            ingredientObjects.add(new Ingredient(name, quantity, unit));
+            CategoryIngredient category = CategoryIngredient.valueOf(parts[2]);
+            Ingredient ingredientObject = new Ingredient();
+            ingredientObject.setName(name);
+            ingredientObject.setQuantity(quantity);
+            ingredientObject.setUnit(unit);
+            ingredientObject.setCategoryIngredient(category);
+
+            ingredientObjects.add(ingredientObject);
         }
 
         String recipeName = recipeNameField.getText();
@@ -168,7 +179,8 @@ public class RecipeAddPage extends AbstractPageView<RecipeController> {
         String preparationTime = preparationTimeComboBox.getValue();
         String cookingTime = cookingTimeComboBox.getValue();
         String difficulty = difficultyComboBox.getValue();
-        if(recipeName.isEmpty() || category == null || preparationTime == null || cookingTime == null || difficulty == null || ingredientObjects.isEmpty() || instructionArea.getText().isEmpty()){
+        String instruction = instructionArea.getText();
+        if(recipeName.isEmpty() || category == null || preparationTime == null || cookingTime == null || difficulty == null || ingredientObjects.isEmpty() || instruction.isEmpty()){
             CustomUIAlert.showAlert("Error", "Please fill all recipe fields before adding.");
             return;
         }
@@ -195,7 +207,7 @@ public class RecipeAddPage extends AbstractPageView<RecipeController> {
                     TimeParser.parseTime(cookingTime),
                     DifficultyLevel.valueOf(difficulty),
                     ingredientObjects,
-                    instructionArea.getText()
+                    instruction
             );
             this.getController().addRecipe(recipe);
             CustomUIAlert.showAlert("Success", "Recipe added successfully.");

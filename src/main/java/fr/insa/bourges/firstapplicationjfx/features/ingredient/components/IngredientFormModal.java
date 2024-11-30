@@ -4,6 +4,7 @@ import fr.insa.bourges.firstapplicationjfx.base.view.AbstractModalView;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientCommandKeys;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.exceptions.InvalidNumberFormatException;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.exceptions.InvalidUnitMeasureException;
+import fr.insa.bourges.firstapplicationjfx.features.shared.models.CategoryIngredient;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.UnitMeasure;
 import fr.insa.bourges.firstapplicationjfx.features.shared.utils.InputFormatter;
@@ -33,6 +34,8 @@ public class IngredientFormModal extends AbstractModalView {
     @FXML
     public DatePicker expirationDate;
 
+    @FXML
+    public ComboBox<String> category;
 
     private Ingredient ingredient;
 
@@ -87,6 +90,7 @@ public class IngredientFormModal extends AbstractModalView {
         unit.setValue(ingredient.getUnit().name());
         addDate.setValue(ingredient.getAddDate());
         expirationDate.setValue(ingredient.getExpirationDate());
+        category.setValue(ingredient.getCategoryIngredient().name());
     }
 
     public void setIngredientFormType(IngredientFormType ingredientFormType) {
@@ -100,6 +104,7 @@ public class IngredientFormModal extends AbstractModalView {
             this.ingredient.setUnit(UnitMeasure.valueOf(this.unit.getValue()));
             this.ingredient.setAddDate(addDate.getValue());
             this.ingredient.setExpirationDate(expirationDate.getValue());
+            this.ingredient.setCategoryIngredient(CategoryIngredient.valueOf(this.category.getValue()));
         } catch (NumberFormatException e) {
             throw new InvalidNumberFormatException("Quantity must be a valid number.");
         } catch (IllegalArgumentException | NullPointerException e) {

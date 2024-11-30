@@ -8,6 +8,9 @@ import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
+import fr.insa.bourges.firstapplicationjfx.features.recipe.filter.FilterContext;
+import fr.insa.bourges.firstapplicationjfx.features.recipe.filter.FilterType;
+import fr.insa.bourges.firstapplicationjfx.features.recipe.filter.RecipeFilterService;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.view.RecipePageType;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.view.pages.RecipeAddPage;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.view.pages.RecipeListPage;
@@ -22,6 +25,22 @@ public class RecipeController extends AbstractController
     public RecipeController(EventDispatcher eventDispatcher, RenderViewManager renderViewManager) {
         super(eventDispatcher, renderViewManager);
     }
+
+    // Filter
+    private RecipeFilterService recipeFilterService = new RecipeFilterService();
+    private FilterContext filterContext = new FilterContext();
+    public void setFilter(String filter) {
+        this.recipeFilterService.setFilter(FilterType.valueOf(filter));
+    }
+    public FilterContext getFilterContext(){
+        return this.filterContext;
+    }
+
+
+    public List<Recipe> applyFilter() {
+        return this.recipeFilterService.applyFilter(this.filterContext);
+    }
+
 
     @Override
     public void setSubscription(EventDispatcher eventDispatcher) {

@@ -1,29 +1,89 @@
 [
   {
-    "id": "3aca6d41-793f-46b1-a677-f820bf6b827b",
-    "name": "dog",
+    "id": "45f04e5d-f2ef-4ef6-ba36-627081d09609",
+    "name": "Croissant",
+    "category": "ENTREE",
+    "ingredients": [
+      {
+        "id": null,
+        "name": "Wheat",
+        "quantity": 100.0,
+        "unit": "GRAMS",
+        "addDate": null,
+        "expirationDate": null,
+        "categoryIngredient": "GRAIN"
+      },
+      {
+        "id": null,
+        "name": "Sugar",
+        "quantity": 100.0,
+        "unit": "GRAMS",
+        "addDate": null,
+        "expirationDate": null,
+        "categoryIngredient": "DAIRY"
+      }
+    ],
+    "instructions": "s1: get to oven\ns2: eat",
+    "preparationTime": 0.25,
+    "cookingTime": 1.25,
+    "difficultyLevel": "HARD"
+  },
+  {
+    "id": "e55e46e9-b9ca-4943-a9b2-736b6f53b3e3",
+    "name": "Pot au Feu",
     "category": "PRINCIPAL",
     "ingredients": [
       {
         "id": null,
-        "name": "Salt1",
-        "quantity": 23213.0,
-        "unit": "KILOGRAMS",
-        "addDate": [
-          2024,
-          11,
-          29
-        ],
-        "expirationDate": [
-          2024,
-          11,
-          29
-        ]
+        "name": "Beef",
+        "quantity": 200.0,
+        "unit": "GRAMS",
+        "addDate": null,
+        "expirationDate": null,
+        "categoryIngredient": "MEAT"
+      },
+      {
+        "id": null,
+        "name": "Onion",
+        "quantity": 10.0,
+        "unit": "GRAMS",
+        "addDate": null,
+        "expirationDate": null,
+        "categoryIngredient": "SPICE"
       }
     ],
-    "instructions": "COOK AND EAT",
+    "instructions": "Step1 : Put all in bot\nStep2 : Wait and eat",
     "preparationTime": 0.75,
     "cookingTime": 1.5,
-    "difficultyLevel": "MEDIUM"
+    "difficultyLevel": "EASY"
+  },
+  {
+    "id": "08bd6138-6aeb-473b-8891-54a22026e48f",
+    "name": "Ratatouli",
+    "category": "PRINCIPAL",
+    "ingredients": [
+      {
+        "id": null,
+        "name": "mILK",
+        "quantity": 20.0,
+        "unit": "LITRES",
+        "addDate": null,
+        "expirationDate": null,
+        "categoryIngredient": "DAIRY"
+      },
+      {
+        "id": null,
+        "name": "Courgette",
+        "quantity": 100.0,
+        "unit": "KILOGRAMS",
+        "addDate": null,
+        "expirationDate": null,
+        "categoryIngredient": "FRUIT"
+      }
+    ],
+    "instructions": "S1: go to the sewer\ns2: take a mouse\ns3: put mouse in chef hat\ns4: profit",
+    "preparationTime": 1.0,
+    "cookingTime": 2.0,
+    "difficultyLevel": "HARD"
   }
 ]

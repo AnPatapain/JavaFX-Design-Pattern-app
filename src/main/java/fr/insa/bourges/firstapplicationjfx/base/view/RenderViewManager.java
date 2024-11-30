@@ -10,7 +10,7 @@ public class RenderViewManager {
 
     public void renderView(AbstractPageView<?> view) {
         this.stage.setScene(view.getScene());
-        this.stage.setFullScreen(true);
+//        this.stage.setFullScreen(true);
         this.stage.show();
     }
 }

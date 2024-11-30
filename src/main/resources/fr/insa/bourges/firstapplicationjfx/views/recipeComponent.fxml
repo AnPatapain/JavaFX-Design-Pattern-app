@@ -15,6 +15,7 @@
         <Label fx:id="recipeCookingTime" text="Cooking Time: Placeholder"/>
         <Label fx:id="recipeDifficultyLevel" text="Difficulty Level: Placeholder"/>
 
+
         <VBox fx:id="ingredientsList" spacing="5" style="-fx-border-color: lightgray; -fx-border-width: 1;">
             <Label text="Ingredients:" style="-fx-font-weight: bold;"/>
             <!-- Each ingredient will be dynamically added here -->
