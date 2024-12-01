@@ -1,3 +1,14 @@
+/**
+ * Class GlutenFreeFilter
+ * Filters recipes without any grain-based ingredients.
+
+ * Methods:
+ * - **filter(FilterContext filterContext)**:
+ *   - Returns recipes where no ingredient belongs to the `GRAIN` category.
+
+ * Author: Anh Tuan NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx.features.recipe.filter;
 
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.CategoryIngredient;

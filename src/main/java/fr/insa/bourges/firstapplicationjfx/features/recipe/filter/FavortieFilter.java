@@ -1,3 +1,14 @@
+/**
+ * Class FavoriteFilter
+ * Filters recipes marked as favorites.
+
+ * Methods:
+ * - **filter(FilterContext filterContext)**:
+ *   - Returns recipes where `isFavorite` is `true`.
+
+ * Author: Anh Tuan NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx.features.recipe.filter;
 
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Recipe;

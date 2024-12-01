@@ -1,3 +1,23 @@
+/**
+ * Class RecipeFilterService
+ * Centralizes the filtering process by delegating to specific filter strategies.
+
+ * Fields:
+ * - **filterStrategy**: The current filtering strategy in use.
+
+ * Methods:
+ * - **setFilter(FilterType filterType)**:
+ *   - Sets the active filter strategy based on the provided filter type.
+ * - **applyFilter(FilterContext filterContext)**:
+ *   - Applies the current filter strategy to the provided `FilterContext` and returns the filtered recipes.
+
+ * Workflow:
+ * 1. Set the filter using `setFilter`.
+ * 2. Pass the context to `applyFilter` to get the filtered results.
+
+ * Author: Anh Tuan NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx.features.recipe.filter;
 
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Recipe;

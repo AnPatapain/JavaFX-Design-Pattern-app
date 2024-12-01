@@ -1,3 +1,14 @@
+/**
+ * Class VegetarianFilter
+ * Filters vegetarian recipes by excluding meat and fish ingredients.
+
+ * Methods:
+ * - **filter(FilterContext filterContext)**:
+ *   - Returns recipes without `MEAT` or `FISH` ingredients.
+
+ * Author: Anh Tuan NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx.features.recipe.filter;
 
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.CategoryIngredient;

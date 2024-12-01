@@ -1,3 +1,14 @@
+/**
+ * Class TimeFilter
+ * Filters recipes based on their total preparation and cooking time.
+
+ * Methods:
+ * - **filter(FilterContext filterContext)**:
+ *   - Returns recipes where the sum of preparation and cooking time is less than or equal to the specified time.
+
+ * Author: Anh Tuan NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx.features.recipe.filter;
 
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Recipe;
