@@ -7,22 +7,19 @@ import java.util.List;
 public class FilterContext {
     private List<Recipe> recipes;
     private double time;
+    private String args;
 
     public FilterContext(){}
 
-    public List<Recipe> getRecipes() {
-        return recipes;
-    }
+    public List<Recipe> getRecipes() {return recipes;}
 
-    public void setRecipes(List<Recipe> recipes) {
-        this.recipes = recipes;
-    }
+    public void setRecipes(List<Recipe> recipes) {this.recipes = recipes;}
 
-    public double getTime() {
-        return time;
-    }
+    public double getTime() {return time;}
 
-    public void setTime(double time) {
-        this.time = time;
-    }
+    public void setTime(double time) {this.time = time;}
+
+    public String getArgs() {return args;}
+
+    public void setArgs(String args) {this.args = args;}
 }

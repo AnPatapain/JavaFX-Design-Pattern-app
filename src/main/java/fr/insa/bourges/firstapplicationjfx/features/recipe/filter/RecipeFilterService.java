@@ -23,6 +23,13 @@ public class RecipeFilterService {
             case TIME:
                 this.filterStrategy = new TimeFilter();
                 break;
+            case DIFFICULTY:
+                this.filterStrategy = new DifficultyFilter();
+                break;
+            case CATEGORY:
+                this.filterStrategy = new CategoryFilter();
+                break;
+
         }
     }
 
