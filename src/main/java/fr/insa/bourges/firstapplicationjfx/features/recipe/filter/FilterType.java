@@ -5,4 +5,7 @@ public enum FilterType {
     VEGETARIAN,
     TIME,
     FAVORITE,
+    DIFFICULTY,
+    CATEGORY,
+
 }

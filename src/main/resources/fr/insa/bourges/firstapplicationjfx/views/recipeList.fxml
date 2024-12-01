@@ -34,36 +34,69 @@
                             <String fx:value="GLUTEN_FREE" />
                             <String fx:value="VEGETARIAN" />
                             <String fx:value="TIME" />
-
+                            <String fx:value="DIFFICULTY" />
+                            <String fx:value="CATEGORY" />
                         </FXCollections>
                     </items>
                 </ComboBox>
-                <HBox fx:id="timeFilterSectionDynamic" spacing="10" visible="false">
-                    <Label text="Total time taken:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
-                    <ComboBox fx:id="timeFilterComboBox" GridPane.rowIndex="0" GridPane.columnIndex="1" >
-                        <items>
-                            <FXCollections fx:factory="observableArrayList">
-                                <String fx:value="00:30" />
-                                <String fx:value="01:00" />
-                                <String fx:value="01:30" />
-                                <String fx:value="02:00" />
-                                <String fx:value="02:30" />
-                                <String fx:value="03:00" />
-                                <String fx:value="03:30" />
-                                <String fx:value="04:00" />
-                                <String fx:value="04:30" />
-                                <String fx:value="05:00" />
-                                <String fx:value="05:30" />
-                                <String fx:value="06:00" />
-                                <String fx:value="06:30" />
-                                <String fx:value="07:00" />
-                                <String fx:value="07:30" />
-                                <String fx:value="08:00" />
-                            </FXCollections>
-                        </items>
-                    </ComboBox>
-                </HBox>
-<!--                <Button text="Filter" onAction="#onCategoryFilterHandler"/>-->
+                <StackPane fx:id="filterStackPane">
+                    <!-- Difficulty Filter Section -->
+                    <HBox fx:id="difficultyFilterSectionDynamic" spacing="10" visible="false" managed="false">
+                        <Label text="Difficulty:" />
+                        <ComboBox fx:id="difficultyFilterComboBox">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="EASY" />
+                                    <String fx:value="MEDIUM" />
+                                    <String fx:value="HARD" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                    </HBox>
+
+                    <!-- Category Filter Section -->
+                    <HBox fx:id="categoryFilterSectionDynamic" spacing="10" visible="false" managed="false">
+                        <Label text="Category:" />
+                        <ComboBox fx:id="categoryFilterComboBox">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="ENTREE" />
+                                    <String fx:value="PRINCIPAL" />
+                                    <String fx:value="DESSERT" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                    </HBox>
+
+                    <!-- Time Filter Section -->
+                    <HBox fx:id="timeFilterSectionDynamic" spacing="10" visible="false" managed="false">
+                        <Label text="Total time taken:" />
+                        <ComboBox fx:id="timeFilterComboBox">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="00:30" />
+                                    <String fx:value="01:00" />
+                                    <String fx:value="01:30" />
+                                    <String fx:value="02:00" />
+                                    <String fx:value="02:30" />
+                                    <String fx:value="03:00" />
+                                    <String fx:value="03:30" />
+                                    <String fx:value="04:00" />
+                                    <String fx:value="04:30" />
+                                    <String fx:value="05:00" />
+                                    <String fx:value="05:30" />
+                                    <String fx:value="06:00" />
+                                    <String fx:value="06:30" />
+                                    <String fx:value="07:00" />
+                                    <String fx:value="07:30" />
+                                    <String fx:value="08:00" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                    </HBox>
+                </StackPane>
+
+                <!--                <Button text="Filter" onAction="#onCategoryFilterHandler"/>-->
             </HBox>
 
         </VBox>
