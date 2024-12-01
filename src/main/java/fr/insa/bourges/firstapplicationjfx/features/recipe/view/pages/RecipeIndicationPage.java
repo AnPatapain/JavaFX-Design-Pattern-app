@@ -37,8 +37,6 @@ public class RecipeIndicationPage extends AbstractPageView<RecipeController> {
         List<Recipe> recipes = this.getController().getAllRecipe();
         List<Ingredient> inventory = this.getController().getAllIngredients();
 
-        System.out.println("inventory: " + inventory);
-
         recipeIndicationContainer.getChildren().clear();
 
         for (Recipe recipe : recipes) {

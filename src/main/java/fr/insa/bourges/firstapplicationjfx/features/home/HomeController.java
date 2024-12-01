@@ -6,7 +6,7 @@ import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
-import fr.insa.bourges.firstapplicationjfx.features.home.pages.HomePage;
+import fr.insa.bourges.firstapplicationjfx.features.home.view.pages.HomePage;
 
 public class HomeController extends AbstractController<AbstractPageView<?>> {
     public HomeController(EventDispatcher eventDispatcher, RenderViewManager renderViewManager) {

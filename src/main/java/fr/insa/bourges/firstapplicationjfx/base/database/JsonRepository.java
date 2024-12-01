@@ -2,6 +2,7 @@ package fr.insa.bourges.firstapplicationjfx.base.database;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import fr.insa.bourges.firstapplicationjfx.DatabaseConfig;
 import fr.insa.bourges.firstapplicationjfx.EnvConfig;
 
 import java.io.File;
@@ -32,12 +33,7 @@ public class JsonRepository<T extends AbstractEntity> implements Repository<T> {
     }
 
     public static <T extends AbstractEntity> JsonRepository<T> getRepository(Class<T> type) {
-        String FILE_PATH;
-        if (EnvConfig.isTestEnvironment()) {
-            FILE_PATH = "src/test/java/fr/insa/bourges/firstapplicationjfx/data";
-        } else {
-            FILE_PATH = "src/main/java/fr/insa/bourges/firstapplicationjfx/data";
-        }
+        String FILE_PATH = DatabaseConfig.getDatabasePathForCurrentEnvironment();
 
         try {
             JsonRepository<T> jsonRepository = new JsonRepository<T>();
@@ -52,10 +48,10 @@ public class JsonRepository<T extends AbstractEntity> implements Repository<T> {
             jsonRepository.file = new File(FILE_PATH + "/" + fileName);
 
             if (jsonRepository.file.createNewFile()) {
-                System.out.println("JSON file created successfully with empty list of " + type.getSimpleName());
+                System.out.println(fileName + " created successfully with empty list of " + type.getSimpleName());
                 jsonRepository.objectMapper.writeValue(jsonRepository.file, Collections.emptyList());
             } else {
-                System.out.println("JSON file already exists, start loading data from file to persistence context");
+                System.out.println(fileName + " file already exists, start loading data from file to persistence context");
 
                 // Only load if the file is not empty
                 if (jsonRepository.file.length() > 0) {

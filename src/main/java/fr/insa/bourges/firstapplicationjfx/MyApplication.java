@@ -7,9 +7,9 @@ import fr.insa.bourges.firstapplicationjfx.base.event.EventDispatcher;
 import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
 import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
 import fr.insa.bourges.firstapplicationjfx.features.home.HomeController;
-import fr.insa.bourges.firstapplicationjfx.features.home.pages.HomePage;
+import fr.insa.bourges.firstapplicationjfx.features.home.view.pages.HomePage;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientController;
-import fr.insa.bourges.firstapplicationjfx.features.ingredient.pages.IngredientListPage;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages.IngredientListPage;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.view.pages.RecipeAddPage;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.view.pages.RecipeIndicationPage;
@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Application extends javafx.application.Application {
+public class MyApplication extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
         /**
@@ -61,10 +61,5 @@ public class Application extends javafx.application.Application {
          * Publish SHOW_HOME_PAGE event to show the entry page of application
          */
         controllerMediator.dispatchEvent(EventType.SHOW_HOME_PAGE);
-    }
-
-    public static void main(String[] args) {
-        EnvConfig.setEnvironment(EnvConfig.Environment.NORMAL);
-        launch();
     }
 }

@@ -1,5 +1,6 @@
 package fr.insa.bourges.firstapplicationjfx.base.database;
 
+import fr.insa.bourges.firstapplicationjfx.DatabaseConfig;
 import fr.insa.bourges.firstapplicationjfx.EnvConfig;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.UnitMeasure;
@@ -23,7 +24,7 @@ public class JsonRepositoryTest {
     void setup() {
         EnvConfig.setEnvironment(EnvConfig.Environment.TEST);
 
-        File dataDir = new File("src/test/java/fr/insa/bourges/firstapplicationjfx/data");
+        File dataDir = new File(DatabaseConfig.getDatabasePathForTest());
         JsonRepository.deleteDataDir(dataDir);
 
         // Initialize repository with the default behavior
