@@ -47,7 +47,17 @@ public class RecipeListPage extends AbstractPageView<RecipeController> {
     public void initializeScene() {
         this.setScene(new Scene(this.borderPane, 800, 600));
         recipeFilterComboBox.valueProperty().addListener((obs, oldVal, newVal) -> {
-            timeFilterSectionDynamic.setVisible(newVal.equals("TIME"));
+            if (newVal != null) {
+                timeFilterSectionDynamic.setVisible(newVal.equals("TIME"));
+                applyCategoryFilter(newVal);
+            }
+        });
+
+        // Listener for time filter selection
+        timeFilterComboBox.valueProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null && recipeFilterComboBox.getValue().equals("TIME")) {
+                applyTimeFilter(newVal);
+            }
         });
         loadRecipeComponentView();
     }
@@ -117,24 +127,35 @@ public class RecipeListPage extends AbstractPageView<RecipeController> {
         this.loadRecipeComponentView(filteredRecipes);
 
     }
-    public void onCategoryFilterHandler(ActionEvent actionEvent) {
-        String filter = recipeFilterComboBox.getValue();
 
-        if (filter.equals("ALL")) {
+    private void applyCategoryFilter(String filter){
+        if(filter.equals("ALL")){
             this.loadRecipeComponentView();
             return;
         }
         this.getController().setFilter(filter);
+
         List<Recipe> allRecipes = this.getController().getAllRecipe();
         this.getController().getFilterContext().setRecipes(allRecipes);
-        if (filter.equals("TIME")) {
-            if (timeFilterComboBox.getValue() == null) {
-                CustomUIAlert.showAlert("Error", "Please select time!");
-                return;
-            }
-            double time = TimeParser.parseTime(timeFilterComboBox.getValue());
-            this.getController().getFilterContext().setTime(time);
+        if ("TIME".equals(filter)) {
+            // Wait for the time filter ComboBox to trigger its listener
+            this.loadRecipeComponentView();
+            return;
         }
+
+        List<Recipe> filteredRecipes = this.getController().applyFilter();
+        this.loadRecipeComponentView(filteredRecipes);
+    }
+
+    private void applyTimeFilter(String timeValue) {
+        if (timeValue == null) {
+            CustomUIAlert.showAlert("Error", "Please select a valid time!");
+            return;
+        }
+
+        double time = TimeParser.parseTime(timeValue);
+        this.getController().getFilterContext().setTime(time);
+
         List<Recipe> filteredRecipes = this.getController().applyFilter();
         this.loadRecipeComponentView(filteredRecipes);
     }
@@ -150,3 +171,37 @@ public class RecipeListPage extends AbstractPageView<RecipeController> {
         this.getController().navigateToHomePage();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//public void onCategoryFilterHandler(ActionEvent actionEvent) {
+//        String filter = recipeFilterComboBox.getValue();
+//
+//        if (filter.equals("ALL")) {
+//            this.loadRecipeComponentView();
+//            return;
+//        }
+//        this.getController().setFilter(filter);
+//        List<Recipe> allRecipes = this.getController().getAllRecipe();
+//        this.getController().getFilterContext().setRecipes(allRecipes);
+//        if (filter.equals("TIME")) {
+//            if (timeFilterComboBox.getValue() == null) {
+//                CustomUIAlert.showAlert("Error", "Please select time!");
+//                return;
+//            }
+//            double time = TimeParser.parseTime(timeFilterComboBox.getValue());
+//            this.getController().getFilterContext().setTime(time);
+//        }
+//        List<Recipe> filteredRecipes = this.getController().applyFilter();
+//        this.loadRecipeComponentView(filteredRecipes);
+//    }

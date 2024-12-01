@@ -26,7 +26,7 @@
             <!-- Second Line: Filter Section (Filter by, ComboBox, and Filter Button) -->
             <HBox spacing="10">
                 <Label text="Filter by:" />
-                <ComboBox fx:id="recipeFilterComboBox">
+                <ComboBox fx:id="recipeFilterComboBox" >
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="ALL"/>
@@ -40,7 +40,7 @@
                 </ComboBox>
                 <HBox fx:id="timeFilterSectionDynamic" spacing="10" visible="false">
                     <Label text="Total time taken:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
-                    <ComboBox fx:id="timeFilterComboBox" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                    <ComboBox fx:id="timeFilterComboBox" GridPane.rowIndex="0" GridPane.columnIndex="1" >
                         <items>
                             <FXCollections fx:factory="observableArrayList">
                                 <String fx:value="00:30" />
@@ -63,7 +63,7 @@
                         </items>
                     </ComboBox>
                 </HBox>
-                <Button text="Filter" onAction="#onCategoryFilterHandler"/>
+<!--                <Button text="Filter" onAction="#onCategoryFilterHandler"/>-->
             </HBox>
 
         </VBox>
