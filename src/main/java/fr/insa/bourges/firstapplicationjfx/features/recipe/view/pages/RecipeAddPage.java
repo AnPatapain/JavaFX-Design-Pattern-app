@@ -1,3 +1,42 @@
+/**
+ * Class RecipeAddPage
+ * Handles the logic and UI for adding and editing recipes.
+ * Provides fields for entering recipe details, managing ingredients, and saving recipes.
+
+ * Key Features:
+ * - **Recipe Fields**:
+ *   - Name, category, preparation time, cooking time, difficulty level, and instructions.
+ * - **Ingredient Management**:
+ *   - Add ingredients with details such as name, quantity, unit, and category.
+ *   - Display added ingredients in a list.
+ *   - Remove selected ingredients from the list.
+ * - **Modes**:
+ *   - Supports adding a new recipe and editing an existing one.
+ * - **Validation**:
+ *   - Ensures all required fields are filled before saving.
+ *   - Displays alerts for missing or invalid data.
+
+ * Event Handlers:
+ * - **addIngredient**: Adds an ingredient to the recipe's ingredient list.
+ * - **removeSelectedIngredient**: Removes the selected ingredient from the ingredient list.
+ * - **saveRecipeHandler**: Saves the recipe (either adds a new recipe or updates an existing one).
+ * - **navigateToRecipeListPage**: Navigates back to the recipe list page.
+
+ * Workflow:
+ * - On opening the page, the fields and ingredient list are initialized.
+ * - Users can fill in recipe details and add ingredients.
+ * - On save, the data is validated and saved via the controller.
+
+ * Dependencies:
+ * - **RecipeController**: Handles recipe-related logic and communication with the repository.
+ * - **CustomUIAlert**: Displays alerts for user errors or success messages.
+ * - **TimeParser**: Converts time between decimal and HH:mm formats.
+ * - **InputFormatter**: Ensures numeric input in specific fields.
+ * - **CategoryRecipe** and **UnitMeasure**: Enum types for category and unit validation.
+
+ * Author: Anh Tuan NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx.features.recipe.view.pages;
 
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;

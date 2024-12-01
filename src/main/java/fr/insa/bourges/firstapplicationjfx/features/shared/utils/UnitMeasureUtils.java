@@ -1,3 +1,23 @@
+/**
+ * UnitMeasureUtils provides utility methods for unit conversion and compatibility checking.
+
+ * Responsibilities:
+ * - Converts quantities between compatible units.
+ * - Checks compatibility of two units for conversion.
+
+ * Methods:
+ * - `convertUnits(double quantity, UnitMeasure fromUnit, UnitMeasure toUnit)`: Converts a quantity between two units.
+ * - `areUnitsCompatible(UnitMeasure unit1, UnitMeasure unit2)`: Checks if two units belong to the same compatibility group.
+
+ * Example:
+ * - Convert units:
+ *   double kilograms = UnitMeasureUtils.convertUnits(1000, UnitMeasure.GRAMS, UnitMeasure.KILOGRAMS);
+ * - Check compatibility:
+ *   boolean isCompatible = UnitMeasureUtils.areUnitsCompatible(UnitMeasure.GRAMS, UnitMeasure.KILOGRAMS);
+
+ * Author: Anh Tuan NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx.features.shared.utils;
 
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.UnitMeasure;

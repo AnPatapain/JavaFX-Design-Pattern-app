@@ -1,15 +1,35 @@
+/**
+ * JsonRepository is a file-based implementation of the Repository interface, designed to manage entities
+ * persisted in JSON files. It uses a persistence context to track changes (insert, update, delete) and applies
+ * them to the JSON file only when `flush` is called.
+
+ * Responsibilities:
+ * - CRUD Operations: Supports `persist`, `update`, `deleteById`, `findById`, and `findByAttribute`.
+ * - Persistence Context: Tracks entities in memory and stages changes for efficient file writes.
+ * - Querying: Enables dynamic queries via reflection (`findByAttribute`).
+
+ * Design:
+ * - Implements Singleton per entity type to ensure consistent management of entities.
+ * - Uses Jackson's ObjectMapper for JSON (with JavaTimeModule for Java 8+ Date/Time API).
+
+ * Example:
+ * JsonRepository<Recipe> recipeRepo = JsonRepository.getRepository(Recipe.class);
+ * Recipe recipe = new Recipe();
+ * recipeRepo.persist(recipe);
+ * recipeRepo.flush(); // Persist changes to JSON file
+
+ * Author: Ke An NGUYEN
+ */
 package fr.insa.bourges.firstapplicationjfx.base.database;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import fr.insa.bourges.firstapplicationjfx.DatabaseConfig;
-import fr.insa.bourges.firstapplicationjfx.EnvConfig;
 
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 

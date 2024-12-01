@@ -3,7 +3,7 @@
  * building fat-jar file with maven-shade-plugin.
  * Problem: https://github.com/nus-cs2103-AY2324S2/forum/issues/241
  *
- * Author: Ke An Nguyen
+ * Author: Doan Phuoc Le
  */
 package fr.insa.bourges.firstapplicationjfx;
 

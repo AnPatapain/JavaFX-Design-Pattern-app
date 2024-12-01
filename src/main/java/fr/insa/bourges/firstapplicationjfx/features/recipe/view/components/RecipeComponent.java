@@ -1,3 +1,42 @@
+/**
+ * Class RecipeComponent
+ * Represents a single recipe UI component in the recipe list. It dynamically displays recipe details
+ * and provides actionable buttons for managing recipes such as editing, deleting, favoriting, or adding notes.
+
+ * Key Features:
+ * - **Dynamic Recipe Details**:
+ *   - Displays recipe name, category, instructions, preparation time, cooking time, difficulty level, and ingredients.
+ * - **Favorite Toggle**:
+ *   - Allows users to mark/unmark a recipe as a favorite.
+ * - **Edit and Delete Handlers**:
+ *   - Provides functionality to update or delete a recipe.
+ * - **Notes Modal**:
+ *   - Allows users to edit and save personal notes for a recipe using a modal dialog.
+
+ * Workflow:
+ * - The recipe details are populated dynamically when `setRecipe` is called.
+ * - Actions like editing, deleting, or favoriting trigger respective commands registered to the parent page.
+
+ * Methods:
+ * - **setRecipe(Recipe recipe)**:
+ *   - Populates the UI with the details of the provided recipe.
+ * - **favoriteRecipeToggleHandler()**:
+ *   - Toggles the favorite status of the recipe.
+ * - **editRecipeHandler()**:
+ *   - Opens the edit modal for updating recipe details.
+ * - **deleteRecipeHandler()**:
+ *   - Executes the delete command to remove the recipe.
+ * - **editNotesHandler()**:
+ *   - Opens a modal for editing and saving recipe notes.
+
+ * Dependencies:
+ * - **Recipe**: The recipe model containing all recipe details.
+ * - **RecipeCommandKeys**: Enum for command keys like FAVORITE_RECIPE, DELETE_RECIPE, etc.
+ * - **ControllerMediator**: Handles communication between components and controllers.
+
+ * Author: Anh Tuan NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx.features.recipe.view.components;
 
 import fr.insa.bourges.firstapplicationjfx.base.controller.ControllerMediator;

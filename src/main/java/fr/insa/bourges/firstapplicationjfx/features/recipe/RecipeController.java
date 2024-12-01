@@ -1,3 +1,48 @@
+/**
+ * The RecipeController class handles the logic for managing recipes
+ * and interacting with their corresponding views and repositories.
+
+ * Features:
+ * - **Filter**: Allows filtering recipes based on various criteria (e.g., time, category).
+ * - **CRUD Operations**: Manages recipes and ingredients with operations to add, update, delete, and retrieve.
+ * - **Event Handling**: Listens for application events and updates views accordingly.
+ * - **Navigation**: Manages transitions between recipe-related pages.
+
+ * Components:
+ * - **Repositories**:
+ *   - `recipeRepository`: Repository for managing recipes.
+ *   - `ingredientRepository`: Repository for managing ingredients.
+ * - **Filtering**:
+ *   - `recipeFilterService`: Applies filtering logic using different strategies.
+ *   - `filterContext`: Encapsulates filter parameters and data.
+
+ * Methods:
+ * - `getAllRecipe()`: Retrieves all recipes from the repository.
+ * - `addRecipe(Recipe recipe)`: Adds a new recipe to the repository.
+ * - `updateRecipe(Recipe recipe)`: Updates an existing recipe.
+ * - `deleteRecipe(String recipeId)`: Deletes a recipe by its ID.
+ * - `applyFilter()`: Applies the current filter strategy to the recipes.
+ * - Navigation:
+ *   - `navigateToAddRecipe()`: Navigates to the add recipe page.
+ *   - `navigateToRecipeListPage()`: Navigates to the recipe list page.
+ *   - `navigateToEditRecipe(RecipePageType recipePageType, Recipe recipe)`: Navigates to the recipe editing page.
+ *   - `navigateToHomePage()`: Navigates to the home page.
+
+ * Event Handling:
+ * - Subscribes to:
+ *   - `SHOW_RECIPE_LIST_PAGE`: Displays the recipe list page.
+ *   - `SHOW_RECIPE_ADD_PAGE`: Displays the recipe addition page.
+ *   - `SHOW_RECIPE_INDICATION_PAGE`: Displays the recipe indication page.
+ * - Updates views based on event type.
+
+ * Usage:
+ * - Initializes repositories and manages recipe-related operations.
+ * - Delegates filtering logic to the `RecipeFilterService`.
+ * - Bridges the gap between models, repositories, and views.
+
+ * Author: Anh Tuan NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx.features.recipe;
 
 import fr.insa.bourges.firstapplicationjfx.base.controller.AbstractController;

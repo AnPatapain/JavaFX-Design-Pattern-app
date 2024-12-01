@@ -1,3 +1,30 @@
+/**
+ * IngredientListPage represents the view for displaying and managing a list of ingredients.
+ * It provides functionality for adding, searching, and deleting ingredients through interaction
+ * with the UI and the associated controller.
+
+ * Responsibilities:
+ * - Displays the list of ingredients dynamically using `loadIngredientComponentView`.
+ * - Handles user interactions:
+ *   - Adding ingredients via a modal (`onAddButtonClickHandler`).
+ *   - Searching ingredients using a search box (`onSearchHandler`).
+ *   - Navigating back to the home page (`onBackToHomePageLinkClickHandler`).
+ * - Integrates with `IngredientComponent` for individual ingredient management.
+
+ * Design:
+ * - Extends `AbstractPageView` to manage the association with the `IngredientController`.
+ * - Implements the Command pattern for decoupled interaction between components and logic.
+ * - Utilizes dynamic loading of UI components for flexibility and modularity.
+
+ * Example:
+ * - Adding a new ingredient:
+ *   - Opens a modal for ingredient input.
+ *   - Registers a callback command to handle the save action.
+ *   - Refreshes the ingredient list after the modal is closed.
+
+ * Author: Ke An NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages;
 
 import fr.insa.bourges.firstapplicationjfx.base.controller.ControllerMediator;

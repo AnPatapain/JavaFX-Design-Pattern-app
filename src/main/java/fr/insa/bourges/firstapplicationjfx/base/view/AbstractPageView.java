@@ -1,3 +1,24 @@
+/**
+ * AbstractPageView provides a base class for all page views in the application.
+ * It manages the association between a view and its controller, while also
+ * handling the initialization of the JavaFX scene from an FXML file.
+
+ * Responsibilities:
+ * - Manages the lifecycle of a page view, including its initialization and scene setup.
+ * - Associates each view with a specific controller for interaction and logic handling.
+ * - Provides utility to create views dynamically using `createView`.
+
+ * Design:
+ * - Enforces the use of `createView` to standardize the initialization process.
+ * - Promotes loose coupling between views and controllers by generic association.
+
+ * Example:
+ * HomePage homeView = AbstractPageView.createView(HomePage.class, "home.fxml", homeController);
+ * renderViewManager.renderView(homeView);
+
+ * Author: Ke An NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx.base.view;
 
 import fr.insa.bourges.firstapplicationjfx.base.controller.AbstractController;

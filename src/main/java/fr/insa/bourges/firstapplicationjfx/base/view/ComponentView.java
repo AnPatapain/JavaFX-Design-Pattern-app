@@ -1,3 +1,29 @@
+/**
+ * ComponentView is a reusable UI component that manages user interactions and delegates
+ * logic execution via dynamically registered commands.
+
+ * Responsibilities:
+ * - Maintains a reference to the parent `AbstractPageView` for context.
+ * - Handles commands: allows dynamic registration (`registerCommand`) and execution (`executeCommand`).
+
+ * Design:
+ * - Implements the Command pattern for flexible, decoupled interaction between UI components and logic.
+ * - Enables reusable and context-aware behavior.
+
+ * Example (from RecipeComponent):
+ * - Register a command to edit a recipe:
+ *   recipeComponent.registerCommand(RecipeCommandKeys.UPDATE_RECIPE.name(), args -> {
+ *       RecipePageType pageType = (RecipePageType) args[0];
+ *       Recipe recipe = (Recipe) args[1];
+ *       controller.navigateToEditRecipe(pageType, recipe);
+ *   });
+ * - Execute the command on user action:
+ *   recipeComponent.executeCommand(RecipeCommandKeys.UPDATE_RECIPE.name(), RecipePageType.EDIT, recipe);
+
+ * Author: Ke An NGUYEN
+ */
+
+
 package fr.insa.bourges.firstapplicationjfx.base.view;
 
 import fr.insa.bourges.firstapplicationjfx.base.command.Command;

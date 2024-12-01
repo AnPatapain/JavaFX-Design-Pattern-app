@@ -1,3 +1,32 @@
+/**
+ * Ingredient represents an item used in recipes, with associated details like quantity, unit, and category.
+
+ * Responsibilities:
+ * - Encapsulates data related to an ingredient, such as its name, quantity, unit, category, and expiration details.
+ * - Provides getter and setter methods for managing ingredient properties.
+
+ * Key Fields:
+ * - `name`: The name of the ingredient.
+ * - `quantity`: The quantity of the ingredient.
+ * - `unit`: The unit of measurement (e.g., GRAMS, LITRES).
+ * - `addDate`: The date the ingredient was added to the inventory.
+ * - `expirationDate`: The date the ingredient expires.
+ * - `categoryIngredient`: The category of the ingredient (e.g., VEGETABLE, DAIRY).
+
+ * Features:
+ * - Custom `toString` implementation for clear representation of an ingredient's details.
+
+ * Example:
+ * - Create an ingredient:
+ *   Ingredient ingredient = new Ingredient("Milk", 2, UnitMeasure.LITRES, LocalDate.now(), LocalDate.now().plusDays(7));
+ *
+ * - Set and retrieve properties:
+ *   ingredient.setName("Butter");
+ *   String name = ingredient.getName();
+
+ * Author: Ke An NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx.features.shared.models;
 
 import fr.insa.bourges.firstapplicationjfx.base.database.AbstractEntity;

@@ -1,3 +1,22 @@
+/**
+ * DatabaseConfig provides utility methods to determine the file paths for the database
+ * based on the application's current environment (test or normal).
+
+ * Responsibilities:
+ * - Returns the database file path based on the environment using `getDatabasePathForCurrentEnvironment`.
+ * - Provides a dedicated method `getDatabasePathForTest` for test environment file paths.
+
+ * Methods:
+ * - `getDatabasePathForCurrentEnvironment`: Determines the path for test or main environments.
+ * - `getDatabasePathForTest`: Explicitly returns the database path for test purposes.
+
+ * Example:
+ * - Retrieve the database path:
+ *   String dbPath = DatabaseConfig.getDatabasePathForCurrentEnvironment();
+
+ * Author: Ke An NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx;
 
 public class DatabaseConfig {

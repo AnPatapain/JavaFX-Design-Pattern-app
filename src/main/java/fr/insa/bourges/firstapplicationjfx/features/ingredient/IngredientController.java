@@ -1,3 +1,31 @@
+/**
+ * IngredientController manages the interactions and logic related to ingredients.
+ * It handles CRUD operations for ingredients and manages navigation to and from
+ * the ingredient list page.
+
+ * Responsibilities:
+ * - Event Handling:
+ *   - Listens for `SHOW_INGREDIENT_LIST_PAGE` to render the ingredient list view.
+ * - CRUD Operations:
+ *   - `getAllIngredients()`: Retrieve all ingredients.
+ *   - `addIngredient()`: Persist a new ingredient.
+ *   - `updateIngredient()`: Update an existing ingredient.
+ *   - `deleteIngredient()`: Remove an ingredient by its ID.
+ * - Navigation:
+ *   - Navigate to the home page.
+
+ * Design:
+ * - Extends `AbstractController` to integrate with the application's event-driven architecture.
+ * - Uses `JsonRepository` for persistent ingredient storage, ensuring data is saved to a JSON file.
+
+ * Example:
+ * - Add a new ingredient:
+ *   Ingredient newIngredient = new Ingredient("Tomato", 5, UnitMeasure.KILOGRAMS, LocalDate.now(), LocalDate.now().plusDays(10));
+ *   ingredientController.addIngredient(newIngredient);
+
+ * Author: Ke An NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx.features.ingredient;
 
 import fr.insa.bourges.firstapplicationjfx.base.controller.AbstractController;

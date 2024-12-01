@@ -1,1 +1,151 @@
-[{"id":"325caada-b144-468b-9ce5-25e0149d1559","name":"Chili Powder","quantity":300.0,"unit":"KILOGRAMS","addDate":[2024,11,29],"expirationDate":[2025,12,4],"categoryIngredient":"SPICE"},{"id":"2f3e1b48-891b-4c7a-b32e-7e1525616c1f","name":"Chicken Breast","quantity":100.0,"unit":"GRAMS","addDate":[2024,11,29],"expirationDate":[2025,11,20],"categoryIngredient":"MEAT"},{"id":"96e3c83a-aa1d-4a14-be79-71d1b15d9e75","name":"Onion","quantity":12.0,"unit":"GRAMS","addDate":[2024,12,1],"expirationDate":[2024,12,20],"categoryIngredient":"FRUIT"},{"id":"de002a7c-adfe-4b73-b7be-43748a7af81f","name":"courgette","quantity":5.0,"unit":"MILLILITRES","addDate":[2024,12,1],"expirationDate":[2024,12,28],"categoryIngredient":"VEGETABLE"},{"id":"16fb4b53-2a38-4e09-afeb-b01d4cb853c0","name":"Wheat","quantity":90.0,"unit":"GRAMS","addDate":[2024,12,1],"expirationDate":[2025,1,1],"categoryIngredient":"GRAIN"},{"id":"c31f40c5-8aba-41f2-8fb2-a8487f435e82","name":"Beef","quantity":1.0,"unit":"KILOGRAMS","addDate":[2024,12,1],"expirationDate":[2024,12,28],"categoryIngredient":"MEAT"},{"id":"7b740320-4ceb-4fa7-9489-42890ee6228f","name":"test","quantity":1.0,"unit":"KILOGRAMS","addDate":[2024,12,1],"expirationDate":[2024,12,26],"categoryIngredient":"SPICE"},{"id":"7b3c4753-4455-4c9e-b38c-b89cc4975099","name":"Sugar","quantity":1.0,"unit":"GRAMS","addDate":[2024,12,1],"expirationDate":[2025,1,4],"categoryIngredient":"SPICE"},{"id":"df822e18-c02f-492b-930c-32226d946004","name":"Egg","quantity":12.0,"unit":"KILOGRAMS","addDate":[2024,11,30],"expirationDate":null,"categoryIngredient":"DAIRY"}]
+[
+  {
+    "id": "325caada-b144-468b-9ce5-25e0149d1559",
+    "name": "Chili Powder",
+    "quantity": 300.0,
+    "unit": "KILOGRAMS",
+    "addDate": [
+      2024,
+      11,
+      29
+    ],
+    "expirationDate": [
+      2025,
+      12,
+      4
+    ],
+    "categoryIngredient": "SPICE"
+  },
+  {
+    "id": "2f3e1b48-891b-4c7a-b32e-7e1525616c1f",
+    "name": "Chicken Breast",
+    "quantity": 100.0,
+    "unit": "GRAMS",
+    "addDate": [
+      2024,
+      11,
+      29
+    ],
+    "expirationDate": [
+      2025,
+      11,
+      20
+    ],
+    "categoryIngredient": "MEAT"
+  },
+  {
+    "id": "96e3c83a-aa1d-4a14-be79-71d1b15d9e75",
+    "name": "Onion",
+    "quantity": 12.0,
+    "unit": "GRAMS",
+    "addDate": [
+      2024,
+      12,
+      1
+    ],
+    "expirationDate": [
+      2024,
+      12,
+      20
+    ],
+    "categoryIngredient": "FRUIT"
+  },
+  {
+    "id": "de002a7c-adfe-4b73-b7be-43748a7af81f",
+    "name": "courgette",
+    "quantity": 5.0,
+    "unit": "MILLILITRES",
+    "addDate": [
+      2024,
+      12,
+      1
+    ],
+    "expirationDate": [
+      2024,
+      12,
+      28
+    ],
+    "categoryIngredient": "VEGETABLE"
+  },
+  {
+    "id": "16fb4b53-2a38-4e09-afeb-b01d4cb853c0",
+    "name": "Wheat",
+    "quantity": 90.0,
+    "unit": "GRAMS",
+    "addDate": [
+      2024,
+      12,
+      1
+    ],
+    "expirationDate": [
+      2025,
+      1,
+      1
+    ],
+    "categoryIngredient": "GRAIN"
+  },
+  {
+    "id": "c31f40c5-8aba-41f2-8fb2-a8487f435e82",
+    "name": "Beef",
+    "quantity": 1.0,
+    "unit": "KILOGRAMS",
+    "addDate": [
+      2024,
+      12,
+      1
+    ],
+    "expirationDate": [
+      2024,
+      12,
+      28
+    ],
+    "categoryIngredient": "MEAT"
+  },
+  {
+    "id": "7b740320-4ceb-4fa7-9489-42890ee6228f",
+    "name": "test",
+    "quantity": 1.0,
+    "unit": "KILOGRAMS",
+    "addDate": [
+      2024,
+      12,
+      1
+    ],
+    "expirationDate": [
+      2024,
+      12,
+      26
+    ],
+    "categoryIngredient": "SPICE"
+  },
+  {
+    "id": "7b3c4753-4455-4c9e-b38c-b89cc4975099",
+    "name": "Sugar",
+    "quantity": 1.0,
+    "unit": "GRAMS",
+    "addDate": [
+      2024,
+      12,
+      1
+    ],
+    "expirationDate": [
+      2025,
+      1,
+      4
+    ],
+    "categoryIngredient": "SPICE"
+  },
+  {
+    "id": "df822e18-c02f-492b-930c-32226d946004",
+    "name": "Egg",
+    "quantity": 12.0,
+    "unit": "KILOGRAMS",
+    "addDate": [
+      2024,
+      11,
+      30
+    ],
+    "expirationDate": null,
+    "categoryIngredient": "DAIRY"
+  }
+]

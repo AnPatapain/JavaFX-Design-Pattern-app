@@ -1,3 +1,39 @@
+/**
+ * Class RecipeListPage
+ * Represents the UI and logic for displaying and managing a list of recipes.
+ * This page allows the user to search, filter, and navigate through recipes in the system.
+
+ * Key Features:
+ * - **Search**: Allows filtering recipes based on a search query.
+ * - **Filters**:
+ *   - Category filter: Filters recipes by categories such as vegetarian, gluten-free, etc.
+ *   - Time filter: Filters recipes based on preparation and cooking time.
+ * - **Recipe Management**:
+ *   - View recipe details via `RecipeComponent`.
+ *   - Add, edit, delete, or mark recipes as favorites using commands.
+ * - **Navigation**: Supports navigation to the home page or the add/edit recipe page.
+
+ * Event Handlers:
+ * - **onSearchHandler**: Filters recipes based on the text entered in the search box.
+ * - **applyCategoryFilter**: Applies a category-based filter to the recipe list.
+ * - **applyTimeFilter**: Applies a time-based filter when the time filter is active.
+ * - **navigateToAddRecipe**: Navigates to the add recipe page.
+ * - **onBackToHomePageLinkClickHandler**: Navigates back to the home page.
+
+ * Recipe Commands:
+ * - **RELOAD_RECIPES**: Reloads the recipe list.
+ * - **UPDATE_RECIPE**: Navigates to the edit recipe page.
+ * - **DELETE_RECIPE**: Deletes a recipe by its ID.
+ * - **FAVORITE_RECIPE**: Toggles the favorite status of a recipe.
+
+ * Dependencies:
+ * - **RecipeController**: Handles backend logic and data interaction for recipes.
+ * - **RecipeComponent**: Represents individual recipes in the list.
+ * - **CustomUIAlert**: Displays user-friendly alerts for errors or notifications.
+ *
+ * Author: Anh Tuan NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx.features.recipe.view.pages;
 
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;

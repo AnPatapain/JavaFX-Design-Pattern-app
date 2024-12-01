@@ -1,3 +1,21 @@
+/**
+ * TimeParser provides utility methods for parsing and formatting time values.
+
+ * Responsibilities:
+ * - Converts between string time formats (HH:mm or decimal) and double.
+ * - Converts decimal time to "HH:mm" formatted strings.
+
+ * Methods:
+ * - `parseTime(String time)`: Parses a time string in "HH:mm" or decimal format to a double.
+ * - `convertDecimalToHHmm(double decimalTime)`: Converts a decimal time value to "HH:mm" format.
+
+ * Example:
+ * - Parse time: double time = TimeParser.parseTime("1:30");
+ * - Format time: String formatted = TimeParser.convertDecimalToHHmm(1.5);
+
+ * Author: Anh Tuan NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx.features.shared.utils;
 
 public class TimeParser {

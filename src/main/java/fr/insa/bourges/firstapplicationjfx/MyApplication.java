@@ -1,3 +1,30 @@
+/**
+ * MyApplication serves as the main entry point for the JavaFX application.
+ * It initializes the application's core features, controllers, and views while setting up
+ * event-driven navigation and rendering logic.
+
+ * Responsibilities:
+ * - Initializes the EventDispatcher and RenderViewManager for managing application-wide events and rendering.
+ * - Sets up feature controllers and their corresponding views:
+ *   - Home page.
+ *   - Recipe management (add, list, indication).
+ *   - Ingredient management (list).
+ * - Dispatches the initial event to render the HomePage.
+
+ * Design:
+ * - Implements a modular architecture where features can be added dynamically over time (Open/Closed Principle).
+ * - Adopts the EventDispatcher pattern for decoupled communication between controllers and views.
+
+ * Example:
+ * - Adding a new feature:
+ *   - Define a new controller and view.
+ *   - Register the view with its controller using `AbstractPageView.createView`.
+ *   - Add the view to the controller using `addView`.
+ *   - Dispatch events to render the view when needed.
+
+ * Author: Doan Phuoc Le
+ */
+
 package fr.insa.bourges.firstapplicationjfx;
 
 import fr.insa.bourges.firstapplicationjfx.base.controller.ControllerMediator;

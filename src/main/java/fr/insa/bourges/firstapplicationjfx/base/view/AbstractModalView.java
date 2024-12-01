@@ -1,3 +1,31 @@
+/**
+ * AbstractModalView provides a base class for creating reusable modal windows in the application.
+ * It handles modal initialization, display, and lifecycle management, ensuring a standardized
+ * approach to building and managing modal views.
+
+ * Responsibilities:
+ * - Initializes modals using `createModal`, linking the view to its FXML file and title.
+ * - Manages modal lifecycle:
+ *   - Opens the modal (`showModalAndWait`) with a blocking interaction mode.
+ *   - Closes the modal (`closeModal`).
+ * - Ensures custom modal behavior via the `initialize` method for additional logic setup.
+
+ * Design:
+ * - Enforces standardized modal creation with `createModal` to ensure consistency.
+ * - Extends `ComponentView` to enable command-based interaction with the modal.
+
+ * Example:
+ * RecipeNoteFormModal modal = AbstractModalView.createModal(
+ *     RecipeNoteFormModal.class,
+ *     "recipeNoteFormModal.fxml",
+ *     "Edit Recipe Notes"
+ * );
+ * modal.showModalAndWait();
+
+ * Author: Ke An NGUYEN
+ */
+
+
 package fr.insa.bourges.firstapplicationjfx.base.view;
 
 import javafx.fxml.FXMLLoader;

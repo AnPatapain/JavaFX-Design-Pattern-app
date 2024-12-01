@@ -1,3 +1,32 @@
+/**
+ * Recipe represents a cooking recipe with its associated details and methods for feasibility checking.
+
+ * Responsibilities:
+ * - Encapsulates data related to a recipe, such as ingredients, category, preparation time, cooking time, difficulty level, instructions, and personal notes.
+ * - Provides methods to check the feasibility of making the recipe based on available ingredients.
+
+ * Features:
+ * - `checkFeasibility`: Determines if the recipe can be made with the provided ingredients, considering unit compatibility and quantity sufficiency.
+
+ * Key Fields:
+ * - `name`: The name of the recipe.
+ * - `category`: The recipe's category (e.g., VEGETARIAN, DESSERT).
+ * - `ingredients`: The list of ingredients required for the recipe.
+ * - `instructions`: Step-by-step preparation instructions.
+ * - `preparationTime`: Time required for preparation (in hours).
+ * - `cookingTime`: Time required for cooking (in hours).
+ * - `difficultyLevel`: Difficulty level of the recipe.
+ * - `personalNote`: Custom notes added by the user.
+ * - `isFavorite`: Indicates whether the recipe is marked as a favorite.
+
+ * Example:
+ * - Create and check feasibility:
+ *   Recipe recipe = new Recipe("Pasta", CategoryRecipe.VEGETARIAN, 0.5, 0.75, DifficultyLevel.EASY, ingredients, "Boil and mix.");
+ *   Map<String, String> feasibility = recipe.checkFeasibility(availableIngredients);
+
+ * Author: Anh Tuan NGUYEN & Ke An NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx.features.shared.models;
 
 import fr.insa.bourges.firstapplicationjfx.base.database.AbstractEntity;

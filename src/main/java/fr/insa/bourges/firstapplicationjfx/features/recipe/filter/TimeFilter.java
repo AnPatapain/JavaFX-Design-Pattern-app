@@ -9,9 +9,6 @@ public class TimeFilter implements FilterStrategy {
 
     @Override
     public List<Recipe> filter(FilterContext filterContext) {
-        System.out.println("TimeFilter");
-        System.out.println(filterContext.getTime());
-
         List<Recipe> recipes = filterContext.getRecipes();
         double time = filterContext.getTime();
         return recipes.stream().map(recipe -> {

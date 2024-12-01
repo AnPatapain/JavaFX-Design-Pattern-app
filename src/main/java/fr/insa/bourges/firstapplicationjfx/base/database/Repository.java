@@ -1,3 +1,32 @@
+/**
+ * Repository defines the base interface for managing entities within the persistence context.
+ * It provides CRUD operations and additional methods for persisting and querying entities.
+ * This interface is designed to abstract the interaction between the application and the
+ * underlying storage mechanism, ensuring a clean separation of concerns.
+
+ * Responsibilities:
+ * - **CRUD Operations**:
+ *   - `persist`: Adds a new entity to the persistence context, assigning it a unique identifier.
+ *   - `update`: Updates an existing tracked entity in the persistence context.
+ *   - `deleteById`: Marks an entity for deletion based on its unique identifier.
+ * - **Synchronization**:
+ *   - `flush`: Synchronizes the persistence context with the database or storage (e.g., a JSON file).
+ * - **Querying**:
+ *   - `findAll`: Retrieves all entities managed by the repository.
+ *   - `findByAttribute`: Finds entities based on a specific field and value dynamically.
+ *   - `findById`: Retrieves an entity by its unique identifier.
+
+ * Usage:
+ * - Implement this interface for specific storage mechanisms (e.g., JSON, SQL).
+ * - Example: `JsonRepository` can persist entities to a JSON file.
+
+ * Example:
+ * public class RecipeRepository implements Repository<Recipe> {
+ *     // Implementation of CRUD operations
+ * }
+
+ * Author: Ke An NGUYEN
+ */
 package fr.insa.bourges.firstapplicationjfx.base.database;
 
 import java.util.List;

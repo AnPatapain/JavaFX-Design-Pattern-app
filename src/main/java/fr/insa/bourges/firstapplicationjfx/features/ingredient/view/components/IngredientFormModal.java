@@ -1,3 +1,31 @@
+/**
+ * IngredientFormModal represents the modal dialog used for adding or editing ingredients.
+ * It handles user inputs, validates data, and triggers the appropriate commands for processing.
+
+ * Responsibilities:
+ * - Initializes the modal with default values and input formatters.
+ * - Handles form submission:
+ *   - Validates user inputs and populates an `Ingredient` object.
+ *   - Executes the appropriate command based on the form type (ADD or EDIT).
+ * - Handles form cancellation without saving changes.
+
+ * Design:
+ * - Extends `AbstractModalView` for consistent modal behavior.
+ * - Utilizes the Command pattern to delegate actions (`ADD_INGREDIENT`, `UPDATE_INGREDIENT`).
+ * - Validates inputs with custom exceptions for better error handling.
+
+ * Example:
+ * IngredientFormModal modal = AbstractModalView.createModal(
+ *     IngredientFormModal.class,
+ *     "ingredientFormModal.fxml",
+ *     "Add Ingredient"
+ * );
+ * modal.setIngredientFormType(IngredientFormType.ADD);
+ * modal.showModalAndWait();
+
+ * Author: Ke An NGUYEN
+ */
+
 package fr.insa.bourges.firstapplicationjfx.features.ingredient.view.components;
 
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractModalView;
