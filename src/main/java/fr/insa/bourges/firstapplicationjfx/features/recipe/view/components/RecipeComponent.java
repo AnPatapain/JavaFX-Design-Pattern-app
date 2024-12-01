@@ -9,6 +9,7 @@ import fr.insa.bourges.firstapplicationjfx.features.recipe.view.RecipePageType;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Recipe;
+import fr.insa.bourges.firstapplicationjfx.features.shared.utils.TimeParser;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -45,8 +46,8 @@ public class RecipeComponent extends ComponentView {
         recipeName.setText("Recipe Name: " + recipe.getName());
         recipeCategory.setText("Category: " + recipe.getCategory().toString());
         recipeInstruction.setText("Instructions: " + recipe.getInstructions());
-        recipePreparationTime.setText("Preparation Time: " + recipe.getPreparationTime() + " minutes");
-        recipeCookingTime.setText("Cooking Time: " + recipe.getCookingTime() + " minutes");
+        recipePreparationTime.setText("Preparation Time: " + TimeParser.convertDecimalToHHmm(recipe.getPreparationTime()) );
+        recipeCookingTime.setText("Cooking Time: " + TimeParser.convertDecimalToHHmm(recipe.getCookingTime()) );
         recipeDifficultyLevel.setText("Difficulty Level: " + recipe.getDifficultyLevel());
         recipeFavoriteCheckBox.setSelected(recipe.getFavorite());
 

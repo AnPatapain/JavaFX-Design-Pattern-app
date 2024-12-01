@@ -1,6 +1,7 @@
 package fr.insa.bourges.firstapplicationjfx.features.recipe.view.pages;
 
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
+import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeCommandKeys;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.RecipeController;
 import fr.insa.bourges.firstapplicationjfx.features.recipe.view.RecipePageType;
@@ -140,6 +141,7 @@ public class RecipeListPage extends AbstractPageView<RecipeController> {
 
     // Navigation
     public void navigateToAddRecipe(ActionEvent actionEvent) {
+        this.getController().getViewAs(ViewName.RECIPE_ADD, RecipeAddPage.class).setRecipePageType(RecipePageType.ADD);
         this.getController().navigateToAddRecipe();
 
     }
