@@ -81,6 +81,10 @@ public class RecipeListPage extends AbstractPageView<RecipeController> {
             RecipeComponent recipeComponent = loader.getController();
             recipeComponent.setRecipe(recipe);
             recipeComponent.setParentPageView(this);
+
+            recipeComponent.registerCommand(RecipeCommandKeys.RELOAD_RECIPES.name(), args -> {
+                this.loadRecipeComponentView();
+            });
             recipeComponent.registerCommand(RecipeCommandKeys.UPDATE_RECIPE.name(), args -> {
                 this.getController().navigateToEditRecipe((RecipePageType) args[0],(Recipe) args[1]);
             });
@@ -89,7 +93,11 @@ public class RecipeListPage extends AbstractPageView<RecipeController> {
                 this.getController().deleteRecipe(toBeDeletedRecipeId);
                 this.loadRecipeComponentView();
             });
-
+            recipeComponent.registerCommand(RecipeCommandKeys.FAVORITE_RECIPE.name(), args -> {
+                Recipe recipeToBeFavorited = (Recipe) args[0];
+                recipeToBeFavorited.setFavorite(!recipeToBeFavorited.getFavorite());
+                this.getController().updateRecipe(recipeToBeFavorited);
+            });
             return recipeComponentFXML;
         } catch (IOException e) {
             throw new RuntimeException("Failed to load recipe component", e);

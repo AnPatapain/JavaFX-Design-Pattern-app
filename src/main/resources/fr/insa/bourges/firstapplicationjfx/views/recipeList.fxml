@@ -30,9 +30,11 @@
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="ALL"/>
+                            <String fx:value="FAVORITE" />
                             <String fx:value="GLUTEN_FREE" />
                             <String fx:value="VEGETARIAN" />
                             <String fx:value="TIME" />
+
                         </FXCollections>
                     </items>
                 </ComboBox>

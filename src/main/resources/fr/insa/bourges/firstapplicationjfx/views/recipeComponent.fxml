@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.control.CheckBox?>
 <HBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="fr.insa.bourges.firstapplicationjfx.features.recipe.view.components.RecipeComponent"
       spacing="10" style="-fx-padding: 10; -fx-border-color: lightgray; -fx-border-width: 1;">
@@ -16,7 +17,7 @@
         <Label fx:id="recipeDifficultyLevel" text="Difficulty Level: Placeholder"/>
 
 
-        <VBox fx:id="ingredientsList" spacing="5" style="-fx-border-color: lightgray; -fx-border-width: 1;">
+        <VBox spacing="5" style="-fx-border-color: lightgray; -fx-border-width: 1;">
             <Label text="Ingredients:" style="-fx-font-weight: bold;"/>
             <!-- Each ingredient will be dynamically added here -->
             <FlowPane fx:id="ingredientsFlowPane" hgap="10" vgap="5" style="-fx-border-color: lightgray; -fx-border-width: 1; -fx-padding: 5;">
@@ -24,8 +25,12 @@
             </FlowPane>
         </VBox>
     </VBox>
-    <Button text="Modify" onAction="#editRecipeHandler" style="-fx-background-color: lightblue;"/>
-    <Button text="Delete" onAction="#deleteRecipeHandler" style="-fx-background-color: lightcoral;"/>
+    <VBox spacing="10">
+        <CheckBox fx:id="recipeFavoriteCheckBox" text="Mark as Favorite" onAction="#favoriteRecipeToggleHandler" style="-fx-padding: 5;"/>
+        <Button text="Modify" onAction="#editRecipeHandler" style="-fx-background-color: lightblue;"/>
+        <Button text="Delete" onAction="#deleteRecipeHandler" style="-fx-background-color: lightcoral;"/>
+        <Button text="Edit Notes" onAction="#editNotesHandler" style="-fx-background-color: lightgreen;"/>
+    </VBox>
 </HBox>
 
 

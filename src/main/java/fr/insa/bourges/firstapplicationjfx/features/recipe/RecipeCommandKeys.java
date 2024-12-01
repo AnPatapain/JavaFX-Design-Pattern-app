@@ -5,4 +5,6 @@ public enum RecipeCommandKeys {
     ADD_RECIPE,
     UPDATE_RECIPE,
     DELETE_RECIPE,
+    FAVORITE_RECIPE,
+    UPDATE_NOTE_RECIPE,
 }

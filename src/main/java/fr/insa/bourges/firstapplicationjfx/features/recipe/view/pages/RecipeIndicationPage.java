@@ -15,7 +15,7 @@ import javafx.scene.layout.VBox;
 import java.util.List;
 import java.util.Map;
 
-public class RecipeIndicationPage extends AbstractPageView<RecipeController> {
+public class    RecipeIndicationPage extends AbstractPageView<RecipeController> {
     @FXML
     public BorderPane borderPane;
 

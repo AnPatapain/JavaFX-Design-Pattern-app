@@ -4,4 +4,5 @@ public enum FilterType {
     GLUTEN_FREE,
     VEGETARIAN,
     TIME,
+    FAVORITE,
 }

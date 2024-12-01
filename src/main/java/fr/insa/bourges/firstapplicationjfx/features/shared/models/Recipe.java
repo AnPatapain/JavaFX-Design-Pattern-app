@@ -16,6 +16,8 @@ public class Recipe extends AbstractEntity {
     private double preparationTime;
     private double cookingTime;
     private DifficultyLevel difficultyLevel;
+    private String personalNote;
+    private Boolean isFavorite = false;
 
 
     public Recipe() {
@@ -128,4 +130,12 @@ public class Recipe extends AbstractEntity {
     public void setInstructions(String instructions) {
         this.instructions = instructions;
     }
+
+    public String getPersonalNote() {return personalNote;}
+
+    public void setPersonalNote(String personalNote) {this.personalNote = personalNote;}
+
+    public Boolean getFavorite() {return isFavorite;}
+
+    public void setFavorite(Boolean favorite) {isFavorite = favorite;}
 }

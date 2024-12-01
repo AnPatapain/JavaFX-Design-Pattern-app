@@ -17,6 +17,9 @@ public class RecipeFilterService {
             case VEGETARIAN:
                 this.filterStrategy = new VegetarianFilter();
                 break;
+            case FAVORITE:
+                this.filterStrategy = new FavortieFilter();
+                break;
             case TIME:
                 this.filterStrategy = new TimeFilter();
                 break;
