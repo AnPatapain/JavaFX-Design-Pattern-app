@@ -7,7 +7,7 @@
 <?import java.lang.String?>
 <?import javafx.scene.layout.HBox?>
 <VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="fr.insa.bourges.firstapplicationjfx.features.ingredient.components.IngredientFormModal"
+      fx:controller="fr.insa.bourges.firstapplicationjfx.features.ingredient.view.components.IngredientFormModal"
       spacing="10" style="-fx-padding: 20;">
     <Label fx:id="modalLabel" style="-fx-font-size: 20px;"/>
     <TextField fx:id="name" promptText="Ingredient Name"/>

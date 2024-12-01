@@ -1,4 +1,4 @@
-package fr.insa.bourges.firstapplicationjfx.features.ingredient.components;
+package fr.insa.bourges.firstapplicationjfx.features.ingredient.view.components;
 
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractModalView;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientCommandKeys;

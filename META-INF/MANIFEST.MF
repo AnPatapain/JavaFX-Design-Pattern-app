@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: kean
+Build-Jdk: 21.0.5
+Main-Class: fr.insa.bourges.firstapplicationjfx.Main
+

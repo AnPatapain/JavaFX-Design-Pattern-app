@@ -1,13 +1,13 @@
-package fr.insa.bourges.firstapplicationjfx.features.ingredient.pages;
+package fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages;
 
 import fr.insa.bourges.firstapplicationjfx.base.controller.ControllerMediator;
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractModalView;
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientCommandKeys;
 import fr.insa.bourges.firstapplicationjfx.features.ingredient.IngredientController;
-import fr.insa.bourges.firstapplicationjfx.features.ingredient.components.IngredientComponent;
-import fr.insa.bourges.firstapplicationjfx.features.ingredient.components.IngredientFormModal;
-import fr.insa.bourges.firstapplicationjfx.features.ingredient.components.IngredientFormType;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.components.IngredientComponent;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.components.IngredientFormModal;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.components.IngredientFormType;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

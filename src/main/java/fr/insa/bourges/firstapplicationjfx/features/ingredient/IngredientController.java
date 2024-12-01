@@ -8,7 +8,7 @@ import fr.insa.bourges.firstapplicationjfx.base.event.EventType;
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import fr.insa.bourges.firstapplicationjfx.base.view.RenderViewManager;
 import fr.insa.bourges.firstapplicationjfx.base.view.ViewName;
-import fr.insa.bourges.firstapplicationjfx.features.ingredient.pages.IngredientListPage;
+import fr.insa.bourges.firstapplicationjfx.features.ingredient.view.pages.IngredientListPage;
 import fr.insa.bourges.firstapplicationjfx.features.shared.models.Ingredient;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package fr.insa.bourges.firstapplicationjfx.features.home.pages;
+package fr.insa.bourges.firstapplicationjfx.features.home.view.pages;
 
 import fr.insa.bourges.firstapplicationjfx.base.view.AbstractPageView;
 import fr.insa.bourges.firstapplicationjfx.features.home.HomeController;
